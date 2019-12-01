@@ -1,34 +1,32 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectGlobal = (state) => state.global || initialState;
+const selectGlobal = state => state.global || initialState;
 
-const selectRoute = (state) => state.router;
+const selectRoute = state => state.router;
 
-const makeSelectCurrentUser = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.currentUser
-);
+const makeSelectCurrentUser = () =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  createSelector(selectGlobal, globalState => globalState.currentUser);
 
-const makeSelectLoading = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.loading
-);
+const makeSelectLoading = () =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  createSelector(selectGlobal, globalState => globalState.loading);
 
-const makeSelectError = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.error
-);
+const makeSelectError = () =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  createSelector(selectGlobal, globalState => globalState.error);
 
-const makeSelectRepos = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.userData.repositories
-);
+const makeSelectRepos = () =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  createSelector(
+    selectGlobal,
+    globalState => globalState.userData.repositories,
+  );
 
-const makeSelectLocation = () => createSelector(
-  selectRoute,
-  (routeState) => routeState.location
-);
+const makeSelectLocation = () =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  createSelector(selectRoute, routeState => routeState.location);
 
 export {
   selectGlobal,

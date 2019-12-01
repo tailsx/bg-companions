@@ -7,13 +7,15 @@ import getInjectors from './reducerInjectors';
 /**
  * Dynamically injects a reducer
  */
-export default ({ key, reducer }) => (WrappedComponent) => {
+export default ({ key, reducer }) => WrappedComponent => {
   class ReducerInjector extends React.Component {
     static WrappedComponent = WrappedComponent;
 
     static contextType = ReactReduxContext;
 
-    static displayName = `withReducer(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    static displayName = `withReducer(${WrappedComponent.displayName ||
+      WrappedComponent.name ||
+      'Component'})`;
 
     constructor(props, context) {
       super(props, context);

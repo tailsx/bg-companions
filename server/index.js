@@ -2,6 +2,8 @@
 
 const express = require('express');
 const { resolve } = require('path');
+const https = require('https');
+const fs = require('fs');
 const logger = require('./util//logger');
 
 const argv = require('./util/argv');
@@ -25,9 +27,17 @@ const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
 
 // Start your app.
-app.listen(port, host, (err) => {
-  if (err) {
-    return logger.error(err.message);
-  }
-  logger.appStarted(port, prettyHost);
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync('./server/security/cert.key'),
+      cert: fs.readFileSync('./server/security/cert.pem'),
+    },
+    app,
+  )
+  .listen(port, host, err => {
+    if (err) {
+      return logger.error(err.message);
+    }
+    logger.appStarted(port, prettyHost);
+  });

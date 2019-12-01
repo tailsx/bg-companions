@@ -11,3 +11,8 @@ npm-debug.log
 
 # Logs
 yarn-error.log
+
+# https
+*.key
+*.pem
+*.cer
