@@ -23,7 +23,8 @@
     "pretest": "npm run test:clean && npm run lint",
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:clean": "rimraf ./coverage",
-    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll",
+    "openssl": "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./server/security/cert.key -out ./server/security/cert.pem -config ./server/security/req.cnf -sha256"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
