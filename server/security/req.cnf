@@ -7,7 +7,12 @@ C=CA
 ST=Ontario
 L=Toronto
 O=carrysupport
-CN=localhost
+CN=localhost:3000
 [v3_req]
 keyUsage=critical,digitalSignature,keyAgreement
 extendedKeyUsage=serverAuth
+subjectAltName=@alt_names
+[alt_names]
+DNS.1=www.localhost.com
+DNS.2=localhost.com
+DNS.3=localhost
