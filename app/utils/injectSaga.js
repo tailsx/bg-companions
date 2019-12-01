@@ -7,13 +7,15 @@ import getInjectors from './sagaInjectors';
 /**
  * Dynamically injects a saga, passes component's props as saga arguments
  */
-export default ({ key, saga, mode }) => (WrappedComponent) => {
+export default ({ key, saga, mode }) => WrappedComponent => {
   class InjectSaga extends React.Component {
     static WrappedComponent = WrappedComponent;
 
     static contextType = ReactReduxContext;
 
-    static displayName = `withSaga(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    static displayName = `withSaga(${WrappedComponent.displayName ||
+      WrappedComponent.name ||
+      'Component'})`;
 
     injectors = getInjectors(this.context.store); // eslint-disable-line react/destructuring-assignment
 
