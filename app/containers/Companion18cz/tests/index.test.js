@@ -2,7 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import BeforeTurn from 'components/Companion18cz/BeforeTurn';
-import Companion18cz from '../index';
+import Companion18cz from '../Companion18cz';
+// import { mapDispatchToProps } from '../index';
 
 describe('<18cz />', () => {
   it('should render title', () => {
