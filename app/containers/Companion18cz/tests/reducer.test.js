@@ -1,5 +1,4 @@
 import companion18czReducer from '../reducer';
-import Companion18cz from '../Companion18cz';
 
 describe('companion18czReducer', () => {
   let state;
@@ -75,12 +74,12 @@ describe('companion18czReducer', () => {
 
   it('should add station type', () => {
     const station = {
-      type: '$40',
-      amount: 1,
+      type: '',
+      amount: 0,
     };
     const expectedResult = { ...state, stations: [...state.stations, station] };
 
-    expect(companion18czReducer(state, addStation(station))).toEqual(expectedResult);
+    expect(companion18czReducer(state, addStation())).toEqual(expectedResult);
   });
 
   it('should remove station type', () => {
@@ -113,13 +112,48 @@ describe('companion18czReducer', () => {
 
   it('should add private', () => {
     const priv = {
-      revenue: 30,
+      revenue: 0,
       hasAbility: false,
-      marketValue: 50,
+      marketValue: 0,
     };
     const expectedResult = { ...state, privates: [...state.privates, priv] };
 
-    expect(companion18czReducer(state, addPrivate(priv))).toEqual(expectedResult);
+    expect(companion18czReducer(state, addPrivate())).toEqual(expectedResult);
+  });
+
+  it('should remove private', () => {
+    const priv = {
+      revenue: 30,
+      hasAbility: false,
+      marketValue: 10,
+    };
+    const privates = [priv, priv];
+
+    const index = 0;
+    const expectedResult = { ...state, privates: [priv] };
+
+    expect(companion18czReducer({ ...state, privates }, removePrivate(index))).toEqual(
+      expectedResult,
+    );
+  });
+
+  it('should update private', () => {
+    const priv = { revenue: 30, hasAbility: false, marketValue: 30 };
+    const startPrivates = [priv];
+    const index = 0;
+    const attr = 'marketValue';
+    const value = 40;
+    const expectedResult = {
+      ...state,
+      privates: [{ ...priv, marketValue: value }],
+    };
+
+    expect(
+      companion18czReducer(
+        { ...state, privates: startPrivates },
+        updatePrivate(attr, index, value),
+      ),
+    ).toEqual(expectedResult);
   });
 
   it('should add treasury', () => {
