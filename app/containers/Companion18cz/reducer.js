@@ -22,7 +22,7 @@ const initialState = {
 function companion18czReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TRAIN:
-      return { ...state, trains: [...state.train, { type: '', name: '', lastRan: 0 }] };
+      return { ...state, trains: [...state.trains, { type: '', name: '', lastRan: 0 }] };
     case ADD_STATION:
       return {
         ...state,
@@ -44,15 +44,17 @@ function companion18czReducer(state = initialState, action) {
     case REMOVE_STATION:
       return {
         ...state,
-        stations: state.stations.reduce((accum, station, index) =>
-          index === action.index ? accum : [...accum, station],
+        stations: state.stations.reduce(
+          (accum, station, index) => (index === action.index ? accum : [...accum, station]),
+          [],
         ),
       };
     case REMOVE_PRIVATE:
       return {
         ...state,
-        privates: state.privates.reduce((accum, priv, index) =>
-          index === action.index ? accum : [accum, priv],
+        privates: state.privates.reduce(
+          (accum, priv, index) => (index === action.index ? accum : [...accum, priv]),
+          [],
         ),
       };
     case UPDATE_TRAIN:
@@ -77,7 +79,7 @@ function companion18czReducer(state = initialState, action) {
             return [...accum, s];
           }
           return accum;
-        }),
+        }, []),
       };
     case UPDATE_PRIVATE:
       return {
@@ -89,7 +91,7 @@ function companion18czReducer(state = initialState, action) {
             return [...accum, p];
           }
           return accum;
-        }),
+        }, []),
       };
     case CHANGE_TREASURY:
       return {

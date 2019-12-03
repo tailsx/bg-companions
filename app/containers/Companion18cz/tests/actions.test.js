@@ -116,7 +116,7 @@ describe('Companion18cz Actions', () => {
       const index = 0;
       const value = 40;
 
-      const expectedResult = { type: UPDATE_PRIVATE, private: { attr, index, value } };
+      const expectedResult = { type: UPDATE_PRIVATE, priv: { attr, index, value } };
       expect(updatePrivate(attr, index, value)).toEqual(expectedResult);
     });
   });

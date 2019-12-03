@@ -138,7 +138,7 @@ export function removePrivate(index) {
 export function updatePrivate(attr, index, value) {
   return {
     type: UPDATE_PRIVATE,
-    private: { attr, index, value },
+    priv: { attr, index, value },
   };
 }
 

@@ -170,6 +170,6 @@ describe('companion18czReducer', () => {
   it('should add treasury', () => {
     const amount = 300;
     const expectedResult = { ...state, treasury: amount };
-    expect(companion18czReducer(state, changeTreasury(amount)).toEqual(expectedResult));
+    expect(companion18czReducer(state, changeTreasury(amount))).toEqual(expectedResult);
   });
 });
