@@ -29,5 +29,8 @@ export default class Companion18cz extends React.PureComponent {
 
 Companion18cz.propTypes = {
   onChangeTreasury: PropTypes.func,
+  onAddPrivate: PropTypes.func,
+  onAddStation: PropTypes.func,
+  onAddTrain: PropTypes.func,
   treasury: PropTypes.number,
 };

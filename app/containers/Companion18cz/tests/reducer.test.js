@@ -17,12 +17,10 @@ describe('companion18czReducer', () => {
   let state;
   beforeEach(() => {
     state = {
-      before: {
-        trains: [],
-        stations: [],
-        privates: [],
-        treasury: 0,
-      },
+      trains: [],
+      stations: [],
+      privates: [],
+      treasury: 0,
     };
   });
 
