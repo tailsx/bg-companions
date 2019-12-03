@@ -13,12 +13,10 @@ import {
 
 // The initial state of the App
 const initialState = {
-  before: {
-    trains: [],
-    stations: [],
-    privates: [],
-    treasury: 0,
-  },
+  trains: [],
+  stations: [],
+  privates: [],
+  treasury: 0,
 };
 
 function companion18czReducer(state = initialState, action) {

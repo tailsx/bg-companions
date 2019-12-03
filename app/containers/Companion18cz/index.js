@@ -2,17 +2,39 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import {
+  addPrivate,
+  addStation,
+  addTrain,
+  changeTreasury,
+  /*   removePrivate,
+  removeStation,
+  removeTrain,
+  updatePrivate,
+  updateStation,
+  updateTrain, */
+} from './actions';
+import {
+  makeSelectPrivates,
+  makeSelectStations,
+  makeSelectTrains,
+  makeSelectTreasury,
+} from './selectors';
 import reducer from './reducer';
 import Companion18cz from './Companion18cz';
 
 const mapDispatchToProps = dispatch => ({
-  onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
+  onChangeTreasury: evt => dispatch(changeTreasury(evt.target.value)),
+  onAddPrivate: () => dispatch(addPrivate()),
+  onAddStation: () => dispatch(addStation()),
+  onAddTrain: () => dispatch(addTrain()),
 });
 
 const mapStateToProps = createStructuredSelector({
-  username: makeSelectUsername(),
+  privates: makeSelectPrivates(),
+  stations: makeSelectStations(),
+  trains: makeSelectTrains(),
+  treasury: makeSelectTreasury(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
