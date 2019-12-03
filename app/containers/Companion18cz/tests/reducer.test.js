@@ -1,5 +1,18 @@
 import companion18czReducer from '../reducer';
 
+import {
+  addTrain,
+  removeTrain,
+  updateTrain,
+  addStation,
+  removeStation,
+  updateStation,
+  addPrivate,
+  removePrivate,
+  updatePrivate,
+  changeTreasury,
+} from '../actions';
+
 describe('companion18czReducer', () => {
   let state;
   beforeEach(() => {
