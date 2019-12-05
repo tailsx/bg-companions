@@ -6,7 +6,16 @@ import TurnTrackLay from '../../components/Companion18cz/TurnTrackLay';
 
 export default class Companion18cz extends React.PureComponent {
   render() {
-    const { onChangeTreasury, onAddPrivate, onAddStation, onAddTrain, treasury } = this.props;
+    const {
+      onChangeTreasury,
+      onAddPrivate,
+      onAddStation,
+      onAddTrain,
+      treasury,
+      privates,
+      trains,
+      stations,
+    } = this.props;
 
     return (
       <div>
@@ -22,7 +31,7 @@ export default class Companion18cz extends React.PureComponent {
         <button type="button" onClick={onAddTrain}>
           Train
         </button>
-        <BeforeTurn />
+        <BeforeTurn {...{ trains, privates, stations }} />
         <TurnTrackLay />
       </div>
     );
@@ -35,4 +44,7 @@ Companion18cz.propTypes = {
   onAddStation: PropTypes.func,
   onAddTrain: PropTypes.func,
   treasury: PropTypes.number,
+  privates: PropTypes.array,
+  stations: PropTypes.array,
+  trains: PropTypes.array,
 };

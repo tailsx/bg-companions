@@ -16,25 +16,20 @@ class BeforeTurn extends React.PureComponent {
         <h1>Before turn</h1>
         <div>
           {trains &&
-            trains.map(({ name, type, lastRan }) => (
-              <Train key={`train-${name}`} name={name} type={type} lastRan={lastRan} />
+            trains.map(({ name, ...trainProps }) => (
+              <Train key={`train-${name}`} name={name} {...trainProps} />
             ))}
         </div>
         <div>
           {privates &&
-            privates.map(({ revenue, marketValue, hasAbility }) => (
-              <Private
-                key={`private-${revenue}`}
-                revenue={revenue}
-                marketValue={marketValue}
-                hasAbility={hasAbility}
-              />
+            privates.map(({ revenue, ...privateProps }) => (
+              <Private key={`private-${revenue}`} revenue={revenue} {...privateProps} />
             ))}
         </div>
         <div>
           {stations &&
-            stations.map(({ type, amount }) => (
-              <Station key={`station-${type}`} type={type} amount={amount} />
+            stations.map(({ type, ...stationProps }) => (
+              <Station key={`station-${type}`} type={type} {...stationProps} />
             ))}
         </div>
         {treasury && (
