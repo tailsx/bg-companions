@@ -2,6 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import BeforeTurn from '../index';
+import Private from '../../Private';
+import Station from '../../Station';
+import Train from '../../Train';
+import Treasury from '../../Treasury';
 
 describe('<BeforeTurn />', () => {
   it('should have a title', () => {
@@ -27,13 +31,13 @@ describe('<BeforeTurn />', () => {
           .find(Train)
           .at(0)
           .props(),
-      ).toBe(trains[0]);
+      ).toMatchObject(trains[0]);
       expect(
         component
           .find(Train)
           .at(1)
           .props(),
-      ).toBe(trains[1]);
+      ).toMatchObject(trains[1]);
     });
   });
 
@@ -55,13 +59,13 @@ describe('<BeforeTurn />', () => {
           .find(Station)
           .at(0)
           .props(),
-      ).toBe(stations[0]);
+      ).toMatchObject(stations[0]);
       expect(
         component
           .find(Station)
           .at(1)
           .props(),
-      ).toBe(stations[1]);
+      ).toMatchObject(stations[1]);
     });
   });
 
@@ -77,19 +81,19 @@ describe('<BeforeTurn />', () => {
     it('should render compoent data', () => {
       const component = shallow(<BeforeTurn privates={privates} />);
 
-      expect(component.find(privates)).toHaveLength(2);
+      expect(component.find(Private)).toHaveLength(2);
       expect(
         component
           .find(Private)
           .at(0)
           .props(),
-      ).toBe(privates[0]);
+      ).toMatchObject(privates[0]);
       expect(
         component
           .find(Private)
           .at(1)
           .props(),
-      ).toBe(privates[1]);
+      ).toMatchObject(privates[1]);
     });
 
     describe('treasury', () => {
@@ -100,13 +104,13 @@ describe('<BeforeTurn />', () => {
 
       it('should render data', () => {
         const component = shallow(<BeforeTurn treasury={treasury} />);
-        expect(component.find(Treasury)).toHaveLength(2);
+        expect(component.find(Treasury)).toHaveLength(1);
         expect(
           component
             .find(Treasury)
             .first()
             .props(),
-        ).toBe({ treasury });
+        ).toMatchObject({ treasury });
       });
     });
   });

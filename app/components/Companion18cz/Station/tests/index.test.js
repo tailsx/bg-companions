@@ -18,7 +18,7 @@ describe('<Station>', () => {
     ).toBe(type);
     expect(
       component
-        .find('.train-amount')
+        .find('.station-amount')
         .first()
         .text(),
     ).toBe(amount.toString());

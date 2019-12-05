@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Treasury from '../index';
+import Treasury from '../Treasury';
 
 describe('<Treasury>', () => {
   it('component should render', () => {
