@@ -12,6 +12,6 @@ describe('<TurnTrackLay>', () => {
   it('should render components', () => {
     const component = shallow(<TurnTrackLay trains={trains} />);
 
-    expect(component.find(Train)).toBe(1);
+    expect(component.find(Train)).toHaveLength(trains.length);
   });
 });
