@@ -10,14 +10,25 @@ class BeforeTurn extends React.PureComponent {
   // const { trains } = props;
 
   render() {
-    const { trains, privates, stations, treasury } = this.props;
+    const { trainsData, privatesData, stationsData, treasury } = this.props;
+    const { trains, onUpdateTrain } = trainsData;
+    const { privates } = privatesData;
+    const { stations } = stationsData;
+
     return (
       <div id="before-turn">
         <h1>Before turn</h1>
         <div>
           {trains &&
-            trains.map(({ name, ...trainProps }) => (
-              <Train key={`train-${name}`} name={name} {...trainProps} />
+            trains.map(({ name, ...trainProps }, index) => (
+              <Train
+                key={`train-${name}`}
+                onNameChange={e => onUpdateTrain('name', index, e.target.value)}
+                onTypeChange={e => onUpdateTrain('type', index, e.target.value)}
+                onNumberChange={e => onUpdateTrain('number', index, e.target.value)}
+                name={name}
+                {...trainProps}
+              />
             ))}
         </div>
         <div>
@@ -43,9 +54,9 @@ class BeforeTurn extends React.PureComponent {
 }
 
 BeforeTurn.propTypes = {
-  trains: PropTypes.array,
-  privates: PropTypes.array,
-  stations: PropTypes.array,
+  trainsData: PropTypes.object,
+  privatesData: PropTypes.object,
+  stationsData: PropTypes.object,
   treasury: PropTypes.number,
 };
 

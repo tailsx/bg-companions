@@ -1,13 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Train = ({ name, type, lastRan }) => (
-  <div>
-    <span className="train-name">{name}</span>
-    <span className="train-type">{type}</span>
-    <span className="train-lastRan">{lastRan}</span>
-  </div>
-);
+class Train extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      readOnly: false,
+    };
+  }
+
+  render() {
+    const { name, type, lastRan, onNameChange, onTypeChange, onNumberChange } = this.props;
+    const { readOnly } = this.state;
+
+    if (readOnly) {
+      return (
+        <div>
+          <span className="train-name">{name}</span>
+          <span className="train-type">{type}</span>
+          <span className="train-lastRan">{lastRan}</span>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <input type="text" value={name} onChange={onNameChange} />
+        <input type="text" value={type} onChange={onTypeChange} />
+        <input type="number" value={lastRan} onChange={onNumberChange} />
+      </div>
+    );
+  }
+}
 
 export default Train;
 
@@ -15,4 +39,7 @@ Train.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   lastRan: PropTypes.number,
+  onNameChange: PropTypes.func,
+  onTypeChange: PropTypes.func,
+  onNumberChange: PropTypes.func,
 };

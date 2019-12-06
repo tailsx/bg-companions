@@ -7,12 +7,8 @@ import {
   addStation,
   addTrain,
   changeTreasury,
-  /*   removePrivate,
-  removeStation,
+  updateTrain,
   removeTrain,
-  updatePrivate,
-  updateStation,
-  updateTrain, */
 } from './actions';
 import {
   makeSelectPrivates,
@@ -28,6 +24,8 @@ const mapDispatchToProps = dispatch => ({
   onAddPrivate: () => dispatch(addPrivate()),
   onAddStation: () => dispatch(addStation()),
   onAddTrain: () => dispatch(addTrain()),
+  onUpdateTrain: (name, index, value) => dispatch(updateTrain(name, index, value)),
+  onRemoveTrain: index => dispatch(removeTrain(index)),
 });
 
 const mapStateToProps = createStructuredSelector({

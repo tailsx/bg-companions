@@ -11,11 +11,20 @@ export default class Companion18cz extends React.PureComponent {
       onAddPrivate,
       onAddStation,
       onAddTrain,
+      onUpdateTrain,
+      onRemoveTrain,
       treasury,
       privates,
       trains,
       stations,
     } = this.props;
+
+    const beforeProps = {
+      trainsData: { trains, onAddTrain, onUpdateTrain, onRemoveTrain },
+      privatesData: { privates, onAddPrivate },
+      stationsData: { stations, onAddStation },
+      treasury,
+    };
 
     return (
       <div>
@@ -31,7 +40,7 @@ export default class Companion18cz extends React.PureComponent {
         <button type="button" onClick={onAddTrain}>
           Train
         </button>
-        <BeforeTurn {...{ trains, privates, stations }} />
+        <BeforeTurn {...beforeProps} />
         <TurnTrackLay />
       </div>
     );
@@ -43,6 +52,8 @@ Companion18cz.propTypes = {
   onAddPrivate: PropTypes.func,
   onAddStation: PropTypes.func,
   onAddTrain: PropTypes.func,
+  onUpdateTrain: PropTypes.func,
+  onRemoveTrain: PropTypes.func,
   treasury: PropTypes.number,
   privates: PropTypes.array,
   stations: PropTypes.array,
