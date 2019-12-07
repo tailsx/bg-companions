@@ -5,29 +5,30 @@ import Train from '../index';
 
 describe('<Train>', () => {
   it('should render component', () => {
-    const type = 'A';
-    const name = 'test-train';
-    const lastRan = 100;
-
-    const component = shallow(<Train name="test-train" lastRan={100} type="A" />);
+    const trainProps = {
+      name: 'test-train',
+      type: 'A',
+      lastRan: 100,
+    };
+    const component = shallow(<Train {...trainProps} />);
 
     expect(
       component
         .find('.train-type')
         .first()
         .text(),
-    ).toBe(type);
+    ).toBe(trainProps.type);
     expect(
       component
         .find('.train-name')
         .first()
         .text(),
-    ).toBe(name);
+    ).toBe(trainProps.name);
     expect(
       component
         .find('.train-lastRan')
         .first()
         .text(),
-    ).toBe(lastRan.toString());
+    ).toBe(trainProps.lastRan.toString());
   });
 });

@@ -8,22 +8,41 @@ import Train from '../../Train';
 import Treasury from '../../Treasury';
 
 describe('<BeforeTurn />', () => {
+  let defaultProps;
+  beforeEach(() => {
+    defaultProps = {
+      privatesData: {
+        privates: [
+          { revenue: 0, hasAbility: false, marketValue: 0 },
+          { revenue: 0, hasAbility: false, marketValue: 0 },
+        ],
+      },
+      stationsData: {
+        stations: [
+          { type: '$10', amount: 1 },
+          { type: '$100', amount: 1 },
+        ],
+      },
+      trainsData: {
+        trains: [
+          { type: 'train', name: 'test-train', lastRan: 100 },
+          { type: 'train', name: 'test-train', lastRan: 100 },
+        ],
+      },
+      treasury: 100,
+    };
+  });
   it('should have a title', () => {
-    const renderedComponent = shallow(<BeforeTurn />);
-    expect(renderedComponent.find('h1').length).toBe(1);
+    const component = shallow(<BeforeTurn {...defaultProps} />);
+    expect(component.find('h1')).toHaveLength(1);
   });
 
   describe('trains', () => {
-    let trains;
-    beforeEach(() => {
-      trains = [
-        { type: 'train', name: 'test-train', lastRan: 100 },
-        { type: 'train', name: 'test-train', lastRan: 100 },
-      ];
-    });
-
     it('should have train components for each train', () => {
-      const component = shallow(<BeforeTurn trains={trains} />);
+      const {
+        trainsData: { trains },
+      } = defaultProps;
+      const component = shallow(<BeforeTurn {...defaultProps} />);
 
       expect(component.find(Train)).toHaveLength(2);
       expect(
@@ -42,16 +61,11 @@ describe('<BeforeTurn />', () => {
   });
 
   describe('stations', () => {
-    let stations;
-    beforeEach(() => {
-      stations = [
-        { type: '$10', amount: 1 },
-        { type: '$100', amount: 1 },
-      ];
-    });
-
     it('should render compoent data', () => {
-      const component = shallow(<BeforeTurn stations={stations} />);
+      const {
+        stationsData: { stations },
+      } = defaultProps;
+      const component = shallow(<BeforeTurn {...defaultProps} />);
 
       expect(component.find(Station)).toHaveLength(2);
       expect(
@@ -70,16 +84,11 @@ describe('<BeforeTurn />', () => {
   });
 
   describe('privates', () => {
-    let privates;
-    beforeEach(() => {
-      privates = [
-        { revenue: 0, hasAbility: false, marketValue: 0 },
-        { revenue: 0, hasAbility: false, marketValue: 0 },
-      ];
-    });
-
     it('should render compoent data', () => {
-      const component = shallow(<BeforeTurn privates={privates} />);
+      const {
+        privatesData: { privates },
+      } = defaultProps;
+      const component = shallow(<BeforeTurn {...defaultProps} />);
 
       expect(component.find(Private)).toHaveLength(2);
       expect(
@@ -97,13 +106,9 @@ describe('<BeforeTurn />', () => {
     });
 
     describe('treasury', () => {
-      let treasury;
-      beforeEach(() => {
-        treasury = 30;
-      });
-
       it('should render data', () => {
-        const component = shallow(<BeforeTurn treasury={treasury} />);
+        const { treasury } = defaultProps;
+        const component = shallow(<BeforeTurn {...defaultProps} />);
         expect(component.find(Treasury)).toHaveLength(1);
         expect(
           component

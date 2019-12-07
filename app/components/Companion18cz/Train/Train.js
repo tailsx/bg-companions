@@ -5,7 +5,7 @@ class Train extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      readOnly: false,
+      readOnly: true,
     };
   }
 
@@ -25,9 +25,9 @@ class Train extends React.PureComponent {
 
     return (
       <div>
-        <input type="text" value={name} onChange={onNameChange} />
-        <input type="text" value={type} onChange={onTypeChange} />
-        <input type="number" value={lastRan} onChange={onNumberChange} />
+        <input className="train-name" type="text" value={name} onChange={onNameChange} />
+        <input className="train-type" type="text" value={type} onChange={onTypeChange} />
+        <input className="train-lastRan" type="number" value={lastRan} onChange={onNumberChange} />
       </div>
     );
   }
