@@ -13,20 +13,20 @@ describe('<BeforeTurn />', () => {
     defaultProps = {
       privatesData: {
         privates: [
-          { revenue: 0, hasAbility: false, marketValue: 0 },
-          { revenue: 0, hasAbility: false, marketValue: 0 },
+          { id: 'private1', revenue: 0, hasAbility: false, marketValue: 0 },
+          { id: 'private2', revenue: 0, hasAbility: false, marketValue: 0 },
         ],
       },
       stationsData: {
         stations: [
-          { type: '$10', amount: 1 },
-          { type: '$100', amount: 1 },
+          { id: 'station1', type: '$10', amount: 1 },
+          { id: 'station2', type: '$100', amount: 1 },
         ],
       },
       trainsData: {
         trains: [
-          { type: 'train', name: 'test-train', lastRan: 100 },
-          { type: 'train', name: 'test-train', lastRan: 100 },
+          { id: 'train1', type: 'train', name: 'test-train', lastRan: 100 },
+          { id: 'train2', type: 'train', name: 'test-train', lastRan: 100 },
         ],
       },
       treasury: 100,
@@ -57,6 +57,17 @@ describe('<BeforeTurn />', () => {
           .at(1)
           .props(),
       ).toMatchObject(trains[1]);
+      expect(
+        component
+          .find(Train)
+          .at(0)
+          .props().id,
+      ).not.toBe(
+        component
+          .find(Train)
+          .at(1)
+          .props().id,
+      );
     });
   });
 
@@ -80,6 +91,17 @@ describe('<BeforeTurn />', () => {
           .at(1)
           .props(),
       ).toMatchObject(stations[1]);
+      expect(
+        component
+          .find(Station)
+          .at(0)
+          .props().id,
+      ).not.toBe(
+        component
+          .find(Station)
+          .at(1)
+          .props().id,
+      );
     });
   });
 
@@ -103,6 +125,17 @@ describe('<BeforeTurn />', () => {
           .at(1)
           .props(),
       ).toMatchObject(privates[1]);
+      expect(
+        component
+          .find(Private)
+          .at(0)
+          .props().id,
+      ).not.toBe(
+        component
+          .find(Private)
+          .at(1)
+          .props().id,
+      );
     });
 
     describe('treasury', () => {

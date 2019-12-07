@@ -20,27 +20,27 @@ class BeforeTurn extends React.PureComponent {
         <h1>Before turn</h1>
         <div>
           {trains &&
-            trains.map(({ name, ...trainProps }, index) => (
+            trains.map(({ id, ...trainProps }, index) => (
               <Train
-                key={`train-${name}`}
+                key={`train-${id}`}
                 onNameChange={e => onUpdateTrain('name', index, e.target.value)}
                 onTypeChange={e => onUpdateTrain('type', index, e.target.value)}
                 onNumberChange={e => onUpdateTrain('number', index, e.target.value)}
-                name={name}
+                id={id}
                 {...trainProps}
               />
             ))}
         </div>
         <div>
           {privates &&
-            privates.map(({ revenue, ...privateProps }) => (
-              <Private key={`private-${revenue}`} revenue={revenue} {...privateProps} />
+            privates.map(({ id, ...privateProps }) => (
+              <Private key={`private-${id}`} id={id} {...privateProps} />
             ))}
         </div>
         <div>
           {stations &&
-            stations.map(({ type, ...stationProps }) => (
-              <Station key={`station-${type}`} type={type} {...stationProps} />
+            stations.map(({ id, ...stationProps }) => (
+              <Station key={`station-${id}`} id={id} {...stationProps} />
             ))}
         </div>
         {treasury && (

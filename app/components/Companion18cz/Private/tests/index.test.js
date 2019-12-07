@@ -5,25 +5,26 @@ import Private from '../index';
 
 describe('<Private>', () => {
   it('should render component', () => {
-    const revenue = 30;
-    const marketValue = 100;
-    const hasAbility = true;
+    const priv = {
+      id: 'private1',
+      hasAbility: true,
+      marketValue: 100,
+      revenue: 30,
+    };
 
-    const component = shallow(
-      <Private revenue={revenue} marketValue={marketValue} hasAbility={hasAbility} />,
-    );
+    const component = shallow(<Private {...priv} />);
 
     expect(
       component
         .find('.private-revenue')
         .first()
         .text(),
-    ).toBe(revenue.toString());
+    ).toBe(priv.revenue.toString());
     expect(
       component
         .find('.private-marketValue')
         .first()
         .text(),
-    ).toBe(marketValue.toString());
+    ).toBe(priv.marketValue.toString());
   });
 });

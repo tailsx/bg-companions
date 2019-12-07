@@ -6,6 +6,7 @@ import Train from '../index';
 describe('<Train>', () => {
   it('should render component', () => {
     const trainProps = {
+      id: 'train1',
       name: 'test-train',
       type: 'A',
       lastRan: 100,
