@@ -1,3 +1,4 @@
+import generateId from '../../utils/generateId';
 import {
   ADD_PRIVATE,
   ADD_TRAIN,
@@ -19,6 +20,7 @@ import {
 export function addTrain() {
   return {
     type: ADD_TRAIN,
+    id: generateId(),
   };
 }
 
@@ -64,6 +66,7 @@ export function updateTrain(attr, index, value) {
 export function addStation() {
   return {
     type: ADD_STATION,
+    id: generateId(),
   };
 }
 
@@ -109,6 +112,7 @@ export function updateStation(attr, index, value) {
 export function addPrivate() {
   return {
     type: ADD_PRIVATE,
+    id: generateId(),
   };
 }
 
