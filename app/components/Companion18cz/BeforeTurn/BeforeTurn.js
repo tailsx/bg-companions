@@ -25,7 +25,7 @@ class BeforeTurn extends React.PureComponent {
                 key={`train-${id}`}
                 onNameChange={e => onUpdateTrain('name', index, e.target.value)}
                 onTypeChange={e => onUpdateTrain('type', index, e.target.value)}
-                onNumberChange={e => onUpdateTrain('number', index, e.target.value)}
+                onNumberChange={e => onUpdateTrain('lastRan', index, parseInt(e.target.value, 10))}
                 id={id}
                 {...trainProps}
               />

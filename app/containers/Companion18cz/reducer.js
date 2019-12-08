@@ -89,36 +89,36 @@ function companion18czReducer(state = initialState, action) {
       return {
         ...state,
         trains: state.trains.reduce((accum, train, index) => {
+          let t = train;
           if (index === action.train.index) {
-            const t = { ...train };
+            t = { ...train };
             t[action.train.attr] = action.train.value;
-            return [...accum, t];
           }
-          return accum;
+          return [...accum, t];
         }, []),
       };
     case UPDATE_STATION:
       return {
         ...state,
         stations: state.stations.reduce((accum, station, index) => {
+          let s = station;
           if (index === action.station.index) {
-            const s = { ...station };
+            s = { ...station };
             s[action.station.attr] = action.station.value;
-            return [...accum, s];
           }
-          return accum;
+          return [...accum, s];
         }, []),
       };
     case UPDATE_PRIVATE:
       return {
         ...state,
         privates: state.privates.reduce((accum, priv, index) => {
+          let p = priv;
           if (index === action.priv.index) {
-            const p = { ...priv };
+            p = { ...priv };
             p[action.priv.attr] = action.priv.value;
-            return [...accum, p];
           }
-          return accum;
+          return [...accum, p];
         }, []),
       };
     case CHANGE_TREASURY:
