@@ -22,16 +22,44 @@ const initialState = {
 function companion18czReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TRAIN:
-      return { ...state, trains: [...state.trains, { type: '', name: '', lastRan: 0 }] };
+      return {
+        ...state,
+        trains: [
+          ...state.trains,
+          {
+            id: action.id,
+            type: '',
+            name: '',
+            lastRan: 0,
+          },
+        ],
+      };
     case ADD_STATION:
       return {
         ...state,
-        stations: [...state.stations, { type: '', amount: 0 }],
+        id: action.id,
+        stations: [
+          ...state.stations,
+          {
+            id: action.id,
+            type: '',
+            amount: 0,
+          },
+        ],
       };
     case ADD_PRIVATE:
       return {
         ...state,
-        privates: [...state.privates, { revenue: 0, hasAbility: false, marketValue: 0 }],
+        id: action.id,
+        privates: [
+          ...state.privates,
+          {
+            id: action.id,
+            revenue: 0,
+            hasAbility: false,
+            marketValue: 0,
+          },
+        ],
       };
     case REMOVE_TRAIN:
       return {

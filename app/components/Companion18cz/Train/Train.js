@@ -5,7 +5,7 @@ class Train extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      readOnly: true,
+      readOnly: false,
     };
   }
 
