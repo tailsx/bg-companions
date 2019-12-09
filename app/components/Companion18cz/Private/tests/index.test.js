@@ -26,11 +26,13 @@ describe('<Private>', () => {
   });
 
   it('should have correct edit values', () => {
+    component.setState({ readOnly: false });
     expect(component.find('.private-revenue').props().value).toBe(priv.revenue);
     expect(component.find('.private-marketValue').props().value).toBe(priv.marketValue);
   });
 
   it('should have correct readonly values', () => {
+    component.setState({ readOnly: true });
     expect(
       component
         .find('.private-revenue')
