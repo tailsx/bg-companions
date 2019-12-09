@@ -12,8 +12,8 @@ class BeforeTurn extends React.PureComponent {
   render() {
     const { trainsData, privatesData, stationsData, treasury } = this.props;
     const { trains, onUpdateTrain } = trainsData;
-    const { privates } = privatesData;
-    const { stations } = stationsData;
+    const { privates, onUpdatePrivate } = privatesData;
+    const { stations, onUpdateStation } = stationsData;
 
     return (
       <div id="before-turn">
@@ -33,14 +33,29 @@ class BeforeTurn extends React.PureComponent {
         </div>
         <div>
           {privates &&
-            privates.map(({ id, ...privateProps }) => (
-              <Private key={`private-${id}`} id={id} {...privateProps} />
+            privates.map(({ id, ...privateProps }, index) => (
+              <Private
+                key={`private-${id}`}
+                onRevenueChange={e => onUpdatePrivate('revenue', index, e.target.value)}
+                onMarketValueChange={e => onUpdatePrivate('marketValue', index, e.target.value)}
+                onHasAbilityChange={e =>
+                  onUpdatePrivate('hasAbility', index, e.target.value !== 'true')
+                }
+                id={id}
+                {...privateProps}
+              />
             ))}
         </div>
         <div>
           {stations &&
-            stations.map(({ id, ...stationProps }) => (
-              <Station key={`station-${id}`} id={id} {...stationProps} />
+            stations.map(({ id, ...stationProps }, index) => (
+              <Station
+                key={`station-${id}`}
+                id={id}
+                onTypeChange={e => onUpdateStation('type', index, e.target.value)}
+                onAmountChange={e => onUpdateStation('amount', index, e.target.value)}
+                {...stationProps}
+              />
             ))}
         </div>
         {treasury && (

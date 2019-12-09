@@ -11,7 +11,11 @@ export default class Companion18cz extends React.PureComponent {
       onAddPrivate,
       onAddStation,
       onAddTrain,
+      onUpdatePrivate,
+      onUpdateStation,
       onUpdateTrain,
+      onRemovePrivate,
+      onRemoveStation,
       onRemoveTrain,
       treasury,
       privates,
@@ -21,8 +25,13 @@ export default class Companion18cz extends React.PureComponent {
 
     const beforeProps = {
       trainsData: { trains, onAddTrain, onUpdateTrain, onRemoveTrain },
-      privatesData: { privates, onAddPrivate },
-      stationsData: { stations, onAddStation },
+      privatesData: {
+        privates,
+        onUpdatePrivate,
+        onRemovePrivate,
+        onAddPrivate,
+      },
+      stationsData: { stations, onUpdateStation, onRemoveStation, onAddStation },
       treasury,
     };
 
@@ -52,7 +61,11 @@ Companion18cz.propTypes = {
   onAddPrivate: PropTypes.func,
   onAddStation: PropTypes.func,
   onAddTrain: PropTypes.func,
+  onUpdatePrivate: PropTypes.func,
+  onUpdateStation: PropTypes.func,
   onUpdateTrain: PropTypes.func,
+  onRemovePrivate: PropTypes.func,
+  onRemoveStation: PropTypes.func,
   onRemoveTrain: PropTypes.func,
   treasury: PropTypes.number,
   privates: PropTypes.array,

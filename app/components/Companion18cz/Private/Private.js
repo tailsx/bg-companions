@@ -29,7 +29,10 @@ class Private extends React.PureComponent {
         <div>
           <span className="private-revenue">{revenue}</span>
           <span className="private-marketValue">{marketValue}</span>
-          <span className="private-hasAbility">{hasAbility}</span>
+          <span className="private-hasAbility">{hasAbility}</span>{' '}
+          <button type="button" onClick={() => this.toggleReadOnly()}>
+            EDIT
+          </button>
         </div>
       );
     }
@@ -52,7 +55,7 @@ class Private extends React.PureComponent {
           type="button"
           className="private-hasAbility"
           value={hasAbility}
-          onChange={onHasAbilityChange}
+          onClick={onHasAbilityChange}
         >
           {hasAbility ? 'YES' : 'NO'}
         </button>

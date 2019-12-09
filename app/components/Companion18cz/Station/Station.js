@@ -20,7 +20,10 @@ class Station extends React.PureComponent {
       return (
         <div>
           <span className="station-type">{type}</span>
-          <span className="station-amount">{amount}</span>
+          <span className="station-amount">{amount}</span>{' '}
+          <button type="button" onClick={() => this.toggleReadOnly()}>
+            EDIT
+          </button>
         </div>
       );
     }
