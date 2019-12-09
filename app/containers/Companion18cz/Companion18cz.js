@@ -52,7 +52,7 @@ export default class Companion18cz extends React.PureComponent {
         </button>
         <BeforeTurn {...beforeProps} />
         <PhaseTrackLay />
-        <PhaseAddStation />
+        <PhaseAddStation stations={beforeProps.stationsData.stations} />
       </div>
     );
   }

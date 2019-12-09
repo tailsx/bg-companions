@@ -7,6 +7,7 @@ class PhaseAddStation extends React.PureComponent {
 
     return (
       <div>
+        <h1>Add Stations</h1>
         {stations &&
           stations.map(({ id, type, amount }) => (
             <div key={`${id}`} className="station">

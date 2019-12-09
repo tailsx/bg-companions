@@ -14,13 +14,13 @@ class Station extends React.PureComponent {
   }
 
   render() {
-    const { type, amount, onNumberChange, onTypeChange } = this.props;
+    const { type, amount, onAmountChange, onTypeChange } = this.props;
     const { readOnly } = this.state;
     if (readOnly) {
       return (
         <div>
           <span className="station-type">{type}</span>
-          <span className="station-amount">{amount}</span>{' '}
+          <span className="station-amount">{amount}</span>
           <button type="button" onClick={() => this.toggleReadOnly()}>
             EDIT
           </button>
@@ -31,7 +31,7 @@ class Station extends React.PureComponent {
     return (
       <div>
         <input className="station-type" type="text" value={type} onChange={onTypeChange} />
-        <input className="station-amount" type="number" value={amount} onChange={onNumberChange} />
+        <input className="station-amount" type="number" value={amount} onChange={onAmountChange} />
         <button type="button" onClick={() => this.toggleReadOnly()}>
           Done
         </button>
@@ -46,5 +46,5 @@ Station.propTypes = {
   type: PropTypes.string,
   amount: PropTypes.number,
   onTypeChange: PropTypes.func,
-  onNumberChange: PropTypes.func,
+  onAmountChange: PropTypes.func,
 };
