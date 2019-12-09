@@ -9,6 +9,10 @@ class Train extends React.PureComponent {
     };
   }
 
+  toggleReadOnly() {
+    this.setState(state => ({ readOnly: !state.readOnly }));
+  }
+
   render() {
     const { name, type, lastRan, onNameChange, onTypeChange, onNumberChange } = this.props;
     const { readOnly } = this.state;
@@ -19,6 +23,9 @@ class Train extends React.PureComponent {
           <span className="train-name">{name}</span>
           <span className="train-type">{type}</span>
           <span className="train-lastRan">{lastRan}</span>
+          <button type="button" onClick={() => this.toggleReadOnly()}>
+            EDIT
+          </button>
         </div>
       );
     }
@@ -28,6 +35,9 @@ class Train extends React.PureComponent {
         <input className="train-name" type="text" value={name} onChange={onNameChange} />
         <input className="train-type" type="text" value={type} onChange={onTypeChange} />
         <input className="train-lastRan" type="number" value={lastRan} onChange={onNumberChange} />
+        <button type="button" onClick={() => this.toggleReadOnly()}>
+          Done
+        </button>
       </div>
     );
   }

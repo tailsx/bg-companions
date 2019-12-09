@@ -27,11 +27,10 @@ import {
 describe('Companion18cz Actions', () => {
   describe('trains actions', () => {
     it('should return the correct add train action', () => {
-      const expectedResult = {
-        type: ADD_TRAIN,
-      };
+      const result = addTrain();
 
-      expect(addTrain()).toEqual(expectedResult);
+      expect(result.type).toEqual(ADD_TRAIN);
+      expect(result.id).toHaveLength(8);
     });
 
     it('should return correct remove train action', () => {
@@ -59,11 +58,10 @@ describe('Companion18cz Actions', () => {
 
   describe('station actions', () => {
     it('should return add station action', () => {
-      const expectedResult = {
-        type: ADD_STATION,
-      };
+      const result = addStation();
 
-      expect(addStation()).toEqual(expectedResult);
+      expect(result.type).toEqual(ADD_STATION);
+      expect(result.id).toHaveLength(8);
     });
 
     it('should return remove station action', () => {
@@ -95,11 +93,10 @@ describe('Companion18cz Actions', () => {
 
   describe('privates actions', () => {
     it('should return add privates action', () => {
-      const expectedResult = {
-        type: ADD_PRIVATE,
-      };
+      const result = addPrivate();
 
-      expect(addPrivate()).toEqual(expectedResult);
+      expect(result.type).toEqual(ADD_PRIVATE);
+      expect(result.id).toHaveLength(8);
     });
 
     it('should return remove privates action', () => {

@@ -30,14 +30,14 @@ describe('companion18czReducer', () => {
   });
 
   it('should add train', () => {
-    const train = {
-      type: '',
-      name: '',
-      lastRan: 0,
-    };
-    const expectedResult = { ...state, trains: [...state.trains, train] };
+    const result = companion18czReducer(state, addTrain()).trains;
+    expect(result).toHaveLength(1);
 
-    expect(companion18czReducer(state, addTrain())).toEqual(expectedResult);
+    const { type, name, lastRan, id } = result[0];
+    expect(type).toEqual('');
+    expect(name).toEqual('');
+    expect(lastRan).toEqual(0);
+    expect(id).toHaveLength(8);
   });
 
   it('should remove train, given index 1 from array length 3', () => {
@@ -84,13 +84,13 @@ describe('companion18czReducer', () => {
   });
 
   it('should add station type', () => {
-    const station = {
-      type: '',
-      amount: 0,
-    };
-    const expectedResult = { ...state, stations: [...state.stations, station] };
+    const result = companion18czReducer(state, addStation()).stations;
+    expect(result).toHaveLength(1);
 
-    expect(companion18czReducer(state, addStation())).toEqual(expectedResult);
+    const { id, type, amount } = result[0];
+    expect(type).toEqual('');
+    expect(amount).toEqual(0);
+    expect(id).toHaveLength(8);
   });
 
   it('should remove station type', () => {
@@ -122,14 +122,14 @@ describe('companion18czReducer', () => {
   });
 
   it('should add private', () => {
-    const priv = {
-      revenue: 0,
-      hasAbility: false,
-      marketValue: 0,
-    };
-    const expectedResult = { ...state, privates: [...state.privates, priv] };
+    const result = companion18czReducer(state, addPrivate()).privates;
+    expect(result).toHaveLength(1);
 
-    expect(companion18czReducer(state, addPrivate())).toEqual(expectedResult);
+    const { id, revenue, hasAbility, marketValue } = result[0];
+    expect(revenue).toEqual(0);
+    expect(hasAbility).toBeFalsy();
+    expect(marketValue).toEqual(0);
+    expect(id).toHaveLength(8);
   });
 
   it('should remove private', () => {
