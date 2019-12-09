@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import BeforeTurn from 'components/Companion18cz/BeforeTurn';
-import TurnTrackLay from '../../components/Companion18cz/TurnTrackLay';
+import PhaseTrackLay from '../../components/Companion18cz/PhaseTrackLay';
+import PhaseAddStation from '../../components/Companion18cz/PhaseAddStation';
 
 export default class Companion18cz extends React.PureComponent {
   render() {
@@ -50,7 +51,8 @@ export default class Companion18cz extends React.PureComponent {
           Train
         </button>
         <BeforeTurn {...beforeProps} />
-        <TurnTrackLay />
+        <PhaseTrackLay />
+        <PhaseAddStation />
       </div>
     );
   }

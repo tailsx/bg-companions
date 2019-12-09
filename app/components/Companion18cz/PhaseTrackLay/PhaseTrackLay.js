@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import Train from '../Train';
 
-const TurnTrackLay = ({ trains }) => (
+const PhaseTrackLay = ({ trains }) => (
   <div>{trains && trains.map(({ ...trainProps }) => <Train key="train" {...trainProps} />)}</div>
 );
 
-export default TurnTrackLay;
+export default PhaseTrackLay;
 
-TurnTrackLay.propTypes = {
+PhaseTrackLay.propTypes = {
   trains: PropTypes.array,
 };
