@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StationReadOnly from '../Station/StationReadOnly';
 
 class PhaseAddStation extends React.PureComponent {
   render() {
@@ -8,13 +9,14 @@ class PhaseAddStation extends React.PureComponent {
     return (
       <div>
         <h1>Add Stations</h1>
-        {stations &&
-          stations.map(({ id, type, amount }) => (
-            <div key={`${id}`} className="station">
-              <span>{type}</span>
-              <span>{amount}</span>
-            </div>
-          ))}
+        <div>
+          <h3>Existing Stations</h3>
+          {stations &&
+            stations.map(({ id, ...station }) => <StationReadOnly key={`${id}`} {...station} />)}
+        </div>
+        <div>
+          <h3>New Stations</h3>
+        </div>
       </div>
     );
   }
