@@ -7,6 +7,7 @@ class PhaseOperating extends React.PureComponent {
 
     return (
       <div className="phase-operating">
+        <h1>Operating</h1>
         {trains &&
           trains.map(({ id, name, type, lastRan }) => (
             <div key={`phase-operating-${id}`} className="train">

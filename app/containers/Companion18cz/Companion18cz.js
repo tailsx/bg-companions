@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import BeforeTurn from 'components/Companion18cz/BeforeTurn';
 import PhaseTrackLay from '../../components/Companion18cz/PhaseTrackLay';
 import PhaseAddStation from '../../components/Companion18cz/PhaseAddStation';
+import PhaseOperating from '../../components/Companion18cz/PhaseOperating';
+import PhaseAcquistion from '../../components/Companion18cz/PhaseAcquistion';
+import PhaseTrainPurchase from '../../components/Companion18cz/PhaseTrainPurchase';
 
 export default class Companion18cz extends React.PureComponent {
   render() {
@@ -53,6 +56,9 @@ export default class Companion18cz extends React.PureComponent {
         <BeforeTurn {...beforeProps} />
         <PhaseTrackLay />
         <PhaseAddStation stations={beforeProps.stationsData.stations} />
+        <PhaseOperating trains={beforeProps.trainsData.trains} />
+        <PhaseAcquistion treasury={beforeProps.treasury} />
+        <PhaseTrainPurchase trains={beforeProps.trainsData.trains} />
       </div>
     );
   }
