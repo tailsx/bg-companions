@@ -1,4 +1,3 @@
-import generateId from '../../utils/generateId';
 import {
   ADD_PRIVATE,
   ADD_TRAIN,
@@ -18,10 +17,7 @@ import {
  * @return {object}    An action object
  */
 export function addTrain() {
-  return {
-    type: ADD_TRAIN,
-    id: generateId(),
-  };
+  return { type: ADD_TRAIN };
 }
 
 /**
@@ -32,10 +28,7 @@ export function addTrain() {
  * @return {object}    An action object
  */
 export function removeTrain(index) {
-  return {
-    type: REMOVE_TRAIN,
-    index,
-  };
+  return { type: REMOVE_TRAIN, index };
 }
 
 /**
@@ -48,14 +41,7 @@ export function removeTrain(index) {
  * @return {object}    An action object
  */
 export function updateTrain(attr, index, value) {
-  return {
-    type: UPDATE_TRAIN,
-    train: {
-      attr,
-      index,
-      value,
-    },
-  };
+  return { type: UPDATE_TRAIN, train: { attr, index, value } };
 }
 
 /**
@@ -64,10 +50,7 @@ export function updateTrain(attr, index, value) {
  * @return {object}    An action object
  */
 export function addStation() {
-  return {
-    type: ADD_STATION,
-    id: generateId(),
-  };
+  return { type: ADD_STATION };
 }
 
 /**
@@ -78,10 +61,7 @@ export function addStation() {
  * @return {object}    An action object
  */
 export function removeStation(index) {
-  return {
-    type: REMOVE_STATION,
-    index,
-  };
+  return { type: REMOVE_STATION, index };
 }
 
 /**
@@ -94,14 +74,7 @@ export function removeStation(index) {
  * @return {object}    An action object
  */
 export function updateStation(attr, index, value) {
-  return {
-    type: UPDATE_STATION,
-    station: {
-      attr,
-      index,
-      value,
-    },
-  };
+  return { type: UPDATE_STATION, station: { attr, index, value } };
 }
 
 /**
@@ -110,10 +83,7 @@ export function updateStation(attr, index, value) {
  * @return {object}    An action object
  */
 export function addPrivate() {
-  return {
-    type: ADD_PRIVATE,
-    id: generateId(),
-  };
+  return { type: ADD_PRIVATE };
 }
 
 /**
@@ -124,10 +94,7 @@ export function addPrivate() {
  * @return {object}    An action object
  */
 export function removePrivate(index) {
-  return {
-    type: REMOVE_PRIVATE,
-    index,
-  };
+  return { type: REMOVE_PRIVATE, index };
 }
 
 /**
@@ -140,10 +107,7 @@ export function removePrivate(index) {
  * @return {object}    An action object
  */
 export function updatePrivate(attr, index, value) {
-  return {
-    type: UPDATE_PRIVATE,
-    priv: { attr, index, value },
-  };
+  return { type: UPDATE_PRIVATE, priv: { attr, index, value } };
 }
 
 /**

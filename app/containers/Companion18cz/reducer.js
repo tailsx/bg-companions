@@ -1,3 +1,4 @@
+import generateId from '../../utils/generateId';
 import {
   ADD_PRIVATE,
   ADD_TRAIN,
@@ -27,7 +28,7 @@ function companion18czReducer(state = initialState, action) {
         trains: [
           ...state.trains,
           {
-            id: action.id,
+            id: generateId(),
             type: '',
             name: '',
             lastRan: 0,
@@ -37,11 +38,10 @@ function companion18czReducer(state = initialState, action) {
     case ADD_STATION:
       return {
         ...state,
-        id: action.id,
         stations: [
           ...state.stations,
           {
-            id: action.id,
+            id: generateId(),
             type: '',
             amount: 0,
           },
@@ -50,11 +50,10 @@ function companion18czReducer(state = initialState, action) {
     case ADD_PRIVATE:
       return {
         ...state,
-        id: action.id,
         privates: [
           ...state.privates,
           {
-            id: action.id,
+            id: generateId(),
             revenue: 0,
             hasAbility: false,
             marketValue: 0,
