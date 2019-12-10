@@ -8,16 +8,19 @@ describe('<PhaseOperating>', () => {
     const props = {
       trains: [
         {
+          id: 'train1',
           type: 'train',
           name: 'train1',
           lastRan: 100,
         },
         {
+          id: 'train2',
           type: 'train',
           name: 'train2',
           lastRan: 100,
         },
         {
+          id: 'train3',
           type: 'train',
           name: 'train3',
           lastRan: 100,
