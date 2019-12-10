@@ -8,11 +8,11 @@ describe('<StationReadOnly>', () => {
     const props = {
       id: 'train1',
       type: 'train1',
-      lastRan: 123,
+      amount: 123,
     };
-    const component = shallow(<StationReadOnly />);
+    const component = shallow(<StationReadOnly {...props} />);
 
-    expect(component.find('.station-type')).toEqual(props.type);
+    expect(component.find('.station-type').text()).toEqual(props.type);
     expect(component.find('.station-amount').text()).toEqual(props.amount.toString());
   });
 });

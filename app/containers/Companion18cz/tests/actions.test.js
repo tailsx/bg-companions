@@ -30,7 +30,6 @@ describe('Companion18cz Actions', () => {
       const result = addTrain();
 
       expect(result.type).toEqual(ADD_TRAIN);
-      expect(result.id).toHaveLength(8);
     });
 
     it('should return correct remove train action', () => {
@@ -61,7 +60,6 @@ describe('Companion18cz Actions', () => {
       const result = addStation();
 
       expect(result.type).toEqual(ADD_STATION);
-      expect(result.id).toHaveLength(8);
     });
 
     it('should return remove station action', () => {
@@ -96,7 +94,6 @@ describe('Companion18cz Actions', () => {
       const result = addPrivate();
 
       expect(result.type).toEqual(ADD_PRIVATE);
-      expect(result.id).toHaveLength(8);
     });
 
     it('should return remove privates action', () => {
