@@ -7,7 +7,7 @@ describe('createTrain()', () => {
       name: 'train',
       lastRan: 100,
     };
-    const train = createTrain({ ...args });
+    const train = createTrain(args.name, args.type, args.lastRan);
 
     expect(train).toHaveProperty('id');
     expect(train).toHaveProperty('type', args.type);
@@ -21,7 +21,7 @@ describe('createTrain()', () => {
       name: 'train',
       lastRan: 100,
     };
-    const train = createTrain({ ...args });
+    const train = createTrain(args.name, args.type, args.lastRan);
 
     expect(train).toHaveProperty('id');
     expect(train.id).toHaveLength(8);

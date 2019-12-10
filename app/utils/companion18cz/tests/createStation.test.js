@@ -6,7 +6,7 @@ describe('createStation()', () => {
       type: 'train1',
       amount: 100,
     };
-    const station = createStation({ ...args });
+    const station = createStation(args.type, args.amount);
 
     expect(station).toHaveProperty('id');
     expect(station).toHaveProperty('type', args.type);
@@ -18,7 +18,7 @@ describe('createStation()', () => {
       type: 'train1',
       amount: 100,
     };
-    const station = createStation({ ...args });
+    const station = createStation(args.type, args.amount);
 
     expect(station).toHaveProperty('id');
     expect(station.id).toHaveLength(8);
