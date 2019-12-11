@@ -15,6 +15,6 @@ describe('<TrainEdit>', () => {
 
     expect(component.find('.train-type').props().value).toBe(train.type);
     expect(component.find('.train-name').props().value).toBe(train.name);
-    expect(component.find('.train-amount').props().value).toBe(train.amount);
+    expect(component.find('.train-lastRan').props().value).toBe(train.lastRan);
   });
 });

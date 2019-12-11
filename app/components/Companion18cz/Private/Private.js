@@ -16,28 +16,13 @@ class Private extends React.PureComponent {
   }
 
   render() {
-    const {
-      revenue,
-      hasAbility,
-      marketValue,
-      onMarketValueChange,
-      onHasAbilityChange,
-      onRevenueChange,
-    } = this.props;
+    const { revenue, hasAbility, marketValue } = this.props;
     const { readOnly } = this.state;
-    const props = {
-      revenue,
-      hasAbility,
-      marketValue,
-      onMarketValueChange,
-      onHasAbilityChange,
-      onRevenueChange,
-    };
 
     if (readOnly) {
       return (
         <div>
-          <ReadOnly {...props} />
+          <ReadOnly {...{ revenue, hasAbility, marketValue }} />
           <button type="button" onClick={() => this.toggleReadOnly()}>
             EDIT
           </button>
@@ -47,7 +32,7 @@ class Private extends React.PureComponent {
 
     return (
       <div>
-        <Edit {...props} />
+        <Edit {...this.props} />
         <button type="button" onClick={() => this.toggleReadOnly()}>
           Done
         </button>

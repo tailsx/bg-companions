@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Edit from './TrainEdit';
+import ReadOnly from './TrainReadOnly';
+
 class Train extends React.PureComponent {
   constructor() {
     super();
@@ -14,15 +17,13 @@ class Train extends React.PureComponent {
   }
 
   render() {
-    const { name, type, lastRan, onNameChange, onTypeChange, onNumberChange } = this.props;
+    const { name, type, lastRan } = this.props;
     const { readOnly } = this.state;
 
     if (readOnly) {
       return (
         <div>
-          <span className="train-name">{name}</span>
-          <span className="train-type">{type}</span>
-          <span className="train-lastRan">{lastRan}</span>
+          <ReadOnly {...{ type, name, lastRan }} />
           <button type="button" onClick={() => this.toggleReadOnly()}>
             EDIT
           </button>
@@ -32,9 +33,7 @@ class Train extends React.PureComponent {
 
     return (
       <div>
-        <input className="train-name" type="text" value={name} onChange={onNameChange} />
-        <input className="train-type" type="text" value={type} onChange={onTypeChange} />
-        <input className="train-lastRan" type="number" value={lastRan} onChange={onNumberChange} />
+        <Edit {...this.props} />
         <button type="button" onClick={() => this.toggleReadOnly()}>
           Done
         </button>

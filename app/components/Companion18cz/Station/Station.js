@@ -17,13 +17,13 @@ class Station extends React.PureComponent {
   }
 
   render() {
-    const { type, amount, onAmountChange, onTypeChange } = this.props;
+    const { type, amount } = this.props;
     const { readOnly } = this.state;
-    let props = { type, amount };
+
     if (readOnly) {
       return (
         <div>
-          <ReadOnly {...props} />
+          <ReadOnly {...{ type, amount }} />
           <button type="button" onClick={() => this.toggleReadOnly()}>
             EDIT
           </button>
@@ -31,10 +31,9 @@ class Station extends React.PureComponent {
       );
     }
 
-    props = { ...props, onAmountChange, onTypeChange };
     return (
       <div>
-        <Edit {...props} />
+        <Edit {...this.props} />
         <button type="button" onClick={() => this.toggleReadOnly()}>
           Done
         </button>

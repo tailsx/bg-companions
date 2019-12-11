@@ -13,7 +13,7 @@ describe('<PrivateReadOnly>', () => {
     };
     const component = shallow(<ReadOnly {...props} />);
 
-    expect(component.find('.private-revenue').text()).toEqual(props.revenue);
+    expect(component.find('.private-revenue').text()).toEqual(props.revenue.toString());
     expect(component.find('.private-marketValue').text()).toEqual(props.marketValue.toString());
   });
 });

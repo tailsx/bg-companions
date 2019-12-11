@@ -19,12 +19,12 @@ describe('<Station>', () => {
 
   it('should render edit mode on by default', () => {
     expect(component.find(ReadOnly)).toBeDefined();
-    expect(component.find(Edit)).not.toBeDefined();
+    expect(component.find(Edit)).toEqual({});
   });
 
   it('should render readonly values', () => {
     component.setState({ readOnly: true });
-    expect(component.find(ReadOnly)).not.toBeDefined();
+    expect(component.find(ReadOnly)).toEqual({});
     expect(component.find(Edit)).toBeDefined();
   });
 });
