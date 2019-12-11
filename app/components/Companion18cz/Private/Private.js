@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Edit from './PrivateEdit';
+import ReadOnly from './PrivateReadOnly';
 
 class Private extends React.PureComponent {
   constructor() {
@@ -23,13 +25,19 @@ class Private extends React.PureComponent {
       onRevenueChange,
     } = this.props;
     const { readOnly } = this.state;
+    const props = {
+      revenue,
+      hasAbility,
+      marketValue,
+      onMarketValueChange,
+      onHasAbilityChange,
+      onRevenueChange,
+    };
 
     if (readOnly) {
       return (
         <div>
-          <span className="private-revenue">{revenue}</span>
-          <span className="private-marketValue">{marketValue}</span>
-          <span className="private-hasAbility">{hasAbility}</span>{' '}
+          <ReadOnly {...props} />
           <button type="button" onClick={() => this.toggleReadOnly()}>
             EDIT
           </button>
@@ -39,26 +47,7 @@ class Private extends React.PureComponent {
 
     return (
       <div>
-        <input
-          className="private-revenue"
-          type="number"
-          value={revenue}
-          onChange={onRevenueChange}
-        />
-        <input
-          className="private-marketValue"
-          type="number"
-          value={marketValue}
-          onChange={onMarketValueChange}
-        />
-        <button
-          type="button"
-          className="private-hasAbility"
-          value={hasAbility}
-          onClick={onHasAbilityChange}
-        >
-          {hasAbility ? 'YES' : 'NO'}
-        </button>
+        <Edit {...props} />
         <button type="button" onClick={() => this.toggleReadOnly()}>
           Done
         </button>
