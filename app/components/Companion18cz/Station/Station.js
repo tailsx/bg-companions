@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Edit from './StationEdit';
+import ReadOnly from './StationReadOnly';
+
 class Station extends React.PureComponent {
   constructor() {
     super();
@@ -16,11 +19,11 @@ class Station extends React.PureComponent {
   render() {
     const { type, amount, onAmountChange, onTypeChange } = this.props;
     const { readOnly } = this.state;
+    let props = { type, amount };
     if (readOnly) {
       return (
         <div>
-          <span className="station-type">{type}</span>
-          <span className="station-amount">{amount}</span>
+          <ReadOnly {...props} />
           <button type="button" onClick={() => this.toggleReadOnly()}>
             EDIT
           </button>
@@ -28,10 +31,10 @@ class Station extends React.PureComponent {
       );
     }
 
+    props = { ...props, onAmountChange, onTypeChange };
     return (
       <div>
-        <input className="station-type" type="text" value={type} onChange={onTypeChange} />
-        <input className="station-amount" type="number" value={amount} onChange={onAmountChange} />
+        <Edit {...props} />
         <button type="button" onClick={() => this.toggleReadOnly()}>
           Done
         </button>

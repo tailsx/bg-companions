@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Station from '../index';
+import Edit from '../StationEdit';
+import ReadOnly from '../StationReadOnly';
 
 describe('<Station>', () => {
   let component;
@@ -15,34 +17,14 @@ describe('<Station>', () => {
     component = shallow(<Station {...station} />);
   });
 
-  it('should render component', () => {
-    expect(component.find('.station-type')).toBeDefined();
-    expect(component.find('.station-amount')).toBeDefined();
-  });
-
-  it('should start in edit state', () => {
-    expect(component.state().readOnly).toBeFalsy();
+  it('should render edit mode on by default', () => {
+    expect(component.find(ReadOnly)).toBeDefined();
+    expect(component.find(Edit)).not.toBeDefined();
   });
 
   it('should render readonly values', () => {
     component.setState({ readOnly: true });
-    expect(
-      component
-        .find('.station-type')
-        .first()
-        .text(),
-    ).toBe(station.type);
-    expect(
-      component
-        .find('.station-amount')
-        .first()
-        .text(),
-    ).toBe(station.amount.toString());
-  });
-
-  it('should render edit values', () => {
-    component.setState({ readOnly: false });
-    expect(component.find('.station-type').props().value).toBe(station.type);
-    expect(component.find('.station-amount').props().value).toBe(station.amount);
+    expect(component.find(ReadOnly)).not.toBeDefined();
+    expect(component.find(Edit)).toBeDefined();
   });
 });
