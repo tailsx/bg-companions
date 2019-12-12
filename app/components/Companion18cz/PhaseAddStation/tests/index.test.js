@@ -2,10 +2,14 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import PhaseAddStation from '../index';
+import NewStations from '../NewStations';
+import ExistingStations from '../ExistingStations';
 
 describe('<PhaseAddStation>', () => {
-  it('should render existing stations', () => {
-    const props = {
+  let props;
+  let component;
+  beforeEach(() => {
+    props = {
       stations: [
         {
           type: '$10',
@@ -17,8 +21,15 @@ describe('<PhaseAddStation>', () => {
         },
       ],
     };
-    const component = shallow(<PhaseAddStation {...props} />);
+    component = shallow(<PhaseAddStation {...props} />);
+  });
 
+  it('should render existing stations', () => {
     expect(component.find('.station')).toHaveLength(2);
+  });
+
+  it('should render sections', () => {
+    expect(component.find(NewStations)).toHaveLength(1);
+    expect(component.find(ExistingStations)).toHaveLength(1);
   });
 });
