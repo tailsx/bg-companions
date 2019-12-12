@@ -1,5 +1,7 @@
+import createPrivate from '../../../utils/companion18cz/createPrivate';
+import createStation from '../../../utils/companion18cz/createStation';
+import createTrain from '../../../utils/companion18cz/createTrain';
 import companion18czReducer from '../reducer';
-
 import {
   addTrain,
   removeTrain,
@@ -13,24 +15,23 @@ import {
   changeTreasury,
 } from '../actions';
 
-describe('companion18czReducer', () => {
-  let state;
-  beforeEach(() => {
-    state = {
-      trains: [],
-      stations: [],
-      privates: [],
-      treasury: 0,
-    };
-  });
+const setup = propsOverrides => {
+  const props = { trains: [], stations: [], privates: [], treasury: 0, ...propsOverrides };
 
+  return props;
+};
+
+describe('companion18czReducer', () => {
   it('should return the initial state', () => {
-    const expectedResult = state;
-    expect(companion18czReducer(undefined, {})).toEqual(expectedResult);
+    const expectedResult = { trains: [], stations: [], privates: [], treasury: 0 };
+    const result = companion18czReducer(undefined, {});
+
+    expect(result).toEqual(expectedResult);
   });
 
   it('should add train', () => {
-    const result = companion18czReducer(state, addTrain()).trains;
+    const state = setup();
+    const { trains: result } = companion18czReducer(state, addTrain());
     expect(result).toHaveLength(1);
 
     const { type, name, lastRan, id } = result[0];
@@ -41,50 +42,34 @@ describe('companion18czReducer', () => {
   });
 
   it('should remove train, given index 1 from array length 3', () => {
-    const train = {
-      type: 'train',
-      name: 'train',
-      lastRan: 100,
-    };
-    const trains = [
-      { ...train, name: 'train1' },
-      { ...train, name: 'train2' },
-      { ...train, name: 'train3' },
-    ];
-    const expectedResult = {
-      ...state,
-      trains: [
-        { ...train, name: 'train1' },
-        { ...train, name: 'train3' },
-      ],
-    };
+    const train1 = createTrain('train1', 'train', 100);
+    const train2 = createTrain('train2', 'train', 100);
+    const train3 = createTrain('train3', 'train', 100);
+    const removedIndex = 1;
 
-    expect(companion18czReducer({ ...state, trains }, removeTrain(1))).toEqual(expectedResult);
+    const state = setup({ trains: [train1, train2, train3] });
+    const expectedResult = { ...state, trains: [train1, train3] };
+    const result = companion18czReducer(state, removeTrain(removedIndex));
+
+    expect(result).toEqual(expectedResult);
   });
 
   it('should update train', () => {
-    const startTrain = {
-      type: 'train',
-      name: 'test-train',
-      lastRan: 100,
-    };
-    const expectedTrain = {
-      ...startTrain,
-      name: 'test-train1',
-    };
-    const startState = { ...state, trains: [...state.trains, startTrain] };
-    const expectedResult = {
-      ...state,
-      trains: [...state.trains, expectedTrain],
-    };
+    const oldName = 'test-train';
+    const newName = 'new-train';
+    const train = createTrain(oldName, 'train', 100);
+    const updateIndex = 0;
 
-    expect(companion18czReducer(startState, updateTrain('name', 0, expectedTrain.name))).toEqual(
-      expectedResult,
-    );
+    const state = setup({ trains: [train] });
+    const expectedResult = { ...state, trains: [{ ...train, name: newName }] };
+    const result = companion18czReducer(state, updateTrain('name', updateIndex, newName));
+
+    expect(result).toEqual(expectedResult);
   });
 
   it('should add station type', () => {
-    const result = companion18czReducer(state, addStation()).stations;
+    const state = setup();
+    const { stations: result } = companion18czReducer(state, addStation());
     expect(result).toHaveLength(1);
 
     const { id, type, amount } = result[0];
@@ -94,35 +79,32 @@ describe('companion18czReducer', () => {
   });
 
   it('should remove station type', () => {
-    const station = {
-      type: 'station',
-      amount: 1,
-    };
-    const expectedResult = { ...state, stations: [station] };
+    const remainingStation = createStation('station', 1);
+    const removedIndex = 1;
 
-    expect(
-      companion18czReducer(
-        { ...state, stations: [station, { type: 'delete', amount: 1 }] },
-        removeStation(1),
-      ),
-    ).toEqual(expectedResult);
+    const state = setup({ stations: [remainingStation, createStation('deleted', 3)] });
+    const expectedResult = { ...state, stations: [remainingStation] };
+    const result = companion18czReducer(state, removeStation(removedIndex));
+
+    expect(result).toEqual(expectedResult);
   });
 
   it('should update station type', () => {
-    const station = {
-      type: '$10',
-      amount: 1,
-    };
+    const oldType = 'stationA';
+    const newType = 'stationB';
+    const station = createStation(oldType, 1);
+    const updateIndex = 0;
 
-    const expectedResult = { ...state, stations: [{ ...station, type: '$100' }] };
+    const state = setup({ stations: [station] });
+    const expectedResult = { ...state, stations: [{ ...station, type: newType }] };
+    const result = companion18czReducer(state, updateStation('type', updateIndex, newType));
 
-    expect(
-      companion18czReducer({ ...state, stations: [station] }, updateStation('type', 0, '$100')),
-    ).toEqual(expectedResult);
+    expect(result).toEqual(expectedResult);
   });
 
   it('should add private', () => {
-    const result = companion18czReducer(state, addPrivate()).privates;
+    const state = setup();
+    const { privates: result } = companion18czReducer(state, addPrivate());
     expect(result).toHaveLength(1);
 
     const { id, revenue, hasAbility, marketValue } = result[0];
@@ -133,43 +115,36 @@ describe('companion18czReducer', () => {
   });
 
   it('should remove private', () => {
-    const priv = {
-      revenue: 30,
-      hasAbility: false,
-      marketValue: 10,
-    };
-    const privates = [priv, priv];
+    const remainingPrivate = createPrivate(200, 100, true);
+    const removedIndex = 1;
 
-    const index = 0;
-    const expectedResult = { ...state, privates: [priv] };
+    const state = setup({ privates: [remainingPrivate, createPrivate(300, 100, false)] });
+    const result = companion18czReducer(state, removePrivate(removedIndex));
+    const expectedResult = { ...state, privates: [remainingPrivate] };
 
-    expect(companion18czReducer({ ...state, privates }, removePrivate(index))).toEqual(
-      expectedResult,
-    );
+    expect(result).toEqual(expectedResult);
   });
 
   it('should update private', () => {
-    const priv = { revenue: 30, hasAbility: false, marketValue: 30 };
-    const startPrivates = [priv];
-    const index = 0;
-    const attr = 'marketValue';
-    const value = 40;
-    const expectedResult = {
-      ...state,
-      privates: [{ ...priv, marketValue: value }],
-    };
+    const oldRevenue = 100;
+    const newRevenue = 200;
+    const priv = createPrivate(oldRevenue, 200, true);
+    const updateIndex = 0;
 
-    expect(
-      companion18czReducer(
-        { ...state, privates: startPrivates },
-        updatePrivate(attr, index, value),
-      ),
-    ).toEqual(expectedResult);
+    const state = setup({ privates: [priv] });
+    const expectedResult = { ...state, privates: [{ ...priv, revenue: newRevenue }] };
+    const result = companion18czReducer(state, updatePrivate('revenue', updateIndex, newRevenue));
+
+    expect(result).toEqual(expectedResult);
   });
 
   it('should add treasury', () => {
     const amount = 300;
+
+    const state = setup({ treasury: 300 });
+    const result = companion18czReducer(state, changeTreasury(amount));
     const expectedResult = { ...state, treasury: amount };
-    expect(companion18czReducer(state, changeTreasury(amount))).toEqual(expectedResult);
+
+    expect(result).toEqual(expectedResult);
   });
 });
