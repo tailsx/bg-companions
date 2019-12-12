@@ -4,7 +4,7 @@ import StationReadOnly from '../Station/StationReadOnly';
 
 const ExistingStation = station => (
   <div>
-    <StationReadOnly {...station} />
+    <StationReadOnly className="station-data" {...station} />
   </div>
 );
 

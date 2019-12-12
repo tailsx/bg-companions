@@ -12,10 +12,12 @@ describe('<PhaseAddStation>', () => {
     props = {
       stations: [
         {
+          id: 'train1',
           type: '$10',
           amount: 1,
         },
         {
+          id: 'train2',
           type: '$100',
           amount: 1,
         },
@@ -29,7 +31,7 @@ describe('<PhaseAddStation>', () => {
   });
 
   it('should render sections', () => {
-    expect(component.find(NewStations)).toHaveLength(1);
-    expect(component.find(ExistingStations)).toHaveLength(1);
+    expect(component.find(NewStations)).toHaveLength(2);
+    expect(component.find(ExistingStations)).toHaveLength(2);
   });
 });

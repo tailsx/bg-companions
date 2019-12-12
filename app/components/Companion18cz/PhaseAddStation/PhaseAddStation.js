@@ -11,9 +11,9 @@ class PhaseAddStation extends React.PureComponent {
         <h1>Add Stations</h1>
         {stations &&
           stations.map(station => (
-            <div key={`station-${station.id}`}>
-              <ExistingStation {...this.props} />
-              <NewStation {...this.props} />
+            <div className="station" key={`station-${station.id}`}>
+              <ExistingStation {...station} />
+              <NewStation {...station} />
             </div>
           ))}
       </div>
