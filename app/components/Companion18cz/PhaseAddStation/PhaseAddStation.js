@@ -1,24 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StationReadOnly from '../Station/StationReadOnly';
+import ExistingStation from './ExistingStation';
+import NewStation from './NewStation';
 
 class PhaseAddStation extends React.PureComponent {
   render() {
     const { stations } = this.props;
-
     return (
       <div>
         <h1>Add Stations</h1>
-        <div>
-          <h3>Existing Stations</h3>
-          {stations &&
-            stations.map(({ id, ...station }) => (
-              <StationReadOnly className="station" key={`${id}`} {...station} />
-            ))}
-        </div>
-        <div>
-          <h3>New Stations</h3>
-        </div>
+        {stations &&
+          stations.map(station => (
+            <div key={`station-${station.id}`}>
+              <ExistingStation {...this.props} />
+              <NewStation {...this.props} />
+            </div>
+          ))}
       </div>
     );
   }
@@ -27,5 +24,11 @@ class PhaseAddStation extends React.PureComponent {
 export default PhaseAddStation;
 
 PhaseAddStation.propTypes = {
-  stations: PropTypes.array,
+  stations: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }),
+  ),
 };

@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import PhaseAddStation from '../index';
-import NewStations from '../NewStations';
-import ExistingStations from '../ExistingStations';
+import NewStations from '../NewStation';
+import ExistingStations from '../ExistingStation';
 
 describe('<PhaseAddStation>', () => {
   let props;
