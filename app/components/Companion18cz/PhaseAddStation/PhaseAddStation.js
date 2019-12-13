@@ -14,6 +14,7 @@ class PhaseAddStation extends React.PureComponent {
             <div className="station" key={`station-${station.id}`}>
               <ExistingStation {...station} />
               <NewStation {...station} onAmountChange={onChangeStation} />
+              {station.mods && <span>{`$${(station.mods.amount - station.amount) * 100}`}</span>}
             </div>
           ))}
       </div>
