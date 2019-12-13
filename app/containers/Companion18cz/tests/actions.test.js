@@ -138,17 +138,11 @@ describe('Companion18cz Actions', () => {
   // during turn actions
   describe('during turn ', () => {
     it('should return action creator: adding additions stations', () => {
-      const id = 'train1';
+      const stationId = 'train1';
       const value = 3;
-      const expectedResult = {
-        type: CHANGE_TURN_STATION,
-        mod: {
-          id,
-          value,
-        },
-      };
+      const expectedResult = { type: CHANGE_TURN_STATION, mod: { stationId, value } };
 
-      expect(changeTurnStation(id, value)).toEqual(expectedResult);
+      expect(changeTurnStation(stationId, value)).toEqual(expectedResult);
     });
   });
 });

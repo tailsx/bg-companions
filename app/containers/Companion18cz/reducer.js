@@ -132,7 +132,7 @@ function companion18czReducer(state = initialState, action) {
         ...state,
         stations: state.stations.reduce(
           (accum, station) =>
-            station.id === action.mod.id
+            station.id === action.mod.stationId
               ? [
                 ...accum,
                 {

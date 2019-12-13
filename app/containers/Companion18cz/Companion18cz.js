@@ -21,6 +21,7 @@ export default class Companion18cz extends React.PureComponent {
       onRemovePrivate,
       onRemoveStation,
       onRemoveTrain,
+      onChangeStation,
       treasury,
       privates,
       trains,
@@ -55,7 +56,7 @@ export default class Companion18cz extends React.PureComponent {
         </button>
         <BeforeTurn {...beforeProps} />
         <PhaseTrackLay />
-        <PhaseAddStation {...{ stations }} />
+        <PhaseAddStation {...{ stations, onChangeStation }} />
         <PhaseOperating {...{ trains }} />
         <PhaseAcquistion {...{ treasury }} />
         <PhaseTrainPurchase {...{ trains }} />
@@ -75,6 +76,7 @@ Companion18cz.propTypes = {
   onRemovePrivate: PropTypes.func,
   onRemoveStation: PropTypes.func,
   onRemoveTrain: PropTypes.func,
+  onChangeStation: PropTypes.func,
   treasury: PropTypes.number,
   privates: PropTypes.array,
   stations: PropTypes.array,

@@ -127,6 +127,6 @@ export function changeTreasury(value) {
  * @param {string} id id of object to be changed
  * @param {number} newValue new changed value
  */
-export function changeTurnStation(id, value) {
-  return { type: CHANGE_TURN_STATION, mod: { id, value } };
+export function changeTurnStation(stationId, value) {
+  return { type: CHANGE_TURN_STATION, mod: { stationId, value } };
 }

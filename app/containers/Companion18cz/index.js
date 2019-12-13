@@ -13,6 +13,7 @@ import {
   updatePrivate,
   updateStation,
   updateTrain,
+  changeTurnStation,
 } from './actions';
 import {
   makeSelectPrivates,
@@ -34,6 +35,7 @@ const mapDispatchToProps = dispatch => ({
   onUpdatePrivate: (name, index, value) => dispatch(updatePrivate(name, index, value)),
   onUpdateStation: (name, index, value) => dispatch(updateStation(name, index, value)),
   onUpdateTrain: (name, index, value) => dispatch(updateTrain(name, index, value)),
+  onChangeStation: (stationId, value) => dispatch(changeTurnStation(stationId, value)),
 });
 
 const mapStateToProps = createStructuredSelector({
