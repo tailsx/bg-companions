@@ -5,6 +5,7 @@ const createStation = (name, type, lastRan) => ({
   type,
   name,
   lastRan,
+  mods: {},
 });
 
 export default createStation;

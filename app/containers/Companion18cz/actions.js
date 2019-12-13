@@ -9,6 +9,7 @@ import {
   CHANGE_TREASURY,
   REMOVE_PRIVATE,
   UPDATE_PRIVATE,
+  CHANGE_TURN_STATION,
 } from './constants';
 
 /**
@@ -119,4 +120,13 @@ export function updatePrivate(attr, index, value) {
  */
 export function changeTreasury(value) {
   return { type: CHANGE_TREASURY, value };
+}
+
+/**
+ *
+ * @param {string} id id of object to be changed
+ * @param {number} newValue new changed value
+ */
+export function changeTurnStation(id, value) {
+  return { type: CHANGE_TURN_STATION, mod: { id, value } };
 }

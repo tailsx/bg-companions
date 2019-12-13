@@ -13,17 +13,25 @@ import {
   removePrivate,
   updatePrivate,
   changeTreasury,
+  changeTurnStation,
 } from '../actions';
 
 const setup = propsOverrides => {
-  const props = { trains: [], stations: [], privates: [], treasury: 0, ...propsOverrides };
+  const props = {
+    trains: [],
+    stations: [],
+    privates: [],
+    treasury: 0,
+    turn: [],
+    ...propsOverrides,
+  };
 
   return props;
 };
 
 describe('companion18czReducer', () => {
   it('should return the initial state', () => {
-    const expectedResult = { trains: [], stations: [], privates: [], treasury: 0 };
+    const expectedResult = { trains: [], stations: [], privates: [], treasury: 0, turn: [] };
     const result = companion18czReducer(undefined, {});
 
     expect(result).toEqual(expectedResult);
@@ -145,6 +153,16 @@ describe('companion18czReducer', () => {
     const result = companion18czReducer(state, changeTreasury(amount));
     const expectedResult = { ...state, treasury: amount };
 
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('should add more stations during turn', () => {
+    const value = 5;
+    const station = createStation('train-type', 3);
+
+    const state = setup({ stations: [station] });
+    const result = companion18czReducer(state, changeTurnStation(station.id, value));
+    const expectedResult = { ...state, stations: [{ ...station, mods: { amount: value } }] };
     expect(result).toEqual(expectedResult);
   });
 });

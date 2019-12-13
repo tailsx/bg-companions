@@ -55,10 +55,10 @@ export default class Companion18cz extends React.PureComponent {
         </button>
         <BeforeTurn {...beforeProps} />
         <PhaseTrackLay />
-        <PhaseAddStation stations={beforeProps.stationsData.stations} />
-        <PhaseOperating trains={beforeProps.trainsData.trains} />
-        <PhaseAcquistion treasury={beforeProps.treasury} />
-        <PhaseTrainPurchase trains={beforeProps.trainsData.trains} />
+        <PhaseAddStation {...{ stations }} />
+        <PhaseOperating {...{ trains }} />
+        <PhaseAcquistion {...{ treasury }} />
+        <PhaseTrainPurchase {...{ trains }} />
       </div>
     );
   }

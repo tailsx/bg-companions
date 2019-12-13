@@ -9,6 +9,7 @@ import {
   REMOVE_STATION,
   REMOVE_TRAIN,
   CHANGE_TREASURY,
+  CHANGE_TURN_STATION,
 } from '../constants';
 
 import {
@@ -22,6 +23,7 @@ import {
   removePrivate,
   updatePrivate,
   changeTreasury,
+  changeTurnStation,
 } from '../actions';
 
 describe('Companion18cz Actions', () => {
@@ -130,6 +132,23 @@ describe('Companion18cz Actions', () => {
       };
 
       expect(changeTreasury(value)).toEqual(expectedResult);
+    });
+  });
+
+  // during turn actions
+  describe('during turn ', () => {
+    it('should return action creator: adding additions stations', () => {
+      const id = 'train1';
+      const value = 3;
+      const expectedResult = {
+        type: CHANGE_TURN_STATION,
+        mod: {
+          id,
+          value,
+        },
+      };
+
+      expect(changeTurnStation(id, value)).toEqual(expectedResult);
     });
   });
 });

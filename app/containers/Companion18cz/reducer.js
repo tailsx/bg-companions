@@ -10,6 +10,7 @@ import {
   CHANGE_TREASURY,
   REMOVE_PRIVATE,
   UPDATE_PRIVATE,
+  CHANGE_TURN_STATION,
 } from './constants';
 
 // The initial state of the App
@@ -18,6 +19,7 @@ const initialState = {
   stations: [],
   privates: [],
   treasury: 0,
+  turn: [],
 };
 
 function companion18czReducer(state = initialState, action) {
@@ -124,6 +126,26 @@ function companion18czReducer(state = initialState, action) {
       return {
         ...state,
         treasury: action.value,
+      };
+    case CHANGE_TURN_STATION:
+      return {
+        ...state,
+        stations: state.stations.reduce(
+          (accum, station) =>
+            station.id === action.mod.id
+              ? [
+                ...accum,
+                {
+                  ...station,
+                  mods: {
+                    ...station.mods,
+                    amount: action.mod.value,
+                  },
+                },
+              ]
+              : [...accum, station],
+          [],
+        ),
       };
     default:
       return state;
