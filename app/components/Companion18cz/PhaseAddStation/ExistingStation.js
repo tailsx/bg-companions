@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StationReadOnly from '../Station/StationReadOnly';
 
-const ExistingStation = station => (
+const ExistingStation = ({ id, type, amount }) => (
   <div>
-    <StationReadOnly className="station-data" {...station} />
+    place existing stations
+    {id}
+    {type}
+    {amount}
   </div>
 );
 

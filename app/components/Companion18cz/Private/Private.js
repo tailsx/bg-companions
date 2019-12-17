@@ -1,41 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Edit from './PrivateEdit';
-import ReadOnly from './PrivateReadOnly';
+
+import Input from 'components/general/Input';
 
 class Private extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      readOnly: false,
-    };
-  }
-
-  toggleReadOnly() {
-    this.setState(state => ({ readOnly: !state.readOnly }));
-  }
-
   render() {
-    const { revenue, hasAbility, marketValue } = this.props;
-    const { readOnly } = this.state;
-
-    if (readOnly) {
-      return (
-        <div>
-          <ReadOnly {...{ revenue, hasAbility, marketValue }} />
-          <button type="button" onClick={() => this.toggleReadOnly()}>
-            EDIT
-          </button>
-        </div>
-      );
-    }
+    const {
+      revenue,
+      hasAbility,
+      marketValue,
+      onRevenueChange,
+      onMarketValueChange,
+      onHasAbilityChange,
+    } = this.props;
 
     return (
-      <div>
-        <Edit {...this.props} />
-        <button type="button" onClick={() => this.toggleReadOnly()}>
-          Done
-        </button>
+      <div className="private">
+        <Input label="Name" value={revenue} onChange={onRevenueChange} />
+        <Input label="Type" value={marketValue} onChange={onMarketValueChange} />
+        <Input label="LastRan" value={hasAbility} onChange={onHasAbilityChange} />
       </div>
     );
   }

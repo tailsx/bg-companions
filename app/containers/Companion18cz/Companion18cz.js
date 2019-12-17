@@ -8,7 +8,6 @@ import PhaseOperating from 'components/Companion18cz/PhaseOperating';
 import PhaseAcquistion from 'components/Companion18cz/PhaseAcquistion';
 import PhaseTrainPurchase from 'components/Companion18cz/PhaseTrainPurchase';
 
-
 export default class Companion18cz extends React.PureComponent {
   render() {
     const {

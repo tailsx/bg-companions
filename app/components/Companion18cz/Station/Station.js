@@ -1,42 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Edit from './StationEdit';
-import ReadOnly from './StationReadOnly';
+import Input from 'components/general/Input';
 
 class Station extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      readOnly: false,
-    };
-  }
-
-  toggleReadOnly() {
-    this.setState(state => ({ readOnly: !state.readOnly }));
-  }
-
   render() {
-    const { type, amount } = this.props;
-    const { readOnly } = this.state;
-
-    if (readOnly) {
-      return (
-        <div>
-          <ReadOnly {...{ type, amount }} />
-          <button type="button" onClick={() => this.toggleReadOnly()}>
-            EDIT
-          </button>
-        </div>
-      );
-    }
+    const { type, amount, onTypeChange, onAmountChange } = this.props;
 
     return (
-      <div>
-        <Edit {...this.props} />
-        <button type="button" onClick={() => this.toggleReadOnly()}>
-          Done
-        </button>
+      <div className="station">
+        <Input label="Type" value={type} onChange={onTypeChange} />
+        <Input label="Amount" value={amount} onChange={onAmountChange} />
       </div>
     );
   }
