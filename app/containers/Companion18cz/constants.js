@@ -10,3 +10,5 @@ export const UPDATE_PRIVATE = 'bg-companions/Companion18cz/UPDATE_PRIVATE';
 export const CHANGE_TREASURY = 'bg-companions/Companion18cz/CHANGE_TREASURY';
 
 export const CHANGE_TURN_STATION = 'bg-companions/Companion18cz/CHANGE_TURN_STATION';
+export const CHANGE_ACQUISTION_STOCKS = 'bg-companions/Companion18cz/CHANGE_ACQUISTION_STOCKS';
+export const CHANGE_ACQUISTION_PRICE = 'bg-companions/Companion18cz/CHANGE_ACQUISTION_PRICE';

@@ -10,6 +10,7 @@ import {
   REMOVE_PRIVATE,
   UPDATE_PRIVATE,
   CHANGE_TURN_STATION,
+  CHANGE_ACQUISTION_PRICE,
 } from './constants';
 
 /**
