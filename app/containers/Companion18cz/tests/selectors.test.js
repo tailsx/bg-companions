@@ -9,10 +9,12 @@ import {
 describe('select18cz', () => {
   it('should select 18cz state', () => {
     const state = {
-      trains: [],
-      stations: [],
-      privates: [],
-      treasury: 0,
+      before: {
+        trains: [],
+        stations: [],
+        privates: [],
+        treasury: 0,
+      },
     };
     const mockedState = {
       companion18cz: state,
@@ -31,10 +33,12 @@ describe('makeSelectPrivates', () => {
     };
     const mockedState = {
       companion18cz: {
-        trains: [],
-        stations: [],
-        privates: [priv],
-        treasury: 0,
+        before: {
+          trains: [],
+          stations: [],
+          privates: [priv],
+          treasury: 0,
+        },
       },
     };
     expect(privateSelector(mockedState)).toEqual([priv]);
@@ -49,12 +53,7 @@ describe('makeSelectStations', () => {
       amount: 1,
     };
     const mockedState = {
-      companion18cz: {
-        trains: [],
-        stations: [station],
-        privates: [],
-        treasury: 0,
-      },
+      companion18cz: { before: { trains: [], stations: [station], privates: [], treasury: 0 } },
     };
     expect(stationSelector(mockedState)).toEqual([station]);
   });
@@ -69,12 +68,7 @@ describe('makeSelectTrains', () => {
       lastRan: 100,
     };
     const mockedState = {
-      companion18cz: {
-        trains: [train],
-        stations: [],
-        privates: [],
-        treasury: 0,
-      },
+      companion18cz: { before: { trains: [train], stations: [], privates: [], treasury: 0 } },
     };
     expect(trainSelector(mockedState)).toEqual([train]);
   });
@@ -85,12 +79,7 @@ describe('makeSelectTreasury', () => {
   it('should select treasury', () => {
     const treasury = 50;
     const mockedState = {
-      companion18cz: {
-        trains: [],
-        stations: [],
-        privates: [],
-        treasury,
-      },
+      companion18cz: { before: { trains: [], stations: [], privates: [], treasury } },
     };
     expect(treasurySelector(mockedState)).toEqual(treasury);
   });
