@@ -1,31 +1,34 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Input from '../../../general/Input';
 import Private from '../index';
-import Edit from '../PrivateEdit';
-import ReadOnly from '../PrivateReadOnly';
+
+const setup = propsOverrides => {
+  const props = {
+    id: 'private1',
+    hasAbility: true,
+    marketValue: 100,
+    revenue: 30,
+    ...propsOverrides,
+  };
+
+  const wrapper = shallow(<Private {...props} />);
+
+  return { props, wrapper };
+};
 
 describe('<Private>', () => {
-  let priv;
-  let component;
-  beforeEach(() => {
-    priv = {
-      id: 'private1',
-      hasAbility: true,
-      marketValue: 100,
-      revenue: 30,
-    };
-    component = shallow(<Private {...priv} />);
+  it('should render component and children', () => {
+    const { wrapper } = setup();
+
+    expect(wrapper.find(Private)).toHaveLength(1);
+    expect(wrapper.find(Input)).toHaveLength(3);
   });
 
-  it('should render edit mode on by default', () => {
-    expect(component.find(ReadOnly)).toBeDefined();
-    expect(component.find(Edit)).toEqual({});
-  });
+  it('should be read only by default', () => {
+    const { wrapper } = setup();
 
-  it('should render readonly values', () => {
-    component.setState({ readOnly: true });
-    expect(component.find(ReadOnly)).toEqual({});
-    expect(component.find(Edit)).toBeDefined();
+    wrapper.find(Input).forEach(input => expect(input.props().readOnly).toBeTruthy());
   });
 });

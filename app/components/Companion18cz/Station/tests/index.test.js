@@ -1,30 +1,33 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Input from '../../../general/Input';
 import Station from '../index';
-import Edit from '../StationEdit';
-import ReadOnly from '../StationReadOnly';
+
+const setup = propsOverrides => {
+  const props = {
+    id: 'station1',
+    type: 'test-station',
+    amount: 100,
+    ...propsOverrides,
+  };
+
+  const wrapper = shallow(<Station {...props} />);
+
+  return { props, wrapper };
+};
 
 describe('<Station>', () => {
-  let component;
-  let station;
-  beforeEach(() => {
-    station = {
-      id: 'station1',
-      type: 'test-station',
-      amount: 100,
-    };
-    component = shallow(<Station {...station} />);
+  it('should render component and children', () => {
+    const { wrapper } = setup();
+
+    expect(wrapper.find(Station)).toHaveLength(1);
+    expect(wrapper.find(Input)).toHaveLength(2);
   });
 
-  it('should render edit mode on by default', () => {
-    expect(component.find(ReadOnly)).toBeDefined();
-    expect(component.find(Edit)).toEqual({});
-  });
+  it('should be read only by default', () => {
+    const { wrapper } = setup();
 
-  it('should render readonly values', () => {
-    component.setState({ readOnly: true });
-    expect(component.find(ReadOnly)).toEqual({});
-    expect(component.find(Edit)).toBeDefined();
+    wrapper.find(Input).forEach(input => expect(input.props().readOnly).toBeTruthy());
   });
 });

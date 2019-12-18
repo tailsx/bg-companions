@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../general/Button';
 
-const ButtonAddStation = ({ text, ...rest }) => {
-  return <Button className="button-station" text={text || 'Add Station'} {...rest} />;
-};
+const ButtonAddStation = ({ text, ...rest }) => (
+  <Button className="button-station" text={text || 'Add Station'} {...rest} />
+);
 
 export default ButtonAddStation;
 

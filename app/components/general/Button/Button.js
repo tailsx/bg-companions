@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ text, onButtonClick }) => {
-  return (
-    <button type="button" onClick={onButtonClick}>
-      {text}
-    </button>
-  );
-};
+const Button = ({ text, onButtonClick }) => (
+  <button type="button" onClick={onButtonClick}>
+    {text}
+  </button>
+);
 
 export default Button;
 

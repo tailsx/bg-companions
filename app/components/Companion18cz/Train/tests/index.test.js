@@ -1,31 +1,34 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import Input from '../../../general/Input';
 import Train from '../index';
-import Edit from '../TrainEdit';
-import ReadOnly from '../TrainReadOnly';
+
+const setup = propsOverrides => {
+  const props = {
+    id: 'train1',
+    name: 'test-train',
+    type: 'A',
+    lastRan: 100,
+    ...propsOverrides,
+  };
+
+  const wrapper = shallow(<Train {...props} />);
+
+  return { props, wrapper };
+};
 
 describe('<Train>', () => {
-  let component;
-  let train;
-  beforeEach(() => {
-    train = {
-      id: 'train1',
-      name: 'test-train',
-      type: 'A',
-      lastRan: 100,
-    };
-    component = shallow(<Train {...train} />);
+  it('should render component and children', () => {
+    const { wrapper } = setup();
+
+    expect(wrapper.find(Train)).toHaveLength(1);
+    expect(wrapper.find(Input)).toHaveLength(3);
   });
 
-  it('should render edit mode on by default', () => {
-    expect(component.find(ReadOnly)).toBeDefined();
-    expect(component.find(Edit)).toEqual({});
-  });
+  it('should be read only by default', () => {
+    const { wrapper } = setup();
 
-  it('should render readonly values', () => {
-    component.setState({ readOnly: true });
-    expect(component.find(ReadOnly)).toEqual({});
-    expect(component.find(Edit)).toBeDefined();
+    wrapper.find(Input).forEach(input => expect(input.props().readOnly).toBeTruthy());
   });
 });
