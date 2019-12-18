@@ -1,0 +1,11 @@
+.train-component {
+  border: 1px solid black;
+
+  .input:read-only {
+    background: white;
+
+    &:read-only {
+      background: green;
+    }
+  }
+}

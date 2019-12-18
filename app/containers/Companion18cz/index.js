@@ -25,7 +25,7 @@ import reducer from './reducer';
 import Companion18cz from './Companion18cz';
 
 const mapDispatchToProps = dispatch => ({
-  onChangeTreasury: evt => dispatch(changeTreasury(evt.target.value)),
+  onChangeTreasury: value => dispatch(changeTreasury(value)),
   onAddPrivate: () => dispatch(addPrivate()),
   onAddStation: () => dispatch(addStation()),
   onAddTrain: () => dispatch(addTrain()),

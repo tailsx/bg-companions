@@ -16,18 +16,18 @@ class Input extends React.PureComponent {
   }
 
   render() {
-    const { label, ...rest } = this.props;
+    const { label, type = 'text', ...rest } = this.props;
     const { readOnly } = this.state;
-    const name = `train-input-${label.toLowerCase()}`;
+    const name = `train-input-${label.replace(' ', '-').toLowerCase()}`;
+
     return (
       <div>
         <label htmlFor={name}>
           {label}
-          {readOnly ? 'readonly' : 'edit'}
           <input
             name={name}
+            type={type}
             className="input train-input"
-            type="text"
             readOnly={readOnly}
             onFocus={() => this.toggleReadOnly()}
             onBlur={() => this.toggleReadOnly()}
@@ -46,4 +46,5 @@ Input.propTypes = {
   label: PropTypes.string,
   value: PropTypes.any,
   onChange: PropTypes.func,
+  type: PropTypes.string,
 };

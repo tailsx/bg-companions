@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExistingStation from './ExistingStation';
+
+import Station from '../Station';
 import NewStation from './NewStation';
 
 class PhaseAddStation extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    const { stations } = props;
+    this.initAmount = stations ? stations.length : 0;
+  }
+
   render() {
     const { stations, onChangeStation } = this.props;
     return (
@@ -12,9 +19,8 @@ class PhaseAddStation extends React.PureComponent {
         {stations &&
           stations.map(station => (
             <div className="station" key={`station-${station.id}`}>
-              <ExistingStation {...station} />
-              <NewStation {...station} onAmountChange={onChangeStation} />
-              {station.mods && <span>{`$${(station.mods.amount - station.amount) * 100}`}</span>}
+              <Station {...station} />
+              <NewStation init={this.initAmount} onAmountChange={onChangeStation} />
             </div>
           ))}
       </div>

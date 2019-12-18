@@ -9,35 +9,27 @@ import Train from '../Train';
 import Private from '../Private';
 import Station from '../Station';
 import Treasury from '../Treasury';
+import BeforeTurnSection from './BeforeTurnSection';
 
-// eslint-disable-next-line arrow-body-style
 class BeforeTurn extends React.PureComponent {
-  // const { trains } = props;
-
   render() {
     const { trainsData, privatesData, stationsData, treasuryData } = this.props;
     const { trains, onUpdateTrain, onAddTrain } = trainsData;
     const { privates, onUpdatePrivate, onAddPrivate } = privatesData;
     const { stations, onUpdateStation, onAddStation } = stationsData;
-    const { treasury, onChangeTreasury } = treasuryData;
+    const { onChangeTreasury } = treasuryData;
 
     return (
       <div id="before-turn">
         <h1>Before turn</h1>
-        <div className="treasury">
-          <label htmlFor="bt-treasury">
-            Treasury:
-            <input
-              id="bt-treasury"
-              name="bt-treasury"
-              type="number"
-              onChange={onChangeTreasury}
-              value={treasury}
-            />
-          </label>
-        </div>
 
-        <div>
+        <BeforeTurnSection>
+          <Treasury
+            {...treasuryData}
+            onChangeTreasury={e => onChangeTreasury(parseInt(e.target.value, 10))}
+          />
+        </BeforeTurnSection>
+        <BeforeTurnSection>
           <ButtonAddTrain onButtonClick={onAddTrain} />
           {trains &&
             trains.map(({ id, ...trainProps }, index) => (
@@ -50,8 +42,8 @@ class BeforeTurn extends React.PureComponent {
                 {...trainProps}
               />
             ))}
-        </div>
-        <div>
+        </BeforeTurnSection>
+        <BeforeTurnSection>
           <ButtonAddPrivate onButtonClick={onAddPrivate} />
           {privates &&
             privates.map(({ id, ...privateProps }, index) => (
@@ -66,8 +58,8 @@ class BeforeTurn extends React.PureComponent {
                 {...privateProps}
               />
             ))}
-        </div>
-        <div>
+        </BeforeTurnSection>
+        <BeforeTurnSection>
           <ButtonAddStation onButtonClick={onAddStation} />
           {stations &&
             stations.map(({ id, ...stationProps }, index) => (
@@ -75,16 +67,11 @@ class BeforeTurn extends React.PureComponent {
                 key={`station-${id}`}
                 id={id}
                 onTypeChange={e => onUpdateStation('type', index, e.target.value)}
-                onAmountChange={e => onUpdateStation('amount', index, e.target.value)}
+                onAmountChange={e => onUpdateStation('amount', index, parseInt(e.target.value, 10))}
                 {...stationProps}
               />
             ))}
-        </div>
-        {treasury && (
-          <div>
-            <Treasury treasury={treasury} />
-          </div>
-        )}
+        </BeforeTurnSection>
       </div>
     );
   }
