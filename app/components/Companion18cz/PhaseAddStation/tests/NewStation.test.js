@@ -18,6 +18,6 @@ describe('<NewStations>', () => {
   it('should render components', () => {
     const { wrapper } = setup();
 
-    expect(wrapper.find('.station-add')).toHaveLength(1);
+    expect(wrapper.find('.station-add')).toHaveLength(0);
   });
 });

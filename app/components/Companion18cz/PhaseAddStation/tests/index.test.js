@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 
 import PhaseAddStation from '../index';
 import NewStations from '../NewStation';
-import ExistingStations from '../ExistingStation';
 
 describe('<PhaseAddStation>', () => {
   let props;
@@ -32,6 +31,5 @@ describe('<PhaseAddStation>', () => {
 
   it('should render sections', () => {
     expect(component.find(NewStations)).toHaveLength(2);
-    expect(component.find(ExistingStations)).toHaveLength(2);
   });
 });

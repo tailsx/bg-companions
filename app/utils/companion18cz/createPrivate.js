@@ -5,7 +5,6 @@ const createStation = (revenue, marketValue, hasAbility) => ({
   revenue,
   hasAbility,
   marketValue,
-  mods: {},
 });
 
 export default createStation;
