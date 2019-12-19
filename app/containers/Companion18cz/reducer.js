@@ -10,7 +10,7 @@ import {
   CHANGE_TREASURY,
   REMOVE_PRIVATE,
   UPDATE_PRIVATE,
-  // CHANGE_TURN_STATION,
+  CHANGE_TURN_STATION,
 } from './constants';
 
 // The initial state of the App
@@ -20,59 +20,91 @@ const initialState = {
   after: {},
 };
 
-const helperAddTrain = oldTrains => {
+// Helper functions
+const helperAddTrain = state => {
   const train = {
     id: generateId(),
     type: '',
     name: '',
     lastRan: 0,
   };
-  return oldTrains ? [...oldTrains, train] : [train];
+  const trains = state.before && state.before.trains ? [...state.before.trains, train] : [train];
+
+  return {
+    ...state,
+    before: {
+      ...state.before,
+      trains,
+    },
+  };
 };
-const helperAddStation = oldStations => {
+const helperAddStation = state => {
   const station = {
     id: generateId(),
     type: '',
     amount: 0,
   };
-  return oldStations ? [...oldStations, station] : [station];
+  const turn = { [station.id]: { amount: 0 } };
+  const stations =
+    state.before && state.before.stations ? [...state.before.stations, station] : [station];
+  const mods =
+    state.turn && state.turn.stations ? { ...state.turn.stations, ...turn } : { ...turn };
+
+  return {
+    ...state,
+    before: {
+      ...state.before,
+      stations,
+    },
+    turn: {
+      ...state.turn,
+      stations: mods,
+    },
+  };
 };
-const helperAddPrivate = oldPrivates => {
+const helperAddPrivate = state => {
   const priv = {
     id: generateId(),
     revenue: 0,
     hasAbility: false,
     marketValue: 0,
   };
-  return oldPrivates ? [...oldPrivates, priv] : [priv];
+  const privates =
+    state.before && state.before.privates ? [...state.before.privates, priv] : [priv];
+
+  return {
+    ...state,
+    before: {
+      ...state.before,
+      privates,
+    },
+  };
+};
+const helperTurnStations = (state, { stationId, value }) => {
+  const stations = state.turn &&
+    state.turn.stations && {
+    ...state.turn.stations,
+    [stationId]: value,
+  };
+
+  return {
+    ...state,
+    turn: {
+      ...state.turn,
+      stations,
+    },
+  };
 };
 
+// Reducer
 function companion18czReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TRAIN:
-      return {
-        ...state,
-        before: {
-          ...state.before,
-          trains: helperAddTrain(state.before.trains),
-        },
-      };
+      return { ...helperAddTrain(state) };
     case ADD_STATION:
-      return {
-        ...state,
-        before: {
-          ...state.before,
-          stations: helperAddStation(state.before.stations),
-        },
-      };
+      return { ...helperAddStation(state) };
     case ADD_PRIVATE:
-      return {
-        ...state,
-        before: {
-          ...state.before,
-          privates: helperAddPrivate(state.before.privates),
-        },
-      };
+      return { ...helperAddPrivate(state) };
     case REMOVE_TRAIN:
       return {
         ...state,
@@ -159,26 +191,8 @@ function companion18czReducer(state = initialState, action) {
           treasury: action.value,
         },
       };
-    /*     case CHANGE_TURN_STATION:
-      return {
-        ...state,
-        stations: state.stations.reduce(
-          (accum, station) =>
-            station.id === action.mod.stationId
-              ? [
-                  ...accum,
-                  {
-                    ...station,
-                    mods: {
-                      ...station.mods,
-                      amount: action.mod.value,
-                    },
-                  },
-                ]
-              : [...accum, station],
-          [],
-        ),
-      }; */
+    case CHANGE_TURN_STATION:
+      return { ...helperTurnStations(state, action.mod) };
     default:
       return state;
   }

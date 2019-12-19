@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Station from '../Station';
-import NewStation from './NewStation';
+import AddStationItem from './AddStationItem';
 
 class PhaseAddStation extends React.PureComponent {
   constructor(props) {
@@ -12,16 +11,19 @@ class PhaseAddStation extends React.PureComponent {
   }
 
   render() {
-    const { stations, onChangeStation } = this.props;
+    const { stations, turnStations, onChangeStation } = this.props;
+
     return (
       <div>
         <h1>Add Stations</h1>
         {stations &&
           stations.map(station => (
-            <div className="station" key={`station-${station.id}`}>
-              <Station {...station} />
-              <NewStation init={this.initAmount} onAmountChange={onChangeStation} />
-            </div>
+            <AddStationItem
+              key={`add-${station.id}`}
+              amount={turnStations[station.id].amount}
+              onStationChange={onChangeStation}
+              {...{ station }}
+            />
           ))}
       </div>
     );
@@ -38,5 +40,6 @@ PhaseAddStation.propTypes = {
       amount: PropTypes.number.isRequired,
     }),
   ),
+  turnStations: PropTypes.object,
   onChangeStation: PropTypes.func,
 };

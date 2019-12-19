@@ -27,6 +27,7 @@ export default class Companion18cz extends React.PureComponent {
       trains,
       stations,
       stocks,
+      turnStations,
       onChangeAquisitionStock,
       onChangeAquisitionPrice,
     } = this.props;
@@ -48,7 +49,7 @@ export default class Companion18cz extends React.PureComponent {
         <h1>18CZ Companion</h1>
         <BeforeTurn {...beforeProps} />
         <PhaseTrackLay />
-        <PhaseAddStation {...{ stations, onChangeStation }} />
+        <PhaseAddStation {...{ stations, turnStations, onChangeStation }} />
         <PhaseOperating {...{ trains }} />
         <PhaseAcquistion
           {...{ treasury, stocks, onChangeAquisitionStock, onChangeAquisitionPrice }}
@@ -78,6 +79,7 @@ Companion18cz.propTypes = {
   privates: PropTypes.array,
   stations: PropTypes.array,
   trains: PropTypes.array,
+  turnStations: PropTypes.object,
   stocks: PropTypes.shape({
     number: PropTypes.number,
     price: PropTypes.number,

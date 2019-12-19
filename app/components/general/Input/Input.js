@@ -43,8 +43,8 @@ export default Input;
 
 Input.propTypes = {
   readOnly: PropTypes.bool,
-  label: PropTypes.string,
-  value: PropTypes.any,
-  onChange: PropTypes.func,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
+  onChange: PropTypes.func.isRequired,
   type: PropTypes.string,
 };

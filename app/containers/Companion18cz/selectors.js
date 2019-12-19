@@ -6,5 +6,14 @@ const makeSelectTrains = () => createSelector(select18cz, state18cz => state18cz
 const makeSelectStations = () => createSelector(select18cz, state18cz => state18cz.before.stations);
 const makeSelectPrivates = () => createSelector(select18cz, state18cz => state18cz.before.privates);
 const makeSelectTreasury = () => createSelector(select18cz, state18cz => state18cz.before.treasury);
+const makeSelectTurnStations = () =>
+  createSelector(select18cz, state18cz => state18cz.turn.stations);
 
-export { select18cz, makeSelectPrivates, makeSelectStations, makeSelectTrains, makeSelectTreasury };
+export {
+  select18cz,
+  makeSelectPrivates,
+  makeSelectStations,
+  makeSelectTrains,
+  makeSelectTreasury,
+  makeSelectTurnStations,
+};
