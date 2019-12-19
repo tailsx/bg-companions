@@ -16,7 +16,10 @@ class PhaseOperating extends React.PureComponent {
               <span>{lastRan}</span>
             </div>
           ))}
-        <span>{trains && trains.reduce((accum, train) => accum + train.lastRan, 0)}</span>
+        {trains && (
+          <span>{trains && trains.reduce((accum, train) => accum + train.lastRan, 0)}</span>
+        )}
+        {!trains && <span>You have no trains </span>}
       </div>
     );
   }

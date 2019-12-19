@@ -5,12 +5,12 @@ import Input from 'components/general/Input';
 
 import Station from '../Station';
 
-const AddStationItem = ({ station, amount, onStationChange }) => (
+const AddStationItem = ({ station, value, onStationChange }) => (
   <div className="station" key={`station-${station.id}`}>
     <Station {...station} />
     <Input
       label="New Stations"
-      value={amount}
+      value={value}
       onChange={evt => onStationChange(station.id, parseInt(evt.target.value, 10))}
     />
   </div>
@@ -24,5 +24,5 @@ AddStationItem.propTypes = {
     amount: PropTypes.number.isRequired,
   }),
   onStationChange: PropTypes.func,
-  amount: PropTypes.number,
+  value: PropTypes.number,
 };

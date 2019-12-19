@@ -10,6 +10,7 @@ import {
   REMOVE_PRIVATE,
   UPDATE_PRIVATE,
   CHANGE_TURN_STATION,
+  CHANGE_TURN_TRAINS,
 } from './constants';
 
 /**
@@ -129,4 +130,13 @@ export function changeTreasury(value) {
  */
 export function changeTurnStations(stationId, value) {
   return { type: CHANGE_TURN_STATION, mod: { stationId, value } };
+}
+
+/**
+ *
+ * @param {string} trainId id of train
+ * @param {number} value new changed value
+ */
+export function changeTurnTrains(trainId, value) {
+  return { type: CHANGE_TURN_TRAINS, mod: { trainId, value } };
 }

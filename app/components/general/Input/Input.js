@@ -27,7 +27,7 @@ class Input extends React.PureComponent {
           <input
             name={name}
             type={type}
-            className="input train-input"
+            className="input"
             readOnly={readOnly}
             onFocus={() => this.toggleReadOnly()}
             onBlur={() => this.toggleReadOnly()}

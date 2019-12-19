@@ -20,7 +20,7 @@ class PhaseAddStation extends React.PureComponent {
           stations.map(station => (
             <AddStationItem
               key={`add-${station.id}`}
-              amount={turnStations[station.id].amount}
+              value={turnStations[station.id].amount}
               onStationChange={onChangeStation}
               {...{ station }}
             />

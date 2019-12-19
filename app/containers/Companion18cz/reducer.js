@@ -11,6 +11,7 @@ import {
   REMOVE_PRIVATE,
   UPDATE_PRIVATE,
   CHANGE_TURN_STATION,
+  CHANGE_TURN_TRAINS,
 } from './constants';
 
 // The initial state of the App
@@ -28,13 +29,18 @@ const helperAddTrain = state => {
     name: '',
     lastRan: 0,
   };
+  const turn = { [train.id]: { amount: 0 } };
   const trains = state.before && state.before.trains ? [...state.before.trains, train] : [train];
-
+  const mods = state.turn && state.turn.trains ? { ...state.turn.trains, ...turn } : { ...turn };
   return {
     ...state,
     before: {
       ...state.before,
       trains,
+    },
+    turn: {
+      ...state.turn,
+      trains: mods,
     },
   };
 };
@@ -83,15 +89,30 @@ const helperAddPrivate = state => {
 const helperTurnStations = (state, { stationId, value }) => {
   const stations = state.turn &&
     state.turn.stations && {
-    ...state.turn.stations,
-    [stationId]: value,
-  };
+      ...state.turn.stations,
+      [stationId]: value,
+    };
 
   return {
     ...state,
     turn: {
       ...state.turn,
       stations,
+    },
+  };
+};
+const helperTurnTrains = (state, { trainId, value }) => {
+  const trains = state.turn &&
+    state.turn.trains && {
+      ...state.turn.trains,
+      [trainId]: value,
+    };
+
+  return {
+    ...state,
+    turn: {
+      ...state.turn,
+      trains,
     },
   };
 };
@@ -193,6 +214,8 @@ function companion18czReducer(state = initialState, action) {
       };
     case CHANGE_TURN_STATION:
       return { ...helperTurnStations(state, action.mod) };
+    case CHANGE_TURN_TRAINS:
+      return { ...helperTurnTrains(state, action.mod) };
     default:
       return state;
   }

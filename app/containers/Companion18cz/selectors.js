@@ -8,6 +8,7 @@ const makeSelectPrivates = () => createSelector(select18cz, state18cz => state18
 const makeSelectTreasury = () => createSelector(select18cz, state18cz => state18cz.before.treasury);
 const makeSelectTurnStations = () =>
   createSelector(select18cz, state18cz => state18cz.turn.stations);
+const makeSelectTurnTrains = () => createSelector(select18cz, state18cz => state18cz.turn.trains);
 
 export {
   select18cz,
@@ -16,4 +17,5 @@ export {
   makeSelectTrains,
   makeSelectTreasury,
   makeSelectTurnStations,
+  makeSelectTurnTrains,
 };

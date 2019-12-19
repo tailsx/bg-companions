@@ -14,6 +14,7 @@ import {
   updateStation,
   updateTrain,
   changeTurnStations,
+  changeTurnTrains,
 } from './actions';
 import {
   makeSelectPrivates,
@@ -21,6 +22,7 @@ import {
   makeSelectTrains,
   makeSelectTreasury,
   makeSelectTurnStations,
+  makeSelectTurnTrains,
 } from './selectors';
 import reducer from './reducer';
 import Companion18cz from './Companion18cz';
@@ -37,6 +39,7 @@ const mapDispatchToProps = dispatch => ({
   onUpdateStation: (name, index, value) => dispatch(updateStation(name, index, value)),
   onUpdateTrain: (name, index, value) => dispatch(updateTrain(name, index, value)),
   onChangeStation: (stationId, value) => dispatch(changeTurnStations(stationId, value)),
+  onTurnTrains: (trainId, value) => dispatch(changeTurnTrains(trainId, value)),
 });
 
 const mapStateToProps = createStructuredSelector({
@@ -45,6 +48,7 @@ const mapStateToProps = createStructuredSelector({
   trains: makeSelectTrains(),
   treasury: makeSelectTreasury(),
   turnStations: makeSelectTurnStations(),
+  turnTrains: makeSelectTurnTrains(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
