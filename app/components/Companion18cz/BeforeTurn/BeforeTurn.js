@@ -14,9 +14,9 @@ import BeforeTurnSection from './BeforeTurnSection';
 class BeforeTurn extends React.PureComponent {
   render() {
     const { trainsData, privatesData, stationsData, treasuryData } = this.props;
-    const { trains, onUpdateTrain, onAddTrain } = trainsData;
-    const { privates, onUpdatePrivate, onAddPrivate } = privatesData;
-    const { stations, onUpdateStation, onAddStation } = stationsData;
+    const { trains, onUpdateTrain, onAddTrain, onRemoveTrain } = trainsData;
+    const { privates, onUpdatePrivate, onAddPrivate, onRemovePrivate } = privatesData;
+    const { stations, onUpdateStation, onAddStation, onRemoveStation } = stationsData;
     const { onChangeTreasury } = treasuryData;
 
     return (
@@ -38,6 +38,7 @@ class BeforeTurn extends React.PureComponent {
                 onNameChange={e => onUpdateTrain('name', index, e.target.value)}
                 onTypeChange={e => onUpdateTrain('type', index, e.target.value)}
                 onNumberChange={e => onUpdateTrain('lastRan', index, parseInt(e.target.value, 10))}
+                onRemoveTrain={() => onRemoveTrain(index)}
                 id={id}
                 {...trainProps}
               />
@@ -54,6 +55,7 @@ class BeforeTurn extends React.PureComponent {
                 onHasAbilityChange={e =>
                   onUpdatePrivate('hasAbility', index, e.target.value !== 'true')
                 }
+                onRemovePrivate={() => onRemovePrivate(index)}
                 id={id}
                 {...privateProps}
               />
@@ -69,6 +71,7 @@ class BeforeTurn extends React.PureComponent {
                 onTypeChange={e => onUpdateStation('type', index, e.target.value)}
                 onAmountChange={e => onUpdateStation('amount', index, parseInt(e.target.value, 10))}
                 {...stationProps}
+                onRemoveStation={() => onRemoveStation(index)}
               />
             ))}
         </BeforeTurnSection>

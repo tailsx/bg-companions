@@ -89,9 +89,9 @@ const helperAddPrivate = state => {
 const helperTurnStations = (state, { stationId, value }) => {
   const stations = state.turn &&
     state.turn.stations && {
-      ...state.turn.stations,
-      [stationId]: value,
-    };
+    ...state.turn.stations,
+    [stationId]: value,
+  };
 
   return {
     ...state,
@@ -104,9 +104,9 @@ const helperTurnStations = (state, { stationId, value }) => {
 const helperTurnTrains = (state, { trainId, value }) => {
   const trains = state.turn &&
     state.turn.trains && {
-      ...state.turn.trains,
-      [trainId]: value,
-    };
+    ...state.turn.trains,
+    [trainId]: value,
+  };
 
   return {
     ...state,
