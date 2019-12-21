@@ -21,9 +21,9 @@ class Input extends React.PureComponent {
     const name = `train-input-${label.replace(' ', '-').toLowerCase()}`;
 
     return (
-      <div>
+      <div className="input-wrapper">
         <label htmlFor={name}>
-          {label}
+          <span className="label">{label}</span>
           <input
             name={name}
             type={type}
