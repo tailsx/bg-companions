@@ -1,5 +1,7 @@
 .train-component {
-  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
   .input:read-only {
     background: white;

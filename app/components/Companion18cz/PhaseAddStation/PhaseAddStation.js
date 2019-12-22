@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import AddStationItem from './AddStationItem';
 
+import './style.scss';
+
 class PhaseAddStation extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ class PhaseAddStation extends React.PureComponent {
     const { stations, turnStations, onChangeStation } = this.props;
 
     return (
-      <div>
+      <div className="phase phase-add-station">
         <h1>Add Stations</h1>
         {stations &&
           stations.map(station => (

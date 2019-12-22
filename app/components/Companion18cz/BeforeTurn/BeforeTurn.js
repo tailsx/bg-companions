@@ -9,7 +9,11 @@ import Train from '../Train';
 import Private from '../Private';
 import Station from '../Station';
 import Treasury from '../Treasury';
-import BeforeTurnSection from './BeforeTurnSection';
+import BTSection from './BTSection';
+import BTSectionHeader from './BTSectionHeader';
+import BTSectionBody from './BTSectionBody';
+
+import './style.scss';
 
 class BeforeTurn extends React.PureComponent {
   render() {
@@ -23,28 +27,35 @@ class BeforeTurn extends React.PureComponent {
       <div id="before-turn">
         <h1>Before turn</h1>
 
-        <BeforeTurnSection>
+        <BTSection className="bt-section-treasury">
           <Treasury
             {...treasuryData}
             onChangeTreasury={e => onChangeTreasury(parseInt(e.target.value, 10))}
           />
-        </BeforeTurnSection>
-        <BeforeTurnSection>
-          <ButtonAddTrain onButtonClick={onAddTrain} />
-          {trains &&
-            trains.map(({ id, ...trainProps }, index) => (
-              <Train
-                key={`train-${id}`}
-                onNameChange={e => onUpdateTrain('name', index, e.target.value)}
-                onTypeChange={e => onUpdateTrain('type', index, e.target.value)}
-                onNumberChange={e => onUpdateTrain('lastRan', index, parseInt(e.target.value, 10))}
-                onRemoveTrain={() => onRemoveTrain(index)}
-                id={id}
-                {...trainProps}
-              />
-            ))}
-        </BeforeTurnSection>
-        <BeforeTurnSection>
+        </BTSection>
+        <BTSection className="bt-section-trains">
+          <BTSectionHeader>
+            <h2>Trains</h2>
+            <ButtonAddTrain onButtonClick={onAddTrain} />
+          </BTSectionHeader>
+          <BTSectionBody>
+            {trains &&
+              trains.map(({ id, ...trainProps }, index) => (
+                <Train
+                  key={`train-${id}`}
+                  onNameChange={e => onUpdateTrain('name', index, e.target.value)}
+                  onTypeChange={e => onUpdateTrain('type', index, e.target.value)}
+                  onNumberChange={e =>
+                    onUpdateTrain('lastRan', index, parseInt(e.target.value, 10))
+                  }
+                  onRemoveTrain={() => onRemoveTrain(index)}
+                  id={id}
+                  {...trainProps}
+                />
+              ))}
+          </BTSectionBody>
+        </BTSection>
+        <BTSection className="bt-section-privates">
           <ButtonAddPrivate onButtonClick={onAddPrivate} />
           {privates &&
             privates.map(({ id, ...privateProps }, index) => (
@@ -60,8 +71,8 @@ class BeforeTurn extends React.PureComponent {
                 {...privateProps}
               />
             ))}
-        </BeforeTurnSection>
-        <BeforeTurnSection>
+        </BTSection>
+        <BTSection className="bt-section-stations">
           <ButtonAddStation onButtonClick={onAddStation} />
           {stations &&
             stations.map(({ id, ...stationProps }, index) => (
@@ -74,7 +85,7 @@ class BeforeTurn extends React.PureComponent {
                 onRemoveStation={() => onRemoveStation(index)}
               />
             ))}
-        </BeforeTurnSection>
+        </BTSection>
       </div>
     );
   }
