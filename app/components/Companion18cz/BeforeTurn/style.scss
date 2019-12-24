@@ -10,12 +10,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
-    .train-component {
-      display: flex;
-      flex-direction: column;
-      flex: 0 0 20%;
-    }
   }
 
   &.bt-section-treasury {

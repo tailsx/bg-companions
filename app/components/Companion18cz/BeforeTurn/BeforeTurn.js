@@ -56,35 +56,47 @@ class BeforeTurn extends React.PureComponent {
           </BTSectionBody>
         </BTSection>
         <BTSection className="bt-section-privates">
-          <ButtonAddPrivate onButtonClick={onAddPrivate} />
-          {privates &&
-            privates.map(({ id, ...privateProps }, index) => (
-              <Private
-                key={`private-${id}`}
-                onRevenueChange={e => onUpdatePrivate('revenue', index, e.target.value)}
-                onMarketValueChange={e => onUpdatePrivate('marketValue', index, e.target.value)}
-                onHasAbilityChange={e =>
-                  onUpdatePrivate('hasAbility', index, e.target.value !== 'true')
-                }
-                onRemovePrivate={() => onRemovePrivate(index)}
-                id={id}
-                {...privateProps}
-              />
-            ))}
+          <BTSectionHeader>
+            <h2>Privates</h2>
+            <ButtonAddPrivate onButtonClick={onAddPrivate} />
+          </BTSectionHeader>
+          <BTSectionBody>
+            {privates &&
+              privates.map(({ id, ...privateProps }, index) => (
+                <Private
+                  key={`private-${id}`}
+                  onRevenueChange={e => onUpdatePrivate('revenue', index, e.target.value)}
+                  onMarketValueChange={e => onUpdatePrivate('marketValue', index, e.target.value)}
+                  onHasAbilityChange={e =>
+                    onUpdatePrivate('hasAbility', index, e.target.value !== 'true')
+                  }
+                  onRemovePrivate={() => onRemovePrivate(index)}
+                  id={id}
+                  {...privateProps}
+                />
+              ))}
+          </BTSectionBody>
         </BTSection>
         <BTSection className="bt-section-stations">
-          <ButtonAddStation onButtonClick={onAddStation} />
-          {stations &&
-            stations.map(({ id, ...stationProps }, index) => (
-              <Station
-                key={`station-${id}`}
-                id={id}
-                onTypeChange={e => onUpdateStation('type', index, e.target.value)}
-                onAmountChange={e => onUpdateStation('amount', index, parseInt(e.target.value, 10))}
-                {...stationProps}
-                onRemoveStation={() => onRemoveStation(index)}
-              />
-            ))}
+          <BTSectionHeader>
+            <h2>Stations</h2>
+            <ButtonAddStation onButtonClick={onAddStation} />
+          </BTSectionHeader>
+          <BTSectionBody>
+            {stations &&
+              stations.map(({ id, ...stationProps }, index) => (
+                <Station
+                  key={`station-${id}`}
+                  id={id}
+                  onTypeChange={e => onUpdateStation('type', index, e.target.value)}
+                  onAmountChange={e =>
+                    onUpdateStation('amount', index, parseInt(e.target.value, 10))
+                  }
+                  {...stationProps}
+                  onRemoveStation={() => onRemoveStation(index)}
+                />
+              ))}
+          </BTSectionBody>
         </BTSection>
       </div>
     );

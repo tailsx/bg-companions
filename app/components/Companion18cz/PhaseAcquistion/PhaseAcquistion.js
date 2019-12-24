@@ -7,7 +7,7 @@ class PhaseAcquistion extends React.PureComponent {
     const { treasury } = this.props;
 
     return (
-      <div>
+      <div className="phase-acquitision">
         <h1>Acquistion</h1>
         {treasury && <div className="treasury">{treasury}</div>}
         {treasury && <AcquistionInfo {...this.props} />}

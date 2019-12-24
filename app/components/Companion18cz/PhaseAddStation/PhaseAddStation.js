@@ -16,7 +16,7 @@ class PhaseAddStation extends React.PureComponent {
     const { stations, turnStations, onChangeStation } = this.props;
 
     return (
-      <div className="phase phase-add-station">
+      <div className="phase-add-station">
         <h1>Add Stations</h1>
         {stations &&
           stations.map(station => (

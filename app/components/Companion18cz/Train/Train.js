@@ -5,6 +5,8 @@ import Input from 'components/general/Input';
 import TrainComponent from 'components/general/TrainComponent';
 import Button from '../../general/Button/Button';
 
+import './style.scss';
+
 class Train extends React.PureComponent {
   render() {
     const {

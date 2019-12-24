@@ -5,7 +5,7 @@ import Train from 'components/Companion18cz/Train';
 import Input from 'components/general/Input';
 
 const TrainPurchaseItem = ({ train, value, onTurnTrains }) => (
-  <div>
+  <div className="phase-item">
     <Train {...train} />
     <Input
       label="fwe"
