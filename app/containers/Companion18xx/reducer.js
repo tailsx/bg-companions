@@ -1,4 +1,4 @@
-// import generateId from '../../utils/generateId';
+/* // import generateId from '../../utils/generateId';
 
 import { ADD_COMPANY } from './constants';
 
@@ -17,4 +17,11 @@ const companion18czReducer = (state = initialState, action) => {
   }
 };
 
-export default companion18czReducer;
+export default companion18czReducer; */
+
+import { combineReducers } from 'redux';
+import companyReducer from '../Company/reducer';
+
+export default combineReducers({
+  companyReducer,
+});
