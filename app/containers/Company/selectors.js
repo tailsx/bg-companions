@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 
-const select18xx = state => state.company;
+const selectCompany = state => state.company;
 
-const makeSelectCompanies = () => createSelector(select18xx, companionState => companionState.yo);
+const makeSelectCompanies = () =>
+  createSelector(selectCompany, companionState => companionState.floated);
 
-export { select18xx, makeSelectCompanies };
+export { selectCompany, makeSelectCompanies };

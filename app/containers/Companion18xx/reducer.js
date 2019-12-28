@@ -1,7 +1,6 @@
-// import generateId from '../../utils/generateId';
-
-import { FLOAT_COMPANY, CREATE_COMPANY } from './constants';
-import createCompany from '../../utils/companion18xx/createCompany';
+import { CREATE_COMPANY } from './constants';
+import generateId from '../../utils/generateId';
+import generateColour from '../../utils/generateColour';
 
 // The initial state of the App
 const initialState = {
@@ -12,8 +11,10 @@ const initialState = {
 const companion18czReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_COMPANY:
-      return { ...state, companies: [...state.companies, createCompany()] };
-    case FLOAT_COMPANY:
+      return {
+        ...state,
+        companies: [...state.companies, { id: generateId(), colour: generateColour() }],
+      };
     default:
       return state;
   }

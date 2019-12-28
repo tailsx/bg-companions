@@ -7,7 +7,9 @@ import { makeSelectCompanies } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Company';
 
-const mapDispatchToProps = dispatch => ({ onFloatCompany: () => dispatch(floatCompany()) });
+const mapDispatchToProps = dispatch => ({
+  onFloatCompany: (id, name, initSharePrice) => dispatch(floatCompany(id, name, initSharePrice)),
+});
 
 const mapStateToProps = createStructuredSelector({
   yo: makeSelectCompanies(),
