@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Company = () => <div>Comapny</div>;
+const Company = ({ id, colour }) => <div>{`Company: ${id}, Color: ${colour}`}</div>;
 
 export default Company;

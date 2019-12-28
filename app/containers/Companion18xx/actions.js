@@ -1,4 +1,4 @@
-import { FLOAT_COMPANY } from './constants';
+import { FLOAT_COMPANY, CREATE_COMPANY } from './constants';
 
 /**
  * Changes the input field of the form
@@ -7,4 +7,8 @@ import { FLOAT_COMPANY } from './constants';
  */
 export function floatCompany() {
   return { type: FLOAT_COMPANY };
+}
+
+export function createCompany() {
+  return { type: CREATE_COMPANY };
 }
