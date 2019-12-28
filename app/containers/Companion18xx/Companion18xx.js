@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Company from 'components/Companion18xx/Company';
+import Company from 'containers/Company';
 
 export default class Companion18xx extends React.PureComponent {
   render() {
