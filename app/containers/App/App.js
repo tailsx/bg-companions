@@ -16,7 +16,6 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import './style.scss';
-import Companion18cz from '../Companion18cz';
 import Companion18xx from '../Companion18xx';
 
 const App = () => (
@@ -28,7 +27,6 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/features" component={FeaturePage} />
-      <Route path="/18cz" component={Companion18cz} />
       <Route path="/18xx" component={Companion18xx} />
       <Route path="" component={NotFoundPage} />
     </Switch>

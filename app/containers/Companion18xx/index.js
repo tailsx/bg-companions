@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
-import { addCompany } from '../Company/actions';
-import { makeSelectCompanies } from '../Company/selectors';
+import { floatCompany } from './actions';
+import { makeSelectCompanies } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Companion18xx';
 
 const mapDispatchToProps = dispatch => ({
-  onAddCompany: () => dispatch(addCompany()),
+  onFloatCompany: () => dispatch(floatCompany()),
 });
 
 const mapStateToProps = createStructuredSelector({

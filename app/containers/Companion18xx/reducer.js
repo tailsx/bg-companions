@@ -1,6 +1,6 @@
-/* // import generateId from '../../utils/generateId';
+// import generateId from '../../utils/generateId';
 
-import { ADD_COMPANY } from './constants';
+import { FLOAT_COMPANY } from './constants';
 
 // The initial state of the App
 const initialState = {
@@ -10,18 +10,11 @@ const initialState = {
 // Reducer
 const companion18czReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_COMPANY:
+    case FLOAT_COMPANY:
       return { ...state, companies: [...state.companies, { text: 'company' }] };
     default:
       return state;
   }
 };
 
-export default companion18czReducer; */
-
-import { combineReducers } from 'redux';
-import companyReducer from '../Company/reducer';
-
-export default combineReducers({
-  companyReducer,
-});
+export default companion18czReducer;

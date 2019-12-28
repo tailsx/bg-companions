@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Company from '../../components/Companion18xx/Company';
 
 export default class Companion18xx extends React.PureComponent {
   render() {
-    const { onAddCompany, companies } = this.props;
+    const { onFloatCompany, companies } = this.props;
     return (
       <div>
         <h1>18XX Companions</h1>
-        <button type="button" onClick={onAddCompany}>
+        <button type="button" onClick={onFloatCompany}>
           add company
         </button>
-        {companies && companies.map(company => <div>yo</div>)}
+        {companies && companies.map(company => <Company />)}
       </div>
     );
   }
 }
 
 Companion18xx.propTypes = {
-  onAddCompany: PropTypes.func,
+  onFloatCompany: PropTypes.func,
+  companies: PropTypes.array,
 };
