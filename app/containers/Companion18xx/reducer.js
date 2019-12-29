@@ -1,5 +1,5 @@
 import { CREATE_COMPANY } from './constants';
-import generateId from '../../utils/generateId';
+import createCompany from '../../utils/companion18xx/createCompany';
 import generateColour from '../../utils/generateColour';
 
 // The initial state of the App
@@ -13,7 +13,7 @@ const companion18czReducer = (state = initialState, action) => {
     case CREATE_COMPANY:
       return {
         ...state,
-        companies: [...state.companies, { id: generateId(), colour: generateColour() }],
+        companies: [...state.companies, { ...createCompany(), colour: generateColour() }],
       };
     default:
       return state;
