@@ -1,4 +1,4 @@
-import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY } from './constants';
+import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY, ADD_TRAIN } from './constants';
 
 /**
  * Changes the input field of the form
@@ -20,5 +20,12 @@ export function changeInitSharePrice(id, price) {
   return {
     type: CHANGE_INIT_SHARE_PRICE,
     payload: { id, price },
+  };
+}
+
+export function addTrain(companyId, trainId) {
+  return {
+    type: ADD_TRAIN,
+    payload: { companyId, trainId },
   };
 }
