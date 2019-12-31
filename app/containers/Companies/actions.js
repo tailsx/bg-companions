@@ -1,10 +1,14 @@
-import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE } from './constants';
+import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY } from './constants';
 
 /**
  * Changes the input field of the form
  *
  * @return {object}    An action object
  */
+export function addCompany() {
+  return { type: CREATE_COMPANY };
+}
+
 export function floatCompany(id, name, initSharePrice) {
   return {
     type: FLOAT_COMPANY,

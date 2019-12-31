@@ -8,7 +8,6 @@ const initialState = {};
 const companion18czReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_COMPANY:
-      console.log('create company');
       return {
         ...state,
         [generateId()]: { isFloated: false },
