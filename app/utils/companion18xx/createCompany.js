@@ -1,8 +1,7 @@
-import generateId from '../generateId';
-
 const createCompany = () => ({
-  id: generateId(),
   name: 'Train Company',
+  isFloated: false,
+  treasury: 0,
 });
 
 export default createCompany;

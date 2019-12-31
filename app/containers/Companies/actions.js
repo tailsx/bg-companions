@@ -5,7 +5,7 @@ import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY } from './consta
  *
  * @return {object}    An action object
  */
-export function addCompany() {
+export function createCompany() {
   return { type: CREATE_COMPANY };
 }
 
