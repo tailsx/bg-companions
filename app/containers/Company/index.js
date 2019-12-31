@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import { floatCompany, changeInitSharePrice } from './actions';
-import { makeSelectCompanies } from './selectors';
+import { makeSelectIsFloated } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Company';
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  
+  isFloated: makeSelectIsFloated(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

@@ -1,6 +1,19 @@
 import { createSelector } from 'reselect';
 
-const selectCompany = state => state.company;
+const selectCompanies = state => state.company;
+
+const makeSelectIsFloated = () =>
+  createSelector(
+    () => (state, props) => props.id,
+    () => selectCompanies,
+    (companyId, companies) => {
+      console.log(`selecting ${companyId}`);
+      if (companyId in companies) {
+        return companies[companyId].isFloated;
+      }
+      return false;
+    },
+  );
 /* 
 const makeSelectCompanies = () =>
   createSelector(
@@ -9,4 +22,4 @@ const makeSelectCompanies = () =>
     companionState => companionState.floated,
   ); */
 
-export { selectCompany };
+export { selectCompanies, makeSelectIsFloated };
