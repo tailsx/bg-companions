@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Train from 'components/Train';
 
-const Trains = ({ trains, filtered, onCreateTrain }) => {
+const Trains = ({ trains, onCreateTrain }) => {
   return (
     <div>
       <button type="button" onClick={onCreateTrain}>
@@ -12,9 +12,6 @@ const Trains = ({ trains, filtered, onCreateTrain }) => {
         <Train key={train.trainId} {...train} />
       ))}
       {'filtered'}
-      {filtered.map(fil => (
-        <Train key={fil.trainId} {...fil} />
-      ))}
     </div>
   );
 };
