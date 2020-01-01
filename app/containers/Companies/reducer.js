@@ -5,6 +5,7 @@ import {
   ADD_TRAIN,
   CHANGE_NAME,
 } from './constants';
+import createCompany from '../../utils/companion18xx/createCompany';
 
 // The initial state of the App
 const initialState = {
@@ -20,11 +21,7 @@ const companiesReducer = (state = initialState, action) => {
         ...state,
         byId: {
           ...state.byId,
-          [action.payload.companyId]: {
-            companyName: 'New Train Company',
-            isFloated: false,
-            trainIds: [],
-          },
+          [action.payload.companyId]: createCompany(),
         },
         allIds: [...state.allIds, action.payload.companyId],
       };

@@ -1,7 +1,7 @@
 const createCompany = () => ({
-  name: 'Train Company',
+  companyName: 'New Train Company',
   isFloated: false,
-  treasury: 0,
+  trainIds: [],
 });
 
 export default createCompany;

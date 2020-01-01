@@ -1,10 +1,5 @@
-import generateId from '../generateId';
-
-const createStation = (name, type, lastRan) => ({
-  id: generateId(),
-  type,
-  name,
-  lastRan,
+const createTrain = () => ({
+  trainName: 'Train Name',
 });
 
-export default createStation;
+export default createTrain;
