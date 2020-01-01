@@ -28,4 +28,7 @@ export const addTrain = (companyId, trainId) => ({
   payload: { companyId, trainId },
 });
 
-export const changeCompanyName = companyName => ({ type: CHANGE_NAME, payload: { companyName } });
+export const changeCompanyName = (companyId, companyName) => ({
+  type: CHANGE_NAME,
+  payload: { companyId, companyName },
+});

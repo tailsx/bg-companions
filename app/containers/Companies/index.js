@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => ({
   onCreateCompany: () => dispatch(createCompany(generateId())),
   onFloatCompany: (id, name, initSharePrice) => dispatch(floatCompany(id, name, initSharePrice)),
   onChangeSharePrice: (id, value) => dispatch(changeInitSharePrice(id, value)),
-  onChangeCompanyName: () => dispatch(changeCompanyName()),
+  onChangeCompanyName: (id, name) => dispatch(changeCompanyName(id, name)),
 });
 
 const mapStateToProps = createStructuredSelector({

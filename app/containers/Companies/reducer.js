@@ -1,4 +1,10 @@
-import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY, ADD_TRAIN } from './constants';
+import {
+  FLOAT_COMPANY,
+  CHANGE_INIT_SHARE_PRICE,
+  CREATE_COMPANY,
+  ADD_TRAIN,
+  CHANGE_NAME,
+} from './constants';
 
 // The initial state of the App
 const initialState = {
@@ -47,8 +53,20 @@ const companiesReducer = (state = initialState, action) => {
         byId: {
           ...state.byId,
           [action.payload.id]: {
+            ...state.byId[action.payload.id],
             isFloated: true,
             treasury: state[action.payload.id].initSharePrice,
+          },
+        },
+      };
+    case CHANGE_NAME:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.companyId]: {
+            ...state.byId[action.payload.companyId],
+            companyName: action.payload.companyName,
           },
         },
       };
