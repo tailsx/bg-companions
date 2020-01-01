@@ -12,7 +12,14 @@ const companiesReducer = (state = initialState, action) => {
     case CREATE_COMPANY:
       return {
         ...state,
-        byId: { ...state.byId, [action.payload.companyId]: { isFloated: false, trainIds: [] } },
+        byId: {
+          ...state.byId,
+          [action.payload.companyId]: {
+            companyName: 'New Train Company',
+            isFloated: false,
+            trainIds: [],
+          },
+        },
         allIds: [...state.allIds, action.payload.companyId],
       };
     case ADD_TRAIN:

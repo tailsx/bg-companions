@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
+
 import { addTrain } from 'containers/Companies/actions';
+
 import { createTrain } from './actions';
-import { makeSelectTrains, makeSelectTrainsById } from './selectors';
+import { makeSelectTrains } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Trains';
 import generateId from '../../utils/generateId';

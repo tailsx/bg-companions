@@ -18,4 +18,7 @@ const Trains = ({ trains, onCreateTrain }) => {
 
 export default Trains;
 
-Trains.propTypes = {};
+Trains.propTypes = {
+  trains: PropTypes.array,
+  onCreateTrain: PropTypes.func,
+};

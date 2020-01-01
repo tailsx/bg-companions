@@ -2,17 +2,17 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
-import { floatCompany, changeInitSharePrice, createCompany } from './actions';
+import { floatCompany, changeInitSharePrice, createCompany, changeCompanyName } from './actions';
 import { makeSelectCompanies } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Companies';
 import generateId from '../../utils/generateId';
 
-
 const mapDispatchToProps = dispatch => ({
   onCreateCompany: () => dispatch(createCompany(generateId())),
   onFloatCompany: (id, name, initSharePrice) => dispatch(floatCompany(id, name, initSharePrice)),
   onChangeSharePrice: (id, value) => dispatch(changeInitSharePrice(id, value)),
+  onChangeCompanyName: () => dispatch(changeCompanyName()),
 });
 
 const mapStateToProps = createStructuredSelector({
