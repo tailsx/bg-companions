@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FloatValue from 'components/Company/FloatValue';
 import CompanyAssets from 'components/Company/CompanyAssets';
-import CompanyName from '../../components/Company/CompanyName';
+import EditableInput from 'components/general/EditableInput';
 
 const Company = ({
   companyId,
@@ -17,7 +17,7 @@ const Company = ({
   trainIds,
 }) => (
   <div>
-    <CompanyName
+    <EditableInput
       canEdit={canEditName}
       onToggle={onToggleName}
       onChange={onChangeName}

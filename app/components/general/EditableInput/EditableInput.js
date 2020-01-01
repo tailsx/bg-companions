@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CompanyName = ({ canEdit, onToggle, value, onChange }) => (
+const EditableInput = ({ canEdit, onToggle, value, onChange }) => (
   <div>
     {canEdit && (
       <div>
@@ -22,9 +22,9 @@ const CompanyName = ({ canEdit, onToggle, value, onChange }) => (
   </div>
 );
 
-export default CompanyName;
+export default EditableInput;
 
-CompanyName.propTypes = {
+EditableInput.propTypes = {
   canEdit: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

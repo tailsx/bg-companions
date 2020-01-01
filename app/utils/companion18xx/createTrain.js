@@ -1,4 +1,5 @@
 const createTrain = () => ({
+  canEditName: false,
   trainName: 'Train Name',
 });
 

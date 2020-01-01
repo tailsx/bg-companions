@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTYpes from 'prop-types';
+import EditableInput from '../../components/general/EditableInput';
 
-const Train = ({ trainId, trainName }) => (
+const Train = ({ trainId, trainName, canEditName, onToggleName, onChangeName }) => (
   <div>
-    {`trainName: ${trainName}`}
+    <EditableInput
+      canEdit={canEditName}
+      onToggle={onToggleName}
+      onChange={onChangeName}
+      value={trainName}
+    />
+
     {console.log(`trainId: ${trainId}`)}
   </div>
 );
