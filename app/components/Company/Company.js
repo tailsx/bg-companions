@@ -1,10 +1,10 @@
 import React from 'react';
 import Trains from 'containers/Trains';
 
-const Company = ({ companyId }) => (
+const Company = ({ companyId, trainIds }) => (
   <div>
     {`Comapny ID: ${companyId}`}
-    <Trains companyId={companyId} />
+    <Trains {...{ companyId, trainIds }} />
   </div>
 );
 

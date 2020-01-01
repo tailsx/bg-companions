@@ -1,19 +1,12 @@
 import { createSelector } from 'reselect';
 
-const selectCompanies = state => state.companies;
+const selectCompanyIds = state => state.companies.allIds;
+
+const selectCompanyData = state => state.companies.byId;
 
 const makeSelectCompanies = () =>
-  createSelector(selectCompanies, companies =>
-    Object.entries(companies).reduce(
-      (accumulator, [key, value]) => [
-        ...accumulator,
-        {
-          companyId: key,
-          ...value,
-        },
-      ],
-      [],
-    ),
+  createSelector(selectCompanyIds, selectCompanyData, (companyIds, companies) =>
+    companyIds.map(companyId => companies[companyId]),
   );
 
-export { selectCompanies, makeSelectCompanies };
+export { selectCompanyIds, selectCompanyData, makeSelectCompanies };

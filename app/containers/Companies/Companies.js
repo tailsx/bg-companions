@@ -9,8 +9,9 @@ const Companies = ({ companies, onCreateCompany }) => {
       <button type="button" onClick={onCreateCompany}>
         Create Company
       </button>
-      {companies &&
-        companies.map(company => <Company key={`comp-${company.companyId}`} {...company} />)}
+      {companies.map(company => (
+        <Company key={`comp-${company.companyId}`} {...company} />
+      ))}
     </div>
   );
 };
