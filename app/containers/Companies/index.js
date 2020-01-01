@@ -6,9 +6,11 @@ import { floatCompany, changeInitSharePrice, createCompany } from './actions';
 import { makeSelectCompanies } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Companies';
+import generateId from '../../utils/generateId';
+
 
 const mapDispatchToProps = dispatch => ({
-  onCreateCompany: () => dispatch(createCompany()),
+  onCreateCompany: () => dispatch(createCompany(generateId())),
   onFloatCompany: (id, name, initSharePrice) => dispatch(floatCompany(id, name, initSharePrice)),
   onChangeSharePrice: (id, value) => dispatch(changeInitSharePrice(id, value)),
 });

@@ -5,8 +5,8 @@ import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY, ADD_TRAIN } fro
  *
  * @return {object}    An action object
  */
-export function createCompany() {
-  return { type: CREATE_COMPANY };
+export function createCompany(companyId) {
+  return { type: CREATE_COMPANY, payload: { companyId } };
 }
 
 export function floatCompany(id, name, initSharePrice) {

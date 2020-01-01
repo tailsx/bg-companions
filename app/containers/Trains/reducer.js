@@ -1,5 +1,4 @@
 import { CREATE_TRAIN } from './constants';
-import generateId from '../../utils/generateId';
 
 // The initial state of the App
 const initialState = {};
@@ -10,7 +9,7 @@ const companion18czReducer = (state = initialState, action) => {
     case CREATE_TRAIN:
       return {
         ...state,
-        [generateId()]: { trainName: 'Train Name' },
+        [action.payload.trainId]: { trainName: 'Train Name' },
       };
     default:
       return state;

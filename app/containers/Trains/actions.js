@@ -5,6 +5,6 @@ import { CREATE_TRAIN } from './constants';
  *
  * @return {object}    An action object
  */
-export function createTrain() {
-  return { type: CREATE_TRAIN };
+export function createTrain(trainId) {
+  return { type: CREATE_TRAIN, payload: { trainId } };
 }

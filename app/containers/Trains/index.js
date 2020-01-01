@@ -7,12 +7,13 @@ import { createTrain } from './actions';
 import { makeSelectTrains, makeSelectTrainsById } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Trains';
-
+import generateId from '../../utils/generateId';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onCreateTrain: () => {
-    dispatch(addTrain(ownProps.companyId));
-    dispatch(createTrain());
+    const trainId = generateId();
+    dispatch(addTrain(ownProps.companyId, trainId));
+    dispatch(createTrain(trainId));
   },
 });
 
