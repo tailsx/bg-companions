@@ -1,13 +1,20 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { floatCompany, changeInitSharePrice } from 'containers/Companies/actions';
+import {
+  floatCompany,
+  changeInitSharePrice,
+  changeCompanyName,
+  toggleNameEdit,
+} from 'containers/Companies/actions';
 import { makeSelectCompanyName, makeSelectCompanyInitPrice } from './selectors';
 import Company from './Company';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onFloatCompany: () => dispatch(floatCompany(ownProps.companyId)),
   onChangeInitPrice: evt => dispatch(changeInitSharePrice(ownProps.companyId, evt.target.value)),
+  onChangeName: evt => dispatch(changeCompanyName(ownProps.companyId, evt.target.value)),
+  onToggleName: () => dispatch(toggleNameEdit(ownProps.companyId)),
 });
 
 const mapStateToProps = () =>

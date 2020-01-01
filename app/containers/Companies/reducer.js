@@ -4,6 +4,7 @@ import {
   CREATE_COMPANY,
   ADD_TRAIN,
   CHANGE_NAME,
+  TOOGLE_NAME,
 } from './constants';
 import createCompany from '../../utils/companion18xx/createCompany';
 
@@ -67,6 +68,17 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: {
             ...state.byId[action.payload.companyId],
             companyName: action.payload.companyName,
+          },
+        },
+      };
+    case TOOGLE_NAME:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.companyId]: {
+            ...state.byId[action.payload.companyId],
+            canEditName: !state.byId[action.payload.companyId].canEditName,
           },
         },
       };

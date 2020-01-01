@@ -4,6 +4,7 @@ import {
   CREATE_COMPANY,
   ADD_TRAIN,
   CHANGE_NAME,
+  TOOGLE_NAME,
 } from './constants';
 
 /**
@@ -32,3 +33,5 @@ export const changeCompanyName = (companyId, companyName) => ({
   type: CHANGE_NAME,
   payload: { companyId, companyName },
 });
+
+export const toggleNameEdit = companyId => ({ type: TOOGLE_NAME, payload: { companyId } });
