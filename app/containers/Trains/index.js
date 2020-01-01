@@ -20,9 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 });
 
-const mapStateToProps = createStructuredSelector({
-  trains: makeSelectTrains(),
-});
+const mapStateToProps = createStructuredSelector({});
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 

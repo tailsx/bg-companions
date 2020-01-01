@@ -14,6 +14,7 @@ const Company = ({
   canEditName,
   onToggleName,
   onChangeName,
+  trainIds,
 }) => (
   <div>
     <CompanyName
@@ -29,7 +30,7 @@ const Company = ({
         onValueChange={onChangeInitPrice}
       />
     )}
-    {isFloated && <CompanyAssets companyId={companyId} />}
+    {isFloated && <CompanyAssets companyId={companyId} trainIds={trainIds} />}
   </div>
 );
 
@@ -48,4 +49,5 @@ Company.propTypes = {
   onFloatCompany: PropTypes.func,
 
   companyId: PropTypes.string,
+  trainIds: PropTypes.array.isRequired,
 };

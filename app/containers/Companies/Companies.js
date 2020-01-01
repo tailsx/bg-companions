@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Company from 'containers/Company';
 
-const Companies = ({ companies, onChangeCompanyName, onCreateCompany }) => {
+const Companies = ({ companies, onCreateCompany }) => {
   return (
     <div>
       <button type="button" onClick={onCreateCompany}>

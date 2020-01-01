@@ -1,11 +1,4 @@
-import { createSelector } from 'reselect';
-
 const selectTrainData = state => state.trains.byId;
-const selectOwnedTrains = (_, props) => props.trainIds;
+const selectTrainIds = state => state.trains.allIds;
 
-const makeSelectTrains = () =>
-  createSelector(selectTrainData, selectOwnedTrains, (trainsData, trainIds) =>
-    trainIds.map(trainId => ({ trainId, ...trainsData[trainId] })),
-  );
-
-export { selectTrainData, selectOwnedTrains, makeSelectTrains };
+export { selectTrainData, selectTrainIds };

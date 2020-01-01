@@ -12,6 +12,7 @@ import {
   makeSelectCompanyInitPrice,
   makeSelectCanEdit,
   makeSelectIsFloated,
+  makeSelectCompanyTrains,
 } from './selectors';
 import Company from './Company';
 
@@ -28,6 +29,7 @@ const mapStateToProps = () =>
     initSharePrice: makeSelectCompanyInitPrice(),
     canEditName: makeSelectCanEdit(),
     isFloated: makeSelectIsFloated(),
+    trainIds: makeSelectCompanyTrains(),
   });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

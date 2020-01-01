@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Train from 'containers/Train';
 
-const Trains = ({ trains, onCreateTrain }) => {
+const Trains = ({ trainIds, onCreateTrain }) => {
   return (
     <div>
+      {console.log('fwfwef')}
       <button type="button" onClick={onCreateTrain}>
         Create Train
       </button>
-      {trains.map(train => (
-        <Train key={train.trainId} {...train} />
+      {trainIds.map(trainId => (
+        <Train key={trainId} />
       ))}
-      {'filtered'}
     </div>
   );
 };
@@ -19,6 +19,6 @@ const Trains = ({ trains, onCreateTrain }) => {
 export default Trains;
 
 Trains.propTypes = {
-  trains: PropTypes.array,
+  trainIds: PropTypes.array.isRequired,
   onCreateTrain: PropTypes.func,
 };

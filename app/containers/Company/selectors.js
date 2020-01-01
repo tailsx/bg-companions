@@ -7,10 +7,12 @@ const makeSelectCanEdit = () => createSelector(selectCompany, company => company
 const makeSelectCompanyInitPrice = () =>
   createSelector(selectCompany, company => company.initSharePrice);
 const makeSelectIsFloated = () => createSelector(selectCompany, company => company.isFloated);
+const makeSelectCompanyTrains = () => createSelector(selectCompany, company => company.trainIds);
 
 export {
   makeSelectCompanyName,
   makeSelectCompanyInitPrice,
   makeSelectCanEdit,
   makeSelectIsFloated,
+  makeSelectCompanyTrains,
 };
