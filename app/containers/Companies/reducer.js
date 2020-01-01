@@ -1,22 +1,22 @@
-import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY, ADD_COMPANY } from './constants';
+import { FLOAT_COMPANY, CHANGE_INIT_SHARE_PRICE, CREATE_COMPANY, ADD_TRAIN } from './constants';
 
 // The initial state of the App
 const initialState = {};
 
 // Reducer
-const companion18czReducer = (state = initialState, action) => {
+const companiesReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_COMPANY:
       return {
         ...state,
         [action.payload.companyId]: { isFloated: false, trains: [] },
       };
-    case ADD_COMPANY:
+    case ADD_TRAIN:
       return {
         ...state,
         [action.payload.companyId]: {
           ...state[action.payload.companyId],
-          trains: [...state[action.payload.companyId], action.payload.trainId],
+          trains: [...state[action.payload.companyId].trains, action.payload.trainId],
         },
       };
     case CHANGE_INIT_SHARE_PRICE:
@@ -34,4 +34,4 @@ const companion18czReducer = (state = initialState, action) => {
   }
 };
 
-export default companion18czReducer;
+export default companiesReducer;
