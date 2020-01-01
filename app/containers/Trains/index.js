@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import { createTrain } from './actions';
-import { makeSelectTrains } from './selectors';
+import { makeSelectTrains, makeSelectTrainsById } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Trains';
 
@@ -13,6 +13,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = createStructuredSelector({
   trains: makeSelectTrains(),
+  filtered: makeSelectTrainsById(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

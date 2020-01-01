@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Train from 'components/Train';
 
-const Companies = ({ trains, onCreateTrain }) => {
+const Trains = ({ trains, filtered, onCreateTrain }) => {
   return (
     <div>
       <button type="button" onClick={onCreateTrain}>
@@ -11,10 +11,14 @@ const Companies = ({ trains, onCreateTrain }) => {
       {trains.map(train => (
         <Train key={train.trainId} {...train} />
       ))}
+      {'filtered'}
+      {filtered.map(fil => (
+        <Train key={fil.trainId} {...fil} />
+      ))}
     </div>
   );
 };
 
-export default Companies;
+export default Trains;
 
-Companies.propTypes = {};
+Trains.propTypes = {};
