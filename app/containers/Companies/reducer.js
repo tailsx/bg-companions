@@ -41,7 +41,10 @@ const companiesReducer = (state = initialState, action) => {
         ...state,
         byId: {
           ...state.byId,
-          [action.payload.id]: { initSharePrice: action.payload.price },
+          [action.payload.companyId]: {
+            ...state.byId[action.payload.companyId],
+            initSharePrice: action.payload.price,
+          },
         },
       };
     case FLOAT_COMPANY:
@@ -49,10 +52,10 @@ const companiesReducer = (state = initialState, action) => {
         ...state,
         byId: {
           ...state.byId,
-          [action.payload.id]: {
-            ...state.byId[action.payload.id],
+          [action.payload.companyId]: {
+            ...state.byId[action.payload.companyId],
             isFloated: true,
-            treasury: state[action.payload.id].initSharePrice,
+            treasury: state.byId[action.payload.companyId].initSharePrice,
           },
         },
       };

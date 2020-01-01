@@ -13,14 +13,14 @@ import {
  */
 export const createCompany = companyId => ({ type: CREATE_COMPANY, payload: { companyId } });
 
-export const floatCompany = (id, name, initSharePrice) => ({
+export const floatCompany = companyId => ({
   type: FLOAT_COMPANY,
-  payload: { id, name, initSharePrice },
+  payload: { companyId },
 });
 
-export const changeInitSharePrice = (id, price) => ({
+export const changeInitSharePrice = (companyId, price) => ({
   type: CHANGE_INIT_SHARE_PRICE,
-  payload: { id, price },
+  payload: { companyId, price },
 });
 
 export const addTrain = (companyId, trainId) => ({

@@ -1,13 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Trains from 'containers/Trains';
+import FloatValue from 'components/Company/FloatValue';
+import CompanyAssets from 'components/Company/CompanyAssets';
 
-const Company = ({ companyId, companyName, onNameChange, trainIds }) => (
+const Company = ({
+  companyId,
+  companyName,
+  onNameChange,
+  isFloated,
+  onFloatCompany,
+  onChangeInitPrice,
+  initSharePrice,
+  trainIds,
+}) => (
   <div>
-    {console.log(`Comapny ID: ${companyId}`)}
-    {`Comapny ID: ${companyId}`}
-    {`Comapny Name: ${companyName}`}
-    <Trains {...{ companyId, trainIds }} />
+    {!isFloated && (
+      <FloatValue
+        onButtonClick={onFloatCompany}
+        value={initSharePrice}
+        onValueChange={onChangeInitPrice}
+      />
+    )}
+    {isFloated && <CompanyAssets {...{ trainIds }} />}
     <input
       type="text"
       onChange={evt => onNameChange(companyId, evt.target.value)}

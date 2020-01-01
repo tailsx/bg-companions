@@ -4,4 +4,7 @@ const selectCompany = (state, props) => state.companies.byId[props.companyId];
 
 const makeSelectCompanyName = () => createSelector(selectCompany, company => company.companyName);
 
-export { makeSelectCompanyName };
+const makeSelectCompanyInitPrice = () =>
+  createSelector(selectCompany, company => company.initSharePrice);
+
+export { makeSelectCompanyName, makeSelectCompanyInitPrice };
