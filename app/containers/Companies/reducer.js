@@ -21,8 +21,8 @@ const companiesReducer = (state = initialState, action) => {
         byId: {
           ...state.byId,
           [action.payload.companyId]: {
-            ...state[action.payload.companyId],
-            trains: [...state[action.payload.companyId].trains, action.payload.trainId],
+            ...state.byId[action.payload.companyId],
+            trainIds: [...state.byId[action.payload.companyId].trainIds, action.payload.trainId],
           },
         },
       };

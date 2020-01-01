@@ -1,6 +1,17 @@
 import { createSelector } from 'reselect';
 
-const selectTrains = state => state.trains;
+const selectTrainIds = state => state.trains.allIds;
+
+const selectTrainData = state => state.trains.byId;
+
+const makeSelectTrains = () =>
+  createSelector(
+    selectTrainData,
+    (state, props) => props.trainIds,
+    (trainsData, trainIds) => trainIds.map(trainId => ({ trainId, ...trainsData[trainId] })),
+  );
+
+/* const selectTrains = state => state.trains;
 const selectCompanyId = (_, props) => props.companyId;
 
 const makeSelectFilteredTrains = () =>
@@ -35,5 +46,5 @@ const makeSelectTrains = () =>
       [],
     ),
   );
-
-export { selectTrains, selectCompanyId, makeSelectTrains, makeSelectTrainsById };
+ */
+export { selectTrainIds, selectTrainData, makeSelectTrains };

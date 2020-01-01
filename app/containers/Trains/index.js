@@ -12,6 +12,7 @@ import generateId from '../../utils/generateId';
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onCreateTrain: () => {
     const trainId = generateId();
+
     dispatch(addTrain(ownProps.companyId, trainId));
     dispatch(createTrain(trainId));
   },

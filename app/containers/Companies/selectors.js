@@ -6,7 +6,7 @@ const selectCompanyData = state => state.companies.byId;
 
 const makeSelectCompanies = () =>
   createSelector(selectCompanyIds, selectCompanyData, (companyIds, companies) =>
-    companyIds.map(companyId => companies[companyId]),
+    companyIds.map(companyId => ({ companyId, ...companies[companyId] })),
   );
 
 export { selectCompanyIds, selectCompanyData, makeSelectCompanies };

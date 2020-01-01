@@ -1,7 +1,10 @@
 import { CREATE_TRAIN } from './constants';
 
 // The initial state of the App
-const initialState = {};
+const initialState = {
+  byId: {},
+  allIds: [],
+};
 
 // Reducer
 const companion18czReducer = (state = initialState, action) => {
@@ -9,7 +12,8 @@ const companion18czReducer = (state = initialState, action) => {
     case CREATE_TRAIN:
       return {
         ...state,
-        [action.payload.trainId]: { trainName: 'Train Name' },
+        byId: { ...state.byId, [action.payload.trainId]: { trainName: 'Train Name' } },
+        allIds: [...state.allIds, action.payload.trainId],
       };
     default:
       return state;
