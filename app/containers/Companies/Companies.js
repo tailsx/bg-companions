@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Company from 'components/Company';
+import Company from 'containers/Company';
 
 const Companies = ({ companies, onChangeCompanyName, onCreateCompany }) => {
   return (

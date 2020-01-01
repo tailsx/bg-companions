@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Train from 'components/Train';
+import Train from 'containers/Train';
 
 const Trains = ({ trains, onCreateTrain }) => {
   return (

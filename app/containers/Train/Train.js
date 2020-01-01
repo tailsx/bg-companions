@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTYpes from 'prop-types';
 
-const Train = ({ trainId }) => (
+const Train = ({ trainId, trainName }) => (
   <div>
-    {`trainId: ${trainId}`}
+    {`trainName: ${trainName}`}
     {console.log(`trainId: ${trainId}`)}
   </div>
 );
