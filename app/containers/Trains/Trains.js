@@ -5,12 +5,11 @@ import Train from 'containers/Train';
 const Trains = ({ trainIds, onCreateTrain }) => {
   return (
     <div>
-      {console.log('fwfwef')}
       <button type="button" onClick={onCreateTrain}>
         Create Train
       </button>
       {trainIds.map(trainId => (
-        <Train key={trainId} />
+        <Train key={trainId} trainId={trainId} />
       ))}
     </div>
   );

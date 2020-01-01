@@ -6,7 +6,7 @@ import Trains from 'containers/Trains';
 const CompanyAssets = ({ companyId, trainIds }) => (
   <div>
     {`Comapny ID: ${companyId}`}
-    <Trains trainIds={trainIds} />
+    <Trains companyId={companyId} trainIds={trainIds} />
   </div>
 );
 
