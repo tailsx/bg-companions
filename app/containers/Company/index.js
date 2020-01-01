@@ -7,7 +7,12 @@ import {
   changeCompanyName,
   toggleNameEdit,
 } from 'containers/Companies/actions';
-import { makeSelectCompanyName, makeSelectCompanyInitPrice } from './selectors';
+import {
+  makeSelectCompanyName,
+  makeSelectCompanyInitPrice,
+  makeSelectCanEdit,
+  makeSelectIsFloated,
+} from './selectors';
 import Company from './Company';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -21,6 +26,8 @@ const mapStateToProps = () =>
   createStructuredSelector({
     companyName: makeSelectCompanyName(),
     initSharePrice: makeSelectCompanyInitPrice(),
+    canEditName: makeSelectCanEdit(),
+    isFloated: makeSelectIsFloated(),
   });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

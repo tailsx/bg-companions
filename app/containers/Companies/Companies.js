@@ -10,11 +10,7 @@ const Companies = ({ companies, onChangeCompanyName, onCreateCompany }) => {
         Create Company
       </button>
       {companies.map(company => (
-        <Company
-          key={`comp-${company.companyId}`}
-          {...company}
-          onNameChange={onChangeCompanyName}
-        />
+        <Company key={`comp-${company.companyId}`} companyId={company.companyId} />
       ))}
     </div>
   );

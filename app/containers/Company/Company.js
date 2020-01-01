@@ -5,12 +5,12 @@ import CompanyAssets from 'components/Company/CompanyAssets';
 import CompanyName from '../../components/Company/CompanyName';
 
 const Company = ({
+  companyId,
   companyName,
   isFloated,
   onFloatCompany,
   onChangeInitPrice,
   initSharePrice,
-  trainIds,
   canEditName,
   onToggleName,
   onChangeName,
@@ -29,7 +29,7 @@ const Company = ({
         onValueChange={onChangeInitPrice}
       />
     )}
-    {isFloated && <CompanyAssets {...{ trainIds }} />}
+    {isFloated && <CompanyAssets companyId={companyId} />}
   </div>
 );
 
@@ -47,6 +47,5 @@ Company.propTypes = {
   onChangeInitPrice: PropTypes.func,
   onFloatCompany: PropTypes.func,
 
-  trainIds: PropTypes.array,
   companyId: PropTypes.string,
 };
