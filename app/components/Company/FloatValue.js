@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import EditableInput from '../general/EditableInput/EditableInput';
 
 const FloatValue = ({ value = '0', onValueChange, onButtonClick }) => (
   <div>
-    <input type="number" value={value} onChange={onValueChange} />
-    <button type="button" onClick={onButtonClick}>
-      Initial Float
-    </button>
+    <EditableInput canEdit onButtonClick={onButtonClick} onChange={onValueChange} value={value} />
   </div>
 );
 

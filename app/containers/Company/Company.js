@@ -21,7 +21,7 @@ const Company = ({
   <div className="company">
     <EditableInput
       canEdit={canEditName}
-      onToggle={onToggleName}
+      onButtonClick={onToggleName}
       onChange={onChangeName}
       value={companyName}
     />
