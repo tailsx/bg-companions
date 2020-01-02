@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableInput from '../general/EditableInput/EditableInput';
+import EditableInput from '../../general/EditableInput/EditableInput';
+import './style.scss';
 
 const FloatValue = ({ value = '0', onValueChange, onButtonClick }) => (
-  <div>
-    <EditableInput canEdit onButtonClick={onButtonClick} onChange={onValueChange} value={value} />
+  <div className="float-value-wrapper">
+    <label>
+      <span className="label-text">Share Price</span>
+      <EditableInput canEdit onButtonClick={onButtonClick} onChange={onValueChange} value={value} />
+    </label>
   </div>
 );
 

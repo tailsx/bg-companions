@@ -1,12 +1,14 @@
-.input {
-  width: 100%;
-
-  display: flex;
-  .readonly {
-    color: #fff;
-  }
-
-  .input-text {
+.input-wrapper {
+  .input {
+    display: flex;
     flex-grow: 1;
+
+    .readonly {
+      color: #fff;
+    }
+
+    .input-text {
+      flex-grow: 1;
+    }
   }
 }
