@@ -44,7 +44,8 @@ const companiesReducer = (state = initialState, action) => {
           ...state.data,
           [action.payload.companyId]: {
             ...state.data[action.payload.companyId],
-            initSharePrice: action.payload.price,
+            initSharePrice:
+              action.payload.price && action.payload.price > 0 ? action.payload.price : 0,
           },
         },
       };
@@ -79,6 +80,7 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: {
             ...state.data[action.payload.companyId],
             canEditName: !state.data[action.payload.companyId].canEditName,
+            companyName: state.data[action.payload.companyId].companyName || 'Unnamed Company',
           },
         },
       };

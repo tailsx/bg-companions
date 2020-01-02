@@ -30,6 +30,7 @@ const companion18czReducer = (state = initialState, action) => {
           [action.payload.trainId]: {
             ...state.data[action.payload.trainId],
             canEditName: !state.data[action.payload.trainId].canEditName,
+            trainName: state.data[action.payload.trainId].trainName || 'Unnamed Company',
           },
         },
       };
@@ -62,7 +63,8 @@ const companion18czReducer = (state = initialState, action) => {
           ...state.data,
           [action.payload.trainId]: {
             ...state.data[action.payload.trainId],
-            totalRevenue: action.payload.revenue,
+            totalRevenue:
+              action.payload.revenue && action.payload.revenue > 0 ? action.payload.revenue : 0,
           },
         },
       };

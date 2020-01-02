@@ -1,7 +1,7 @@
 const createTrain = () => ({
   canEditName: false,
   canEditRevenue: false,
-  trainName: 'Train Name',
+  trainName: 'Unnamed Company',
   totalRevenue: 0,
 });
 

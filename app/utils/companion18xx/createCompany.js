@@ -1,5 +1,5 @@
 const createCompany = () => ({
-  companyName: 'New Train Company',
+  companyName: 'Unnamed Company',
   canEditName: false,
   isFloated: false,
   trainIds: [],

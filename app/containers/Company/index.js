@@ -16,9 +16,12 @@ import {
 } from './selectors';
 import Company from './Company';
 
+const RADIX_DECIMAL = 10;
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onFloatCompany: () => dispatch(floatCompany(ownProps.companyId)),
-  onChangeInitPrice: evt => dispatch(changeInitSharePrice(ownProps.companyId, evt.target.value)),
+  onChangeInitPrice: evt =>
+    dispatch(changeInitSharePrice(ownProps.companyId, parseInt(evt.target.value, RADIX_DECIMAL))),
   onChangeName: evt => dispatch(changeCompanyName(ownProps.companyId, evt.target.value)),
   onToggleName: () => dispatch(toggleNameEdit(ownProps.companyId)),
 });
