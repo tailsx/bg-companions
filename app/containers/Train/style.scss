@@ -1,4 +1,7 @@
 .train {
-  width: 50%;
   background: blue;
+  flex: 1 0 0;
+  white-space: nowrap;
+  margin: 5px;
+  max-width: 45%;
 }
