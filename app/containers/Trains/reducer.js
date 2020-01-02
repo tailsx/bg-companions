@@ -1,4 +1,10 @@
-import { CREATE_TRAIN, TOGGLE_NAME, CHANGE_NAME } from './constants';
+import {
+  CREATE_TRAIN,
+  TOGGLE_NAME,
+  CHANGE_NAME,
+  TOGGLE_REVENUE,
+  CHANGE_REVENUE,
+} from './constants';
 import createTrain from '../../utils/companion18xx/createTrain';
 
 // The initial state of the App
@@ -27,6 +33,17 @@ const companion18czReducer = (state = initialState, action) => {
           },
         },
       };
+    case TOGGLE_REVENUE:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.trainId]: {
+            ...state.data[action.payload.trainId],
+            canEditRevenue: !state.data[action.payload.trainId].canEditRevenue,
+          },
+        },
+      };
     case CHANGE_NAME:
       return {
         ...state,
@@ -35,6 +52,17 @@ const companion18czReducer = (state = initialState, action) => {
           [action.payload.trainId]: {
             ...state.data[action.payload.trainId],
             trainName: action.payload.name,
+          },
+        },
+      };
+    case CHANGE_REVENUE:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.trainId]: {
+            ...state.data[action.payload.trainId],
+            totalRevenue: action.payload.revenue,
           },
         },
       };

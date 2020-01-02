@@ -1,4 +1,10 @@
-import { CREATE_TRAIN, CHANGE_NAME, TOGGLE_NAME } from './constants';
+import {
+  CREATE_TRAIN,
+  CHANGE_NAME,
+  TOGGLE_NAME,
+  TOGGLE_REVENUE,
+  CHANGE_REVENUE,
+} from './constants';
 
 /**
  * Changes the input field of the form
@@ -14,7 +20,17 @@ export const toggleEditName = trainId => ({
   payload: { trainId },
 });
 
-export const chnageTrainName = (trainId, name) => ({
+export const changeTrainName = (trainId, name) => ({
   type: CHANGE_NAME,
   payload: { trainId, name },
+});
+
+export const toggleEditRevenue = trainId => ({
+  type: TOGGLE_REVENUE,
+  payload: { trainId },
+});
+
+export const changeTrainRevenue = (trainId, revenue) => ({
+  type: CHANGE_REVENUE,
+  payload: { trainId, revenue },
 });
