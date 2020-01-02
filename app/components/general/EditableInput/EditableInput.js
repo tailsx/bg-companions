@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import './style.scss';
 import IconButton from '../Button/IconButton';
 
-const EditableInput = ({ canEdit, onToggle, value, onChange }) => (
+const EditableInput = ({ canEdit, onToggle, value, onChange, inputType = 'text' }) => (
   <div className="input-wrapper">
     <div className="input">
       {canEdit ? (
-        <input className="input-text" type="text" onChange={onChange} value={value} />
+        <input className="input-text" type={inputType} onChange={onChange} value={value} />
       ) : (
         <span className="input-text readonly">{value}</span>
       )}
@@ -24,4 +24,5 @@ EditableInput.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
+  inputType: PropTypes.oneOf(['text', 'number']),
 };
