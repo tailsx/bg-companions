@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Train from 'containers/Train';
 
+import './style.scss';
+
 const Trains = ({ trainIds, onCreateTrain, allTrainsRevenue }) => {
   return (
     <div>
