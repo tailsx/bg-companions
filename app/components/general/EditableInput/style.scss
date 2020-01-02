@@ -1,14 +1,19 @@
-.input-wrapper {
-  .input {
+.input {
+  display: flex;
+
+  &__text {
+    color: #fff;
     display: flex;
-    flex-grow: 1;
+    flex: 1 1 0;
+  }
 
-    .readonly {
-      color: #fff;
-    }
+  &__field {
+    display: flex;
+    width: 100%;
+  }
 
-    .input-text {
-      flex-grow: 1;
-    }
+  &__button {
+    display: flex;
+    align-self: flex-end;
   }
 }

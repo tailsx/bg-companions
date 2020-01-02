@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FloatValue from 'components/Company/FloatValue';
+import SharePrice from 'components/Company/SharePrice';
 import CompanyAssets from 'components/Company/CompanyAssets';
 import EditableInput from 'components/general/EditableInput';
 import './style.scss';
@@ -26,7 +26,7 @@ const Company = ({
       value={companyName}
     />
     {!isFloated && (
-      <FloatValue
+      <SharePrice
         onButtonClick={onFloatCompany}
         value={initSharePrice}
         onValueChange={onChangeInitPrice}
