@@ -6,14 +6,16 @@ import './style.scss';
 
 const Trains = ({ trainIds, onCreateTrain, allTrainsRevenue }) => {
   return (
-    <div>
+    <div className="trains">
+      <div className="trains__text">{`Total income: ${allTrainsRevenue}`}</div>
       <button type="button" onClick={onCreateTrain}>
         Create Train
       </button>
-      {`Total income: ${allTrainsRevenue}`}
-      {trainIds.map(trainId => (
-        <Train key={trainId} trainId={trainId} />
-      ))}
+      <div className="trains__fleet">
+        {trainIds.map(trainId => (
+          <Train key={trainId} trainId={trainId} />
+        ))}
+      </div>
     </div>
   );
 };
