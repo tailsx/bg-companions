@@ -8,7 +8,7 @@ import { addTrain } from 'containers/Companies/actions';
 import { createTrain } from './actions';
 import { makeSelectAllRevenue } from './selectors';
 import reducer from './reducer';
-import Companion18xx from './Trains';
+import Trains from './Trains';
 import generateId from '../../utils/generateId';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -28,5 +28,5 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer({ key: 'trains', reducer });
 
-export default compose(withReducer, withConnect)(Companion18xx);
+export default compose(withReducer, withConnect)(Trains);
 export { mapDispatchToProps };
