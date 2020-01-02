@@ -19,7 +19,7 @@ const Train = ({
     <div className="train__field">
       <EditableInput
         canEdit={canEditName}
-        onToggle={onToggleName}
+        onButtonClick={onToggleName}
         onChange={onChangeName}
         value={trainName}
       />
@@ -27,7 +27,7 @@ const Train = ({
     <div className="train__field">
       <EditableInput
         canEdit={canEditRevenue}
-        onToggle={onToggleRevenue}
+        onButtonClick={onToggleRevenue}
         onChange={onChangeRevenue}
         value={totalRevenue}
         label="Revenue"
