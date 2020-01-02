@@ -3,10 +3,16 @@ import PropTypes from 'prop-types';
 
 import Trains from 'containers/Trains';
 
+import './style.scss';
+
 const CompanyAssets = ({ companyId, trainIds }) => (
-  <div>
-    {`Comapny ID: ${companyId}`}
-    <Trains companyId={companyId} trainIds={trainIds} />
+  <div className="company-assets">
+    <div className="company-assets__text">{`Comapny ID: ${companyId}`}</div>
+
+    <div className="company-assets__trains">
+      <span>Trains</span>
+      <Trains companyId={companyId} trainIds={trainIds} />
+    </div>
   </div>
 );
 

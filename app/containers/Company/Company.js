@@ -19,12 +19,14 @@ const Company = ({
   trainIds,
 }) => (
   <div className="company">
-    <EditableInput
-      canEdit={canEditName}
-      onButtonClick={onToggleName}
-      onChange={onChangeName}
-      value={companyName}
-    />
+    <div>
+      <EditableInput
+        canEdit={canEditName}
+        onButtonClick={onToggleName}
+        onChange={onChangeName}
+        value={companyName}
+      />
+    </div>
     {!isFloated && (
       <SharePrice
         onButtonClick={onFloatCompany}
