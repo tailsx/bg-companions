@@ -13,9 +13,6 @@ class Header extends React.PureComponent {
         </a>
         <div className="nav-bar">
           <Link className="router-link" to="/">
-            Home
-          </Link>
-          <Link className="router-link" to="/18xx">
             18xx
           </Link>
         </div>
