@@ -10,7 +10,7 @@ import createCompany from '../../utils/companion18xx/createCompany';
 
 // The initial state of the App
 const initialState = {
-  byId: {},
+  data: {},
   allIds: [],
 };
 
@@ -20,8 +20,8 @@ const companiesReducer = (state = initialState, action) => {
     case CREATE_COMPANY:
       return {
         ...state,
-        byId: {
-          ...state.byId,
+        data: {
+          ...state.data,
           [action.payload.companyId]: createCompany(),
         },
         allIds: [...state.allIds, action.payload.companyId],
@@ -29,21 +29,21 @@ const companiesReducer = (state = initialState, action) => {
     case ADD_TRAIN:
       return {
         ...state,
-        byId: {
-          ...state.byId,
+        data: {
+          ...state.data,
           [action.payload.companyId]: {
-            ...state.byId[action.payload.companyId],
-            trainIds: [...state.byId[action.payload.companyId].trainIds, action.payload.trainId],
+            ...state.data[action.payload.companyId],
+            trainIds: [...state.data[action.payload.companyId].trainIds, action.payload.trainId],
           },
         },
       };
     case CHANGE_INIT_SHARE_PRICE:
       return {
         ...state,
-        byId: {
-          ...state.byId,
+        data: {
+          ...state.data,
           [action.payload.companyId]: {
-            ...state.byId[action.payload.companyId],
+            ...state.data[action.payload.companyId],
             initSharePrice: action.payload.price,
           },
         },
@@ -51,22 +51,22 @@ const companiesReducer = (state = initialState, action) => {
     case FLOAT_COMPANY:
       return {
         ...state,
-        byId: {
-          ...state.byId,
+        data: {
+          ...state.data,
           [action.payload.companyId]: {
-            ...state.byId[action.payload.companyId],
+            ...state.data[action.payload.companyId],
             isFloated: true,
-            treasury: state.byId[action.payload.companyId].initSharePrice,
+            treasury: state.data[action.payload.companyId].initSharePrice,
           },
         },
       };
     case CHANGE_NAME:
       return {
         ...state,
-        byId: {
-          ...state.byId,
+        data: {
+          ...state.data,
           [action.payload.companyId]: {
-            ...state.byId[action.payload.companyId],
+            ...state.data[action.payload.companyId],
             companyName: action.payload.companyName,
           },
         },
@@ -74,11 +74,11 @@ const companiesReducer = (state = initialState, action) => {
     case TOOGLE_NAME:
       return {
         ...state,
-        byId: {
-          ...state.byId,
+        data: {
+          ...state.data,
           [action.payload.companyId]: {
-            ...state.byId[action.payload.companyId],
-            canEditName: !state.byId[action.payload.companyId].canEditName,
+            ...state.data[action.payload.companyId],
+            canEditName: !state.data[action.payload.companyId].canEditName,
           },
         },
       };
