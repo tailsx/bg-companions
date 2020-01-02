@@ -6,7 +6,7 @@ import injectReducer from 'utils/injectReducer';
 import { addTrain } from 'containers/Companies/actions';
 
 import { createTrain } from './actions';
-import { makeSelectTrains } from './selectors';
+import { makeSelectAllRevenue } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Trains';
 import generateId from '../../utils/generateId';
@@ -20,7 +20,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 });
 
-const mapStateToProps = createStructuredSelector({});
+const mapStateToProps = createStructuredSelector({
+  allTrainsRevenue: makeSelectAllRevenue(),
+});
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
