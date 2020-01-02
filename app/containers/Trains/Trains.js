@@ -8,9 +8,11 @@ const Trains = ({ trainIds, onCreateTrain, allTrainsRevenue }) => {
   return (
     <div className="trains">
       <div className="trains__text">{`Total income: ${allTrainsRevenue}`}</div>
-      <button type="button" onClick={onCreateTrain}>
-        Create Train
-      </button>
+      <div>
+        <button type="button" onClick={onCreateTrain}>
+          Create Train
+        </button>
+      </div>
       <div className="trains__fleet">
         {trainIds.map(trainId => (
           <Train key={trainId} trainId={trainId} />

@@ -5,13 +5,19 @@ import {
   TOGGLE_REVENUE,
   CHANGE_REVENUE,
 } from './constants';
-import createTrain from '../../utils/companion18xx/createTrain';
 
 // The initial state of the App
 const initialState = {
   data: {},
   allIds: [],
 };
+
+const createTrain = () => ({
+  canEditName: false,
+  canEditRevenue: false,
+  trainName: 'Unnamed Company',
+  totalRevenue: 0,
+});
 
 // Reducer
 const companion18czReducer = (state = initialState, action) => {

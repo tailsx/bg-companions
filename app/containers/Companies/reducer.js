@@ -6,7 +6,7 @@ import {
   CHANGE_NAME,
   TOOGLE_NAME,
 } from './constants';
-import createCompany from '../../utils/companion18xx/createCompany';
+
 
 const MAX_NUMBER_SHARES = 10;
 const DEFAULT_COMPANY_NAME = 'Unnamed Company';
@@ -16,6 +16,14 @@ const initialState = {
   data: {},
   allIds: [],
 };
+
+const createCompany = () => ({
+  companyName: 'Unnamed Company',
+  canEditName: false,
+  isFloated: false,
+  trainIds: [],
+});
+
 
 // Reducer
 const companiesReducer = (state = initialState, action) => {
