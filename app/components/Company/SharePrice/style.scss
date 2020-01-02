@@ -1,17 +1,9 @@
 .share-price {
   width: 100%;
-
-  &__wrapper {
-    display: flex;
-    width: 80%;
-    margin: auto;
-  }
-
-  &__text {
-    flex-grow: 1;
-  }
+  display: flex;
+  justify-content: center;
 
   &__input {
-    flex-grow: 2;
+    width: 80%;
   }
 }

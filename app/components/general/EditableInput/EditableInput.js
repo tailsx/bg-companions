@@ -7,7 +7,7 @@ import IconButton from '../Button/IconButton';
 const EditableInput = ({ label, canEdit, onButtonClick, value, onChange, inputType = 'text' }) => (
   <div className="editable">
     <label className="editable__wrapper">
-      <div className={`editable__label${!label && ' editable__label--hidden'}`}>{label}</div>
+      <div className={`editable__label${label ? '' : ' editable__label--hidden'}`}>{label}</div>
       <div className="editable__form">
         {canEdit ? (
           <input className="editable__field" type={inputType} onChange={onChange} value={value} />
