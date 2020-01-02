@@ -30,6 +30,7 @@ const Train = ({
         onToggle={onToggleRevenue}
         onChange={onChangeRevenue}
         value={totalRevenue}
+        label="Revenue"
       />
     </div>
   </div>
