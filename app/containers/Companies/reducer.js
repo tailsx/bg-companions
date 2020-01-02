@@ -8,6 +8,9 @@ import {
 } from './constants';
 import createCompany from '../../utils/companion18xx/createCompany';
 
+const MAX_NUMBER_SHARES = 10;
+const DEFAULT_COMPANY_NAME = 'Unnamed Company';
+
 // The initial state of the App
 const initialState = {
   data: {},
@@ -57,7 +60,7 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: {
             ...state.data[action.payload.companyId],
             isFloated: true,
-            treasury: state.data[action.payload.companyId].initSharePrice,
+            treasury: state.data[action.payload.companyId].initSharePrice * MAX_NUMBER_SHARES,
           },
         },
       };
@@ -80,7 +83,7 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: {
             ...state.data[action.payload.companyId],
             canEditName: !state.data[action.payload.companyId].canEditName,
-            companyName: state.data[action.payload.companyId].companyName || 'Unnamed Company',
+            companyName: state.data[action.payload.companyId].companyName || DEFAULT_COMPANY_NAME,
           },
         },
       };

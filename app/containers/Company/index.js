@@ -13,6 +13,7 @@ import {
   makeSelectCanEdit,
   makeSelectIsFloated,
   makeSelectCompanyTrains,
+  makeSelectCompanyTreasury,
 } from './selectors';
 import Company from './Company';
 
@@ -33,6 +34,7 @@ const mapStateToProps = () =>
     canEditName: makeSelectCanEdit(),
     isFloated: makeSelectIsFloated(),
     trainIds: makeSelectCompanyTrains(),
+    treasury: makeSelectCompanyTreasury(),
   });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
