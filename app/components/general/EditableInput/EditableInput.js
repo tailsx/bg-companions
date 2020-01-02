@@ -1,24 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './style.scss';
+import IconButton from '../Button/IconButton';
+
 const EditableInput = ({ canEdit, onToggle, value, onChange }) => (
-  <div>
-    {canEdit && (
-      <div>
-        <input type="text" onChange={onChange} value={value} />
-        <button type="button" onClick={onToggle}>
-          Done Edit
-        </button>
-      </div>
-    )}
-    {!canEdit && (
-      <div>
-        {`${value}`}
-        <button type="button" onClick={onToggle}>
-          Edit Name
-        </button>
-      </div>
-    )}
+  <div className="input-wrapper">
+    <div className="input">
+      {canEdit ? (
+        <input className="input-text" type="text" onChange={onChange} value={value} />
+      ) : (
+        <span className="input-text readonly">{value}</span>
+      )}
+      <IconButton iconClass={canEdit ? 'icon-ok' : 'icon-pencil'} onClick={onToggle} />
+    </div>
   </div>
 );
 

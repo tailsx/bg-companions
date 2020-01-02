@@ -1,0 +1,12 @@
+.input {
+  width: 100%;
+
+  display: flex;
+  .readonly {
+    color: #fff;
+  }
+
+  .input-text {
+    flex-grow: 1;
+  }
+}
