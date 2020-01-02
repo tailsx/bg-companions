@@ -20,7 +20,7 @@ const SharePrice = ({ value = '0', onValueChange, onButtonClick }) => (
 export default SharePrice;
 
 SharePrice.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.number,
   onButtonClick: PropTypes.func.isRequired,
   onValueChange: PropTypes.func.isRequired,
 };

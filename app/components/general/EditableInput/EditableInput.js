@@ -28,7 +28,7 @@ export default EditableInput;
 
 EditableInput.propTypes = {
   canEdit: PropTypes.bool.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
   onButtonClick: PropTypes.func.isRequired,
   inputType: PropTypes.oneOf(['text', 'number']),

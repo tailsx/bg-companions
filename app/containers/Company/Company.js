@@ -49,7 +49,7 @@ Company.propTypes = {
   onChangeName: PropTypes.func,
   companyName: PropTypes.string,
 
-  initSharePrice: PropTypes.string,
+  initSharePrice: PropTypes.number,
   onChangeInitPrice: PropTypes.func,
   onFloatCompany: PropTypes.func,
 
