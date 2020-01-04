@@ -18,7 +18,7 @@ export const createCompany = companyId => ({ type: CREATE_COMPANY, payload: { co
 
 export const runAll = () => ({ type: RUN_ALL });
 
-export const runAllAsync = mapping => ({ type: RUN_ALL_ASYNC, payload: { mapping } });
+export const runAllAsync = revenueById => ({ type: RUN_ALL_ASYNC, payload: { revenueById } });
 
 export const floatCompany = companyId => ({
   type: FLOAT_COMPANY,

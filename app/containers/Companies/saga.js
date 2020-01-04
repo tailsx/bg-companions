@@ -6,6 +6,7 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { runAllAsync } from 'containers/Companies/actions';
 
 import { makeSelectTrainData } from 'containers/Trains/selectors';
+import { makeSelectTrainsByCompany } from './selectors';
 import { RUN_ALL } from './constants';
 
 /**
@@ -14,8 +15,19 @@ import { RUN_ALL } from './constants';
 export function* getRepos() {
   // Select username from store
   const trains = yield select(makeSelectTrainData());
-
-  yield put(runAllAsync(trains));
+  const companies = yield select(makeSelectTrainsByCompany());
+  console.log(trains, companies);
+  const revenue = Object.entries(companies).reduce(
+    (accumlator, [companyId, companyTrains]) => ({
+      ...accumlator,
+      [companyId]: companyTrains.reduce(
+        (totalRevenue, trainId) => totalRevenue + trains[trainId].totalRevenue,
+        0,
+      ),
+    }),
+    {},
+  );
+  yield put(runAllAsync(revenue));
 }
 
 /**

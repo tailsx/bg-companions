@@ -16,6 +16,7 @@ const initialState = {
   data: {},
   allIds: [],
   trainsByCompanyId: {},
+  treasuryById: {},
 };
 
 // helpers
@@ -43,6 +44,7 @@ const companiesReducer = (state = initialState, action) => {
           ...state.trainsByCompanyId,
           [action.payload.companyId]: [],
         },
+        treasuryById: { ...state.treasuryById, [action.payload.companyId]: 0 },
       };
     case ADD_TRAIN:
       return {
@@ -75,8 +77,12 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: {
             ...state.data[action.payload.companyId],
             isFloated: true,
-            treasury: state.data[action.payload.companyId].initSharePrice * MAX_NUMBER_SHARES,
           },
+        },
+        treasuryById: {
+          ...state.treasuryById,
+          [action.payload.companyId]:
+            state.data[action.payload.companyId].initSharePrice * MAX_NUMBER_SHARES,
         },
       };
     case CHANGE_NAME:
@@ -105,7 +111,13 @@ const companiesReducer = (state = initialState, action) => {
     case RUN_ALL_ASYNC:
       return {
         ...state,
-        yoyo: action.payload.mapping,
+        treasuryById: Object.entries(state.treasuryById).reduce(
+          (newTreasury, [companyId, oldTreasury]) => ({
+            ...newTreasury,
+            [companyId]: oldTreasury + action.payload.revenueById[companyId],
+          }),
+          {},
+        ),
       };
     default:
       return state;
