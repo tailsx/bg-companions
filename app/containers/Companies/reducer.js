@@ -15,6 +15,7 @@ const DEFAULT_COMPANY_NAME = 'Unnamed Company';
 const initialState = {
   data: {},
   allIds: [],
+  trainsByCompanyId: {},
 };
 
 // helpers
@@ -22,7 +23,6 @@ const createCompany = () => ({
   companyName: 'Unnamed Company',
   canEditName: false,
   isFloated: false,
-  trainIds: [],
 });
 
 const sumTrainRevenue = (trainIds, trainsData) =>
@@ -39,16 +39,20 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: createCompany(),
         },
         allIds: [...state.allIds, action.payload.companyId],
+        trainsByCompanyId: {
+          ...state.trainsByCompanyId,
+          [action.payload.companyId]: [],
+        },
       };
     case ADD_TRAIN:
       return {
         ...state,
-        data: {
-          ...state.data,
-          [action.payload.companyId]: {
-            ...state.data[action.payload.companyId],
-            trainIds: [...state.data[action.payload.companyId].trainIds, action.payload.trainId],
-          },
+        trainsByCompanyId: {
+          ...state.trainsByCompanyId,
+          [action.payload.companyId]: [
+            ...state.trainsByCompanyId[action.payload.companyId],
+            action.payload.trainId,
+          ],
         },
       };
     case CHANGE_INIT_SHARE_PRICE:
