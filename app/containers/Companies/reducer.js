@@ -5,8 +5,8 @@ import {
   ADD_TRAIN,
   CHANGE_NAME,
   TOOGLE_NAME,
+  RUN_ALL_ASYNC,
 } from './constants';
-
 
 const MAX_NUMBER_SHARES = 10;
 const DEFAULT_COMPANY_NAME = 'Unnamed Company';
@@ -17,6 +17,7 @@ const initialState = {
   allIds: [],
 };
 
+// helpers
 const createCompany = () => ({
   companyName: 'Unnamed Company',
   canEditName: false,
@@ -24,6 +25,8 @@ const createCompany = () => ({
   trainIds: [],
 });
 
+const sumTrainRevenue = (trainIds, trainsData) =>
+  trainIds.reduce((sum, trainId) => sum + trainsData[trainId].totalRevenue, 0);
 
 // Reducer
 const companiesReducer = (state = initialState, action) => {
@@ -94,6 +97,11 @@ const companiesReducer = (state = initialState, action) => {
             companyName: state.data[action.payload.companyId].companyName || DEFAULT_COMPANY_NAME,
           },
         },
+      };
+    case RUN_ALL_ASYNC:
+      return {
+        ...state,
+        yoyo: action.payload.mapping,
       };
     default:
       return state;
