@@ -12,7 +12,6 @@ const Company = ({
   isFloated,
   onFloatCompany,
   onChangeInitPrice,
-  initSharePrice,
   canEditName,
   onToggleName,
   onChangeName,
@@ -32,7 +31,6 @@ const Company = ({
     {!isFloated && (
       <SharePrice
         onButtonClick={onFloatCompany}
-        value={initSharePrice}
         onValueChange={onChangeInitPrice}
         listSharePrices={listSharePrices}
       />
@@ -51,7 +49,6 @@ Company.propTypes = {
   onChangeName: PropTypes.func,
   companyName: PropTypes.string,
 
-  initSharePrice: PropTypes.number,
   onChangeInitPrice: PropTypes.func,
   onFloatCompany: PropTypes.func,
 

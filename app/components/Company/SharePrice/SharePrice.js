@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableInput from '../../general/EditableInput/EditableInput';
+
+import Selectable from '../../general/Selectable/Selectable';
+
 import './style.scss';
 
-const SharePrice = ({ value = '0', onValueChange, onButtonClick }) => (
+const SharePrice = ({ onValueChange, onButtonClick, listSharePrices }) => (
   <div className="share-price">
     <div className="share-price__input">
-      <EditableInput
-        canEdit
-        label="Share Price"
+      <Selectable
         onButtonClick={onButtonClick}
-        onChange={onValueChange}
-        value={value}
+        onValueChange={onValueChange}
+        buttonText="Set price"
+        options={listSharePrices}
       />
     </div>
   </div>
@@ -20,7 +21,7 @@ const SharePrice = ({ value = '0', onValueChange, onButtonClick }) => (
 export default SharePrice;
 
 SharePrice.propTypes = {
-  value: PropTypes.number,
   onButtonClick: PropTypes.func.isRequired,
   onValueChange: PropTypes.func.isRequired,
+  listSharePrices: PropTypes.arrayOf(PropTypes.number),
 };

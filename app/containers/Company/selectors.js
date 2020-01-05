@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 const RADIX_DECIMAL = 10;
 
-const selectShareOptions = state => state.companion18xx.sharePrices;
+const selectShareOptions = state => state.companies.sharePrices;
 
 const selectCompany = (state, props) => state.companies.data[props.companyId];
 const selectCompanyTrains = (state, props) => state.companies.trainsByCompanyId[props.companyId];
