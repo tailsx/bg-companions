@@ -5,7 +5,7 @@ import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
 import Companion18xx from './Companion18xx';
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = () => ({});
 
 const mapStateToProps = createStructuredSelector({});
 

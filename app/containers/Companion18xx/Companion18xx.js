@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Companies from 'containers/Companies';
 
@@ -14,4 +13,3 @@ export default class Companion18xx extends React.PureComponent {
   }
 }
 
-Companion18xx.propTypes = {};
