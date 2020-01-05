@@ -18,6 +18,7 @@ const Company = ({
   onChangeName,
   trainIds,
   treasury,
+  listSharePrices,
 }) => (
   <div className="company">
     <div>
@@ -33,6 +34,7 @@ const Company = ({
         onButtonClick={onFloatCompany}
         value={initSharePrice}
         onValueChange={onChangeInitPrice}
+        listSharePrices={listSharePrices}
       />
     )}
     {isFloated && <CompanyAssets companyId={companyId} trainIds={trainIds} treasury={treasury} />}
@@ -57,4 +59,6 @@ Company.propTypes = {
   trainIds: PropTypes.array.isRequired,
 
   treasury: PropTypes.number,
+
+  listSharePrices: PropTypes.arrayOf(PropTypes.number),
 };

@@ -5,11 +5,15 @@ import {
   ADD_TRAIN,
   CHANGE_NAME,
   TOOGLE_NAME,
+  RESET_LIST,
+  ADD_SHARE_PRICE,
   RUN_ALL_ASYNC,
 } from './constants';
 
 const MAX_NUMBER_SHARES = 10;
 const DEFAULT_COMPANY_NAME = 'Unnamed Company';
+
+const getDefaultSharePrices = () => [60, 70, 80];
 
 // The initial state of the App
 const initialState = {
@@ -17,6 +21,7 @@ const initialState = {
   allIds: [],
   trainsByCompanyId: {},
   treasuryById: {},
+  sharePrices: getDefaultSharePrices(),
 };
 
 // helpers
@@ -25,9 +30,6 @@ const createCompany = () => ({
   canEditName: false,
   isFloated: false,
 });
-
-const sumTrainRevenue = (trainIds, trainsData) =>
-  trainIds.reduce((sum, trainId) => sum + trainsData[trainId].totalRevenue, 0);
 
 // Reducer
 const companiesReducer = (state = initialState, action) => {
@@ -119,6 +121,10 @@ const companiesReducer = (state = initialState, action) => {
           {},
         ),
       };
+    case ADD_SHARE_PRICE:
+      return { ...state, sharePrices: [...state.sharePrices, action.payload.sharePrice] };
+    case RESET_LIST:
+      return { ...state, sharePrices: getDefaultSharePrices() };
     default:
       return state;
   }

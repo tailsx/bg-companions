@@ -7,6 +7,8 @@ import {
   TOOGLE_NAME,
   RUN_ALL,
   RUN_ALL_ASYNC,
+  ADD_SHARE_PRICE,
+  RESET_LIST,
 } from './constants';
 
 /**
@@ -41,3 +43,6 @@ export const changeCompanyName = (companyId, companyName) => ({
 });
 
 export const toggleNameEdit = companyId => ({ type: TOOGLE_NAME, payload: { companyId } });
+
+export const addSharePrice = sharePrice => ({ type: ADD_SHARE_PRICE, payload: { sharePrice } });
+export const resetList = () => ({ type: RESET_LIST });

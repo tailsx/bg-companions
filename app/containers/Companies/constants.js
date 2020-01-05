@@ -6,3 +6,5 @@ export const FLOAT_COMPANY = 'bg-companions/Company/FLOAT_COMPANY';
 export const TOOGLE_NAME = 'bg-companions/Company/TOOGLE_NAME';
 export const RUN_ALL = 'bg-companions/Company/RUN_ALL';
 export const RUN_ALL_ASYNC = 'bg-companions/Company/RUN_ALL_ASYNC';
+export const ADD_SHARE_PRICE = 'bg-companions/Company/ADD_SHARE_PRICE';
+export const RESET_LIST = 'bg-companions/Company/RESET_LIST';
