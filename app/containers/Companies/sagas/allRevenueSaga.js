@@ -1,11 +1,10 @@
-import { put, select, takeLatest } from 'redux-saga/effects';
+import { put, select } from 'redux-saga/effects';
 import { runAllAsync } from 'containers/Companies/actions';
 
 import { makeSelectTrainData } from 'containers/Trains/selectors';
-import { makeSelectTrainsByCompany } from './selectors';
-import { RUN_ALL } from './constants';
+import { makeSelectTrainsByCompany } from '../selectors';
 
-export function* calcRevenueHelper() {
+export default function* allRevenue() {
   const trains = yield select(makeSelectTrainData());
   const companies = yield select(makeSelectTrainsByCompany());
 
@@ -20,11 +19,4 @@ export function* calcRevenueHelper() {
     {},
   );
   yield put(runAllAsync(revenue));
-}
-
-/**
- * Root saga manages watcher lifecycle
- */
-export default function* calcRevenue() {
-  yield takeLatest(RUN_ALL, calcRevenueHelper);
 }

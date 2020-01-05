@@ -8,7 +8,7 @@ import { makeSelectCompanies } from './selectors';
 import reducer from './reducer';
 import Companion18xx from './Companies';
 import generateId from '../../utils/generateId';
-import saga from './saga';
+import saga from './sagas';
 
 const mapDispatchToProps = dispatch => ({
   onCreateCompany: () => dispatch(createCompany(generateId())),
