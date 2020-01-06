@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTYpes from 'prop-types';
+import PropTypes from 'prop-types';
 import EditableInput from '../../components/general/EditableInput';
 
 import './style.scss';
 
 const Train = ({
-  trainId,
   trainName,
   canEditName,
   onToggleName,
@@ -39,5 +38,13 @@ const Train = ({
 export default Train;
 
 Train.propTypes = {
-  trainId: PropTYpes.string,
+  trainName: PropTypes.string,
+  canEditName: PropTypes.bool,
+  onToggleName: PropTypes.func,
+  onChangeName: PropTypes.func,
+
+  canEditRevenue: PropTypes.bool,
+  onToggleRevenue: PropTypes.func,
+  onChangeRevenue: PropTypes.func,
+  totalRevenue: PropTypes.number,
 };

@@ -12,12 +12,12 @@ const Company = ({
   isFloated,
   onFloatCompany,
   onChangeInitPrice,
-  initSharePrice,
   canEditName,
   onToggleName,
   onChangeName,
   trainIds,
   treasury,
+  listSharePrices,
 }) => (
   <div className="company">
     <div>
@@ -31,8 +31,8 @@ const Company = ({
     {!isFloated && (
       <SharePrice
         onButtonClick={onFloatCompany}
-        value={initSharePrice}
         onValueChange={onChangeInitPrice}
+        listSharePrices={listSharePrices}
       />
     )}
     {isFloated && <CompanyAssets companyId={companyId} trainIds={trainIds} treasury={treasury} />}
@@ -49,7 +49,6 @@ Company.propTypes = {
   onChangeName: PropTypes.func,
   companyName: PropTypes.string,
 
-  initSharePrice: PropTypes.string,
   onChangeInitPrice: PropTypes.func,
   onFloatCompany: PropTypes.func,
 
@@ -57,4 +56,6 @@ Company.propTypes = {
   trainIds: PropTypes.array.isRequired,
 
   treasury: PropTypes.number,
+
+  listSharePrices: PropTypes.arrayOf(PropTypes.number),
 };

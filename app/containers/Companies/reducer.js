@@ -5,25 +5,31 @@ import {
   ADD_TRAIN,
   CHANGE_NAME,
   TOOGLE_NAME,
+  RESET_LIST,
+  ADD_SHARE_PRICE,
+  RUN_ALL_ASYNC,
 } from './constants';
-
 
 const MAX_NUMBER_SHARES = 10;
 const DEFAULT_COMPANY_NAME = 'Unnamed Company';
+
+const getDefaultSharePrices = () => [60, 70, 80];
 
 // The initial state of the App
 const initialState = {
   data: {},
   allIds: [],
+  trainsByCompanyId: {},
+  treasuryById: {},
+  sharePrices: getDefaultSharePrices(),
 };
 
+// helpers
 const createCompany = () => ({
   companyName: 'Unnamed Company',
   canEditName: false,
   isFloated: false,
-  trainIds: [],
 });
-
 
 // Reducer
 const companiesReducer = (state = initialState, action) => {
@@ -36,16 +42,21 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: createCompany(),
         },
         allIds: [...state.allIds, action.payload.companyId],
+        trainsByCompanyId: {
+          ...state.trainsByCompanyId,
+          [action.payload.companyId]: [],
+        },
+        treasuryById: { ...state.treasuryById, [action.payload.companyId]: 0 },
       };
     case ADD_TRAIN:
       return {
         ...state,
-        data: {
-          ...state.data,
-          [action.payload.companyId]: {
-            ...state.data[action.payload.companyId],
-            trainIds: [...state.data[action.payload.companyId].trainIds, action.payload.trainId],
-          },
+        trainsByCompanyId: {
+          ...state.trainsByCompanyId,
+          [action.payload.companyId]: [
+            ...state.trainsByCompanyId[action.payload.companyId],
+            action.payload.trainId,
+          ],
         },
       };
     case CHANGE_INIT_SHARE_PRICE:
@@ -68,8 +79,12 @@ const companiesReducer = (state = initialState, action) => {
           [action.payload.companyId]: {
             ...state.data[action.payload.companyId],
             isFloated: true,
-            treasury: state.data[action.payload.companyId].initSharePrice * MAX_NUMBER_SHARES,
           },
+        },
+        treasuryById: {
+          ...state.treasuryById,
+          [action.payload.companyId]:
+            state.data[action.payload.companyId].initSharePrice * MAX_NUMBER_SHARES,
         },
       };
     case CHANGE_NAME:
@@ -95,6 +110,21 @@ const companiesReducer = (state = initialState, action) => {
           },
         },
       };
+    case RUN_ALL_ASYNC:
+      return {
+        ...state,
+        treasuryById: Object.entries(state.treasuryById).reduce(
+          (newTreasury, [companyId, oldTreasury]) => ({
+            ...newTreasury,
+            [companyId]: oldTreasury + action.payload.revenueById[companyId],
+          }),
+          {},
+        ),
+      };
+    case ADD_SHARE_PRICE:
+      return { ...state, sharePrices: [...state.sharePrices, action.payload.sharePrice] };
+    case RESET_LIST:
+      return { ...state, sharePrices: getDefaultSharePrices() };
     default:
       return state;
   }

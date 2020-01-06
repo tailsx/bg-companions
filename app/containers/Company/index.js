@@ -14,6 +14,7 @@ import {
   makeSelectIsFloated,
   makeSelectCompanyTrains,
   makeSelectCompanyTreasury,
+  makeSelectShareOptions,
 } from './selectors';
 import Company from './Company';
 
@@ -35,6 +36,7 @@ const mapStateToProps = () =>
     isFloated: makeSelectIsFloated(),
     trainIds: makeSelectCompanyTrains(),
     treasury: makeSelectCompanyTreasury(),
+    listSharePrices: makeSelectShareOptions(),
   });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
