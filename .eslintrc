@@ -1,11 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "airbnb",
-    "plugin:react/recommended",
-    "prettier",
-    "eslint-config-prettier"
-  ],
+  "extends": ["airbnb", "plugin:react/recommended", "prettier", "eslint-config-prettier"],
   "env": {
     "browser": true,
     "node": true,
@@ -46,6 +41,13 @@
     "redux-saga/no-yield-in-race": 2,
     "redux-saga/yield-effects": 2,
     "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/label-has-associated-control": [
+      1,
+      {
+        "controlComponents": ["EditableInput"]
+      }
+    ],
     "react/jsx-one-expression-per-line": 0
   },
   "settings": {

@@ -1,0 +1,35 @@
+.editable {
+  &__wrapper {
+    display: flex;
+  }
+
+  &__form {
+    flex-grow: 2;
+    display: flex;
+  }
+
+  &__label {
+    flex-basis: 25%;
+
+    &--hidden {
+      width: 0;
+      flex-basis: 0;
+    }
+  }
+
+  &__text {
+    color: #fff;
+    display: flex;
+    flex: 1 1 0;
+  }
+
+  &__field {
+    display: flex;
+    width: 100%;
+  }
+
+  &__button {
+    display: flex;
+    align-self: flex-end;
+  }
+}

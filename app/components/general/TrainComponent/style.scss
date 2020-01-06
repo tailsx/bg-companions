@@ -1,0 +1,15 @@
+.train-component {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 0 0 25%;
+
+  .input:read-only {
+    background: white;
+
+    &:read-only {
+      border: 3px solid red;
+    }
+  }
+}
