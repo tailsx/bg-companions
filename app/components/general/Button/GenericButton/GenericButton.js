@@ -12,6 +12,7 @@ const GenericButton = ({ buttonText, className, ...rest }) => (
 export default GenericButton;
 
 GenericButton.propTypes = {
-  buttonText: PropTypes.string.isRequired,
+  buttonText: PropTypes.any.isRequired,
   onClick: PropTypes.func,
+  className: PropTypes.string,
 };
