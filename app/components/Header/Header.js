@@ -8,9 +8,9 @@ class Header extends React.PureComponent {
   render() {
     return (
       <div className="header">
-        <a href="#">
+        {/*         <a href="#">
           <img src={Banner} alt="react-redux-boilerplate - Logo" />
-        </a>
+        </a> */}
         <div className="nav-bar">
           <Link className="router-link" to="/">
             18xx
