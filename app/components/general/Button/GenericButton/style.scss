@@ -12,13 +12,14 @@
   color: #dfe6e9;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#74b9ff",endColorstr="#3193de",GradientType=1);
   font-size: 1.5rem;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   height: 80px;
   width: 100%;
+  margin: 5px;
 
   &:hover {
     background: #0984e3;

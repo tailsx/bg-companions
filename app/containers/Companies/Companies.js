@@ -7,13 +7,19 @@ import './style.scss';
 
 const Companies = ({ companies, onRun, onCreateCompany }) => (
   <div className="companies">
-    <button type="button" onClick={onCreateCompany}>
-      Create Company
-    </button>
-    <button type="button" onClick={onRun}>
-      run it
-    </button>
-    <GenericButton onClick={onRun} buttonText="run" />
+    <div className="companies__buttons">
+      <GenericButton
+        className="companies__button"
+        buttonText="Create Company"
+        onClick={onCreateCompany}
+      />
+      <GenericButton className="companies__button" onClick={onRun} buttonText="run it" />
+      <GenericButton
+        className="companies__button"
+        onClick={() => console.log('efw')}
+        buttonText="third button"
+      />
+    </div>
     <div className="company-wrapper">
       {companies.map(company => (
         <Company key={`comp-${company.companyId}`} companyId={company.companyId} />

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const GenericButton = ({ buttonText, ...rest }) => (
-  <button type="button" className="btn" {...rest}>
+const GenericButton = ({ buttonText, className, ...rest }) => (
+  <button type="button" className={`btn ${className}`} {...rest}>
     {buttonText}
   </button>
 );
