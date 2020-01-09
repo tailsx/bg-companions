@@ -1,9 +1,13 @@
 .share-price {
-  width: 100%;
   display: flex;
   justify-content: center;
 
-  &__input {
+  &__wrapper {
     width: 80%;
+    height: 40px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

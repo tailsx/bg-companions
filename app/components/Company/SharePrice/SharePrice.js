@@ -7,7 +7,7 @@ import './style.scss';
 
 const SharePrice = ({ onValueChange, onButtonClick, listSharePrices }) => (
   <div className="share-price">
-    <div className="share-price__input">
+    <div className="share-price__wrapper">
       <Selectable
         onButtonClick={onButtonClick}
         onValueChange={onValueChange}
