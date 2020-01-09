@@ -14,11 +14,6 @@ const Companies = ({ companies, onRun, onCreateCompany }) => (
         onClick={onCreateCompany}
       />
       <GenericButton className="companies__button" onClick={onRun} buttonText="run it" />
-      <GenericButton
-        className="companies__button"
-        onClick={() => console.log('efw')}
-        buttonText="third button"
-      />
     </div>
     <div className="company-wrapper">
       {companies.map(company => (
