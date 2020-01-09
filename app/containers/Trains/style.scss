@@ -1,4 +1,6 @@
 .trains {
+  margin: 10px;
+  border: 1px solid #000;
   &__fleet {
     display: flex;
     flex-wrap: wrap;

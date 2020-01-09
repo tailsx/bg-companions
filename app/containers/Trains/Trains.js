@@ -6,6 +6,7 @@ import './style.scss';
 
 const Trains = ({ trainIds, onCreateTrain, allTrainsRevenue }) => (
   <div className="trains">
+    <div className="trains__title">Trains</div>
     <div className="trains__text">{`Total income: ${allTrainsRevenue}`}</div>
     <div>
       <button type="button" onClick={onCreateTrain}>

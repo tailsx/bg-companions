@@ -15,7 +15,7 @@ const Train = ({
   totalRevenue,
 }) => (
   <div className="train">
-    <div className="train__field">
+    <div className="train__field train__field--name">
       <EditableInput
         canEdit={canEditName}
         onButtonClick={onToggleName}

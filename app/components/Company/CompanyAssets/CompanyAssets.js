@@ -13,7 +13,6 @@ const CompanyAssets = ({ companyId, trainIds, treasury }) => (
     </div>
     <div className="company-assets__section">
       <div className="company-assets__section company-assets__trains">
-        <span>Trains</span>
         <Trains companyId={companyId} trainIds={trainIds} />
       </div>
     </div>

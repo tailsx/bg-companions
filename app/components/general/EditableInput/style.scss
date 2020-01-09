@@ -24,6 +24,18 @@
   }
 
   &__button {
-    flex-basis: 35%;
+    max-height: 2rem;
+    max-width: 80px;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    text-transform: uppercase;
+
+    &--hidden {
+      margin: 0;
+    }
   }
 }
