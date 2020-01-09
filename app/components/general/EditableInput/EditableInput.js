@@ -10,9 +10,14 @@ const EditableInput = ({ label, canEdit, onButtonClick, value, onChange, inputTy
       <div className={`editable__label${label ? '' : ' editable__label--hidden'}`}>{label}</div>
       <div className="editable__form">
         {canEdit ? (
-          <input className="editable__field" type={inputType} onChange={onChange} value={value} />
+          <input
+            className="editable_input editable__input--field"
+            type={inputType}
+            onChange={onChange}
+            value={value}
+          />
         ) : (
-          <span className="editable__text">{value}</span>
+          <span className="editable__input editable_input--text">{value}</span>
         )}
         <IconButton
           className="editable__button"
