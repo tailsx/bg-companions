@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GenericButton from 'components/general/Button/GenericButton';
 
 import './style.scss';
 
@@ -14,9 +15,7 @@ const Selectable = ({ onValueChange, onButtonClick, options, buttonText }) => (
         </option>
       ))}
     </select>
-    <button className="selectable__button" type="button" onClick={onButtonClick}>
-      {buttonText}
-    </button>
+    <GenericButton className="selectable__button" onClick={onButtonClick} buttonText={buttonText} />
   </div>
 );
 

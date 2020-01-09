@@ -1,7 +1,16 @@
 .selectable {
   display: flex;
   flex-grow: 1;
+  align-items: center;
+
   &__dropdown {
     flex-grow: 1;
+    height: 1.5rem;
+  }
+
+  &__button {
+    width: 35%;
+    font-size: 1rem;
+    height: 1.5rem;
   }
 }
