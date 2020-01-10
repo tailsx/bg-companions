@@ -1,9 +1,28 @@
 .trains {
   margin: 10px;
   border: 1px solid #000;
+
   &__fleet {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  &__section {
+    margin: 0 2%;
+  }
+
+  &__section:first {
+    margin-top: 2%;
+  }
+
+  &__section:last-child {
+    margin-bottom: 2%;
+  }
+
+  &__button {
+    height: 2rem;
+    font-size: 1rem;
+    margin: 10px 0;
   }
 }
