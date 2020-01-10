@@ -1,4 +1,21 @@
 .companies {
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    justify-content: space-between;
+
+    &::after {
+      content: '';
+      flex: auto;
+    }
+  }
+
+  &__button {
+    flex-basis: 45%;
+    margin: 6px;
+  }
+
   .company-wrapper {
     /*     display: flex;
     flex-wrap: wrap;

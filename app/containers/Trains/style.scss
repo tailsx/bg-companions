@@ -1,7 +1,51 @@
 .trains {
+  margin: 10px;
+  border: 1px solid #000;
+
   &__fleet {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  &__section {
+    margin: 0 2%;
+  }
+
+  &__section:first {
+    margin-top: 2%;
+  }
+
+  &__section:last-child {
+    margin-bottom: 2%;
+  }
+
+  &__button {
+    height: 2rem;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  &__train {
+    flex-basis: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (min-width: 42em) {
+  .trains {
+    &__train {
+      max-width: 48%;
+      margin: 5px;
+      flex-grow: 1;
+    }
+
+    &__fleet {
+      &::after {
+        content: '';
+        flex: auto;
+      }
+    }
   }
 }

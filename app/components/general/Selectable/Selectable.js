@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GenericButton from 'components/general/Button/GenericButton';
+
+import './style.scss';
 
 const VIEWABLE_OPTIONS = 1;
 
 const Selectable = ({ onValueChange, onButtonClick, options, buttonText }) => (
-  <div>
-    <select size={VIEWABLE_OPTIONS} onChange={onValueChange}>
+  <div className="selectable">
+    <select className="selectable__dropdown" size={VIEWABLE_OPTIONS} onChange={onValueChange}>
       {options.map(item => (
         <option key={`select-${item}`} value={item}>
           {item}
         </option>
       ))}
     </select>
-    <button type="button" onClick={onButtonClick}>
-      {buttonText}
-    </button>
+    <GenericButton className="selectable__button" onClick={onButtonClick} buttonText={buttonText} />
   </div>
 );
 

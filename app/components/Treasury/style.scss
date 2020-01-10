@@ -1,0 +1,16 @@
+.treasury {
+  text-align: center;
+  margin: 20px 0;
+
+  &__text {
+    font-size: 3rem;
+
+    &--profit {
+      color: #2ecc71;
+    }
+
+    &--deficit {
+      color: #e74c3c;
+    }
+  }
+}

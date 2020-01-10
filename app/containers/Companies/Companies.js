@@ -2,16 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Company from 'containers/Company';
+import GenericButton from 'components/general/Button/GenericButton/GenericButton';
 import './style.scss';
 
 const Companies = ({ companies, onRun, onCreateCompany }) => (
   <div className="companies">
-    <button type="button" onClick={onCreateCompany}>
-      Create Company
-    </button>
-    <button type="button" onClick={onRun}>
-      run it
-    </button>
+    <div className="companies__buttons">
+      <GenericButton
+        className="companies__button"
+        buttonText="Create Company"
+        onClick={onCreateCompany}
+      />
+      <GenericButton className="companies__button" onClick={onRun} buttonText="Simulate Turn" />
+    </div>
     <div className="company-wrapper">
       {companies.map(company => (
         <Company key={`comp-${company.companyId}`} companyId={company.companyId} />
