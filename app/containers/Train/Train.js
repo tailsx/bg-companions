@@ -13,8 +13,9 @@ const Train = ({
   onToggleRevenue,
   onChangeRevenue,
   totalRevenue,
+  className,
 }) => (
-  <div className="train">
+  <div className={`train${` ${className}` || ''}`}>
     <div className="train__field train__field--name">
       <EditableInput
         canEdit={canEditName}
@@ -47,4 +48,6 @@ Train.propTypes = {
   onToggleRevenue: PropTypes.func,
   onChangeRevenue: PropTypes.func,
   totalRevenue: PropTypes.number,
+
+  className: PropTypes.string,
 };

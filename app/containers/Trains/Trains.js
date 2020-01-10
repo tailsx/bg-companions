@@ -15,12 +15,9 @@ const Trains = ({ trainIds, onCreateTrain, allTrainsRevenue }) => (
     <div className="trains__section">
       <div className="trains__fleet">
         {trainIds.map(trainId => (
-          <Train key={trainId} trainId={trainId} />
+          <Train className="trains__train" key={trainId} trainId={trainId} />
         ))}
       </div>
-      {/*      <button type="button" onClick={onCreateTrain}>
-        Create Train
-      </button> */}
       <GenericButton className="trains__button" onClick={onCreateTrain} buttonText="Create Train" />
     </div>
   </div>

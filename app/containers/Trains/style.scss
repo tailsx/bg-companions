@@ -26,4 +26,26 @@
     margin-top: 10px;
     margin-bottom: 15px;
   }
+
+  &__train {
+    flex-basis: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (min-width: 42em) {
+  .trains {
+    &__train {
+      max-width: 48%;
+      margin: 5px;
+      flex-grow: 1;
+    }
+
+    &__fleet {
+      &::after {
+        content: '';
+        flex: auto;
+      }
+    }
+  }
 }
