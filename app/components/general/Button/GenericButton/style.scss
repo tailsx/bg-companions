@@ -1,0 +1,36 @@
+.btn {
+  background: rgb(116, 185, 255);
+  background: -moz-linear-gradient(180deg, rgba(116, 185, 255, 1) 0%, rgba(49, 147, 222, 1) 100%);
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(116, 185, 255, 1) 0%,
+    rgba(49, 147, 222, 1) 100%
+  );
+  background: linear-gradient(180deg, rgba(116, 185, 255, 1) 0%, rgba(49, 147, 222, 1) 100%);
+  border: 2px solid #dfe6e9;
+  box-shadow: 0 9px #999;
+  color: #dfe6e9;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#74b9ff",endColorstr="#3193de",GradientType=1);
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+
+  &:hover {
+    background: #0984e3;
+  }
+
+  &:active {
+    background: #0984e3;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  &--primary {
+    background: #0984e3;
+  }
+}

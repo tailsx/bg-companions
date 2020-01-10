@@ -1,9 +1,8 @@
 .company-assets {
   display: flex;
+  flex-direction: column;
 
-  & > div {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 50%;
+  &__section {
+    width: 100%;
   }
 }

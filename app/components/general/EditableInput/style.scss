@@ -1,35 +1,41 @@
 .editable {
+  display: flex;
+
   &__wrapper {
     display: flex;
+    flex-grow: 1;
   }
 
   &__form {
-    flex-grow: 2;
     display: flex;
+    flex-grow: 1;
   }
 
-  &__label {
-    flex-basis: 25%;
+  &__input {
+    flex-grow: 1;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 
-    &--hidden {
-      width: 0;
-      flex-basis: 0;
+    &--field {
+      display: flex;
+      flex-grow: 1;
     }
   }
 
-  &__text {
-    color: #fff;
-    display: flex;
-    flex: 1 1 0;
-  }
-
-  &__field {
-    display: flex;
-    width: 100%;
-  }
-
   &__button {
+    max-height: 2rem;
+    max-width: 80px;
+  }
+
+  &__label {
     display: flex;
-    align-self: flex-end;
+    align-items: center;
+    margin-right: 5px;
+    text-transform: uppercase;
+
+    &--hidden {
+      margin: 0;
+    }
   }
 }
