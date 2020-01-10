@@ -29,6 +29,7 @@ const createCompany = () => ({
   companyName: 'Unnamed Company',
   canEditName: false,
   isFloated: false,
+  initSharePrice: getDefaultSharePrices()[0],
 });
 
 // Reducer

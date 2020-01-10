@@ -13,7 +13,7 @@ const Companies = ({ companies, onRun, onCreateCompany }) => (
         buttonText="Create Company"
         onClick={onCreateCompany}
       />
-      <GenericButton className="companies__button" onClick={onRun} buttonText="run it" />
+      <GenericButton className="companies__button" onClick={onRun} buttonText="Simulate Turn" />
     </div>
     <div className="company-wrapper">
       {companies.map(company => (
