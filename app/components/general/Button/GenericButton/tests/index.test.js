@@ -17,7 +17,7 @@ const setup = propsOverride => {
   return { props, component };
 };
 
-describe('<Header />', () => {
+describe('<GenericButton />', () => {
   it('should render a div', () => {
     const { component } = setup();
     expect(component.length).toEqual(1);
@@ -27,10 +27,5 @@ describe('<Header />', () => {
     const { component } = setup();
 
     expect(component.hasClass('btn')).toBeTruthy();
-  });
-
-  it('should render button text', () => {
-    const { component } = setup();
-    expect(component.prop('buttonText')).toEqual(DEFAULT_BUTTON_TEXT);
   });
 });
