@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = ({ text, onButtonClick }) => (
@@ -13,3 +13,4 @@ Button.propTypes = {
   text: PropTypes.string,
   onButtonClick: PropTypes.func,
 };
+ */
