@@ -10,5 +10,8 @@ describe('<Header />', () => {
   });
 
   it('should have a .btn class', () => {
-  })
+    const component = shallow(<GenericButton />);
+
+    expect(component.hasClass('btn')).toBeTruthy();
+  });
 });
