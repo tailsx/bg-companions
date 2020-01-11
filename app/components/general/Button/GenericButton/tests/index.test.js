@@ -3,10 +3,13 @@ import { shallow } from 'enzyme';
 
 import GenericButton from '../index';
 
+const DEFAULT_BUTTON_TEXT = 'Default Button';
+const DEFAULT_CLASSNAME = 'rand-class';
+
 const setup = propsOverride => {
   const props = {
-    buttonText: 'Default Button',
-    className: 'rand-class',
+    buttonText: DEFAULT_BUTTON_TEXT,
+    className: DEFAULT_CLASSNAME,
     ...propsOverride,
   };
   const component = shallow(<GenericButton {...props} />);
@@ -24,5 +27,10 @@ describe('<Header />', () => {
     const { component } = setup();
 
     expect(component.hasClass('btn')).toBeTruthy();
+  });
+
+  it('should render button text', () => {
+    const { component } = setup();
+    expect(component.prop('buttonText')).toEqual(DEFAULT_BUTTON_TEXT);
   });
 });
