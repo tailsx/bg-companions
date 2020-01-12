@@ -8,12 +8,12 @@ import './style.scss';
 const Companies = ({ companies, onRun, onCreateCompany }) => (
   <div className="companies">
     <div className="companies__buttons">
-      <GenericButton
-        className="companies__button"
-        buttonText="Create Company"
-        onClick={onCreateCompany}
-      />
-      <GenericButton className="companies__button" onClick={onRun} buttonText="Simulate Turn" />
+      <div className="companies__button">
+        <GenericButton buttonText="Create Company" onClick={onCreateCompany} />
+      </div>
+      <div className="companies__button">
+        <GenericButton onClick={onRun} buttonText="Simulate Turn" />
+      </div>
     </div>
     <div className="company-wrapper">
       {companies.map(company => (
