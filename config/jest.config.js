@@ -24,11 +24,10 @@ module.exports = {
     '^.+\\.module\\.(css|sass|scss)$',
   ],
   moduleNameMapper: {
-    '.*\\.(css|less|styl|scss|sass)$':
-      '<rootDir>/config/jest-mocks/cssModule.js',
+    '.*\\.(css|less|styl|scss|sass)$': '<rootDir>/config/jest-mocks/cssModule.js',
     '.*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/config/jest-mocks/image.js',
   },
-  setupFilesAfterEnv: ['<rootDir>/config/test-setup.js'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', '<rootDir>/config/test-setup.js'],
   testRegex: 'tests/.*\\.test\\.js$',
 };
