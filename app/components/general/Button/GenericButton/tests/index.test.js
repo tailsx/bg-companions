@@ -1,31 +1,43 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 
 import GenericButton from '../index';
 
 const DEFAULT_BUTTON_TEXT = 'Default Button';
 const DEFAULT_CLASSNAME = 'rand-class';
+const DEFAULT_ONCLICK = jest.fn();
 
 const setup = propsOverride => {
   const props = {
     buttonText: DEFAULT_BUTTON_TEXT,
     className: DEFAULT_CLASSNAME,
+    onClick: DEFAULT_ONCLICK,
     ...propsOverride,
   };
-  const component = shallow(<GenericButton {...props} />);
+  const component = render(<GenericButton {...props} />);
 
-  return { props, component };
+  return { props, ...component };
 };
 
 describe('<GenericButton />', () => {
-  it('should render a div', () => {
-    const { component } = setup();
-    expect(component.length).toEqual(1);
+  describe('accessibility', () => {
+    it('should have role', () => {
+      const { getByRole } = setup();
+
+      expect(getByRole('button')).toBeInTheDocument();
+    });
   });
 
   it('should have a .btn class', () => {
-    const { component } = setup();
+    const { getByText } = setup();
 
-    expect(component.hasClass('btn')).toBeTruthy();
+    expect(getByText(DEFAULT_BUTTON_TEXT)).toHaveClass('btn');
+  });
+
+  it('should have onclick function work', () => {
+    const { props, container } = setup();
+
+    fireEvent.click(container.firstChild);
+    expect(props.onClick).toHaveBeenCalledTimes(1);
   });
 });

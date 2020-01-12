@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import Selectable from '../index';
 
@@ -12,21 +12,17 @@ const setup = propsOverride => {
     buttonText: DEFAULT_BUTTON_TEXT,
     ...propsOverride,
   };
-  const component = shallow(<Selectable {...props} />);
+  const component = render(<Selectable {...props} />);
 
-  return { props, component };
+  return { props, ...component };
 };
 
 describe('<Selectable />', () => {
-  it('should render elements equal to input', () => {
-    const { component, props } = setup();
+  describe('accessbility', () => {
+    it('should have a role', () => {
+      const { getByRole } = setup();
 
-    expect(component.find('option')).toHaveLength(props.options.length);
-  });
-
-  it('should have select tag nested inside label', () => {
-    const { component } = setup();
-
-    expect(component.find('label')).toHaveLength(1);
+      expect(getByRole('menu')).toBeInTheDocument();
+    });
   });
 });

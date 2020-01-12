@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import IconButton from '../index';
 
@@ -12,16 +12,24 @@ const setup = propsOverride => {
     className: DEFAULT_CLASSNAME,
     ...propsOverride,
   };
-  const component = shallow(<IconButton {...props} />);
+  const component = render(<IconButton {...props} />);
 
-  return { props, component };
+  return { props, ...component };
 };
 
 describe('<IconButton />', () => {
-  it('should render button with icon', () => {
-    const { props } = setup();
-    const component = render(<IconButton {...props} />);
+  describe('accessibility', () => {
+    it('should have role', () => {
+      const { getByRole } = setup();
 
-    expect(component.hasClass(DEFAULT_ICON_CLASS));
+      expect(getByRole('button')).toBeInTheDocument();
+    });
+  });
+
+  it('should render button with icon', () => {
+    const { container } = setup();
+
+    expect(container.firstChild).toHaveClass(DEFAULT_CLASSNAME);
+    expect(container.firstChild);
   });
 });

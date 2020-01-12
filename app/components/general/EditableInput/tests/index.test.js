@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import EditableInput from '../index';
 
@@ -16,22 +16,23 @@ const setup = propsOverride => {
     label: DEFAULT_LABEL,
     ...propsOverride,
   };
-  const component = shallow(<EditableInput {...props} />);
+  const component = render(<EditableInput {...props} />);
 
-  return { props, component };
+  return { props, ...component };
 };
 
 describe('<EditableInput />', () => {
-  it('should have input nested inside label for accessibility', () => {
-    const { component } = setup();
+  describe('accessibility', () => {
+    it('should have aria role', () => {
+      const { getByRole } = setup();
 
-    expect(component.first('label').contains('input')).toBeTruthy();
-  });
+      expect(getByRole('textbox')).toBeInTheDocument();
+    });
 
-  it('should have label hidden class if no label text provided', () => {
-    const { component } = setup({ label: undefined });
+    it('should have input nested inside label for accessibility', () => {
+      const { getByLabelText } = setup();
 
-    expect(component.prop('label')).not.toEqual(DEFAULT_LABEL);
-    expect(component.contains('.editable__label--hidden')).toBeTruthy();
+      expect(getByLabelText(DEFAULT_LABEL)).toBeInTheDocument();
+    });
   });
 });
